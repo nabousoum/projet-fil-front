@@ -1,0 +1,25 @@
+.navbar-custom {
+    background-color: #C2B364;
+}
+.img{
+    border-radius: 50px;
+    height: 100px;
+    width: 100px;
+}
+.container{
+    display: flex;
+}
+a{
+    color: black;
+}
+.navbar-brand{
+    display: flex;
+}
+p{
+    opacity: 0.5;
+    margin-top: 10%;
+    margin-left: 10%;
+}
+i{
+    color: black;
+}
