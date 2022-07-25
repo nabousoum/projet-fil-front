@@ -1,3 +1,4 @@
+<ss-header></ss-header>
 <div class="container">
     <div class="top">
         <div>
@@ -13,13 +14,7 @@
                 les rondelles de tomate et d’oignon,
             </p>
             <div class="cart_counter">
-                <button  class="reduced items-count" type="button">
-                    <i class="fa fa-minus"></i>
-                </button>
-                <input type="text" name="qty" id="sst61_menu" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                <button onclick="var result = document.getElementById('sst61_menu'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
-                    <i class="fa fa-plus"></i>
-                </button>
+                
             </div>
             <a routerLink="/client/commande/panier">
                 <button class="btn">Ajouter au panier</button>
@@ -29,30 +24,11 @@
     <div class="middle">
         <p>COMPOSANTS DU MENU</p>
         <div class="middle-components">
-            <div class="component"> 
-                <img src="assets/images/burgerHome.jpg" alt="">
-                <p>Burger royal</p>
-            </div>
-            <div class="component"> 
-                <img src="assets/images/burgerHome.jpg" alt="">
-                <p>Burger royal</p>
-            </div>
-            <div class="component"> 
-                <img src="assets/images/burgerHome.jpg" alt="">
-                <p>Burger royal</p>
-            </div>
-            <div class="component"> 
-                <img src="assets/images/frites.jpeg" alt="">
-                <p> Frites royal</p>
-            </div>
-            <div class="component"> 
-                <img src="assets/images/frites.jpeg" alt="">
-                <p>Frites royal</p>
-            </div>
-            <div class="component"> 
-                <img src="assets/images/frites.jpeg" alt="">
-                <p>Frites royal</p>
-            </div>
+            <ss-detail-menu></ss-detail-menu>
+            <ss-detail-menu></ss-detail-menu>
+            <ss-detail-menu></ss-detail-menu>
+            <ss-detail-menu></ss-detail-menu>
+            <ss-detail-menu></ss-detail-menu>
         </div>
     </div>
     <div class="bottom">
@@ -146,3 +122,4 @@
         </div>
     </div>
 </div>
+<ss-footer></ss-footer>

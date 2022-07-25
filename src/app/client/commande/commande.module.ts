@@ -7,6 +7,9 @@ import { PanierComponent } from './panier/panier.component';
 import { LivraisonComponent } from './livraison/livraison.component';
 import { SuiviComponent } from './suivi/suivi.component';
 import { DetailComponent } from './detail/detail.component';
+import { LayoutModule } from 'src/app/layout/layout.module';
+import { LigneCommandeComponent } from './ligne-commande/ligne-commande.component';
+import { CardCountComponent } from '../card-count/card-count.component';
 
 
 @NgModule({
@@ -15,11 +18,16 @@ import { DetailComponent } from './detail/detail.component';
     PanierComponent,
     LivraisonComponent,
     SuiviComponent,
-    DetailComponent
+    DetailComponent,
+    LigneCommandeComponent,
   ],
   imports: [
     CommonModule,
-    CommandeRoutingModule
+    CommandeRoutingModule,
+    LayoutModule
+  ],
+  exports: [
+    LigneCommandeComponent
   ]
 })
 export class CommandeModule { }

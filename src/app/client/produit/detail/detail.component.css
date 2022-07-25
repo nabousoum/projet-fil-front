@@ -41,20 +41,6 @@ p{
     margin-left: 10%;
     margin-right: 10%;
 }
-.component img{
-    height: 90px;
-    width: 100px;
-    border-radius: 50%;
-    margin-left: 5px;
-}
-.component p{
-    margin-left: 5px;
-    color: black;
-}
-.component{
-    display: flex;
-    flex-direction: column;
-}
 .bottom{
     display: flex;
     flex-direction: column;
@@ -63,7 +49,6 @@ p{
     display: flex;
 }
 .component-bottom{
-    border: 1px solid #C2B364;
     display: flex;
     flex-direction: column;
 }
