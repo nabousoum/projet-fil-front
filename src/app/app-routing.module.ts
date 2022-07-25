@@ -1,7 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PageNotFoundComponent } from './notFound/page.not.found/page.not.found.component';
 
-const routes: Routes = [{ path: 'client', loadChildren: () => import('./client/client.module').then(m => m.ClientModule) }];
+const routes: Routes = [
+  { path: 'client', loadChildren: () => import('./client/client.module').then(m => m.ClientModule) 
+  },
+  {
+    path:"notFound",
+    component: PageNotFoundComponent
+  },
+  {
+    path: '**',
+    redirectTo: "notFound"
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes,{scrollPositionRestoration:'top'})],

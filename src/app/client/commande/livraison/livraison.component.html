@@ -6,11 +6,19 @@
             <ul class="nav nav-pills">
               <li class="nav-item">
                 <div class=" delivery choices nav-link active" [ngClass]="{ 'active':activeTab==='search'}" (click)="search('search')"
-                   data-toggle="tab">LIVRAISON</div>
+                   data-toggle="tab">LIVRAISON
+                </div>
+                <div>
+                    <i></i>
+                </div>
               </li>
               <li class="nav-item">
                 <div class=" place choices nav-link"  [ngClass]="{ 'active':activeTab==='result'}" data-toggle="tab"
-                   (click)="result('result')">SUR PLACE</div>
+                   (click)="result('result')">SUR PLACE
+                </div>
+                <div>
+                    <i></i>
+                </div>
               </li>
             </ul>
         </div>
