@@ -4,16 +4,27 @@ import { CommonModule } from '@angular/common';
 import { ProduitRoutingModule } from './produit-routing.module';
 import { ProduitComponent } from './produit.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
+import { CardComponent } from './catalogue/card/card.component';
+import { DetailComponent } from './detail/detail.component';
+import { RouterModule } from '@angular/router';
+
 
 
 @NgModule({
   declarations: [
     ProduitComponent,
-    CatalogueComponent
+    CatalogueComponent,
+    CardComponent,
+    DetailComponent
   ],
   imports: [
     CommonModule,
-    ProduitRoutingModule
+    ProduitRoutingModule,
+    RouterModule
+  ],
+  exports:[
+    CardComponent,
+    CatalogueComponent
   ]
 })
 export class ProduitModule { }

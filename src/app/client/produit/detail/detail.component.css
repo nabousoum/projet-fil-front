@@ -1,0 +1,83 @@
+.container{
+    margin-top: 10%;  
+    display: flex;
+    flex-direction: column;
+}
+.top{
+    display: flex;
+}
+img{
+    height: 300px;
+    width: 400px;
+    border-radius: 20px;
+}
+p{
+    margin-left: 10%;
+    font-size: x-large;
+}
+.cart_counter{
+ margin-left: 10%;   
+}
+.btn{
+    border-radius: 20px;
+    background-color: #C2B364;
+    color: white;
+    font-size: large;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+.middle p{
+    font-size: larger;
+    color: #C2B364;
+}
+.middle{
+    margin-top: 5%;
+
+}
+.middle-components{
+    border: 3px solid #C2B364;
+    display: flex;
+    margin-bottom: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.component img{
+    height: 90px;
+    width: 100px;
+    border-radius: 50%;
+    margin-left: 5px;
+}
+.component p{
+    margin-left: 5px;
+    color: black;
+}
+.component{
+    display: flex;
+    flex-direction: column;
+}
+.bottom{
+    display: flex;
+    flex-direction: column;
+}
+.bottom-components{
+    display: flex;
+}
+.component-bottom{
+    border: 1px solid #C2B364;
+    display: flex;
+    flex-direction: column;
+}
+.component-bottom img{
+    height: 200px;
+    width: 200px;
+}
+.component-bottom p{
+  margin-left: 25%;
+}
+input{
+    width: 50px;
+}
+.cart-style{
+    margin-top: 10%;
+    margin-left: 25%;
+}

@@ -1,6 +1,6 @@
 <nav class=" navbar-custom navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand" href="#page-top">
+        <a class="navbar-brand" routerLink="/client/produits/catalogues">
             <img class="img" src="assets/images/logo.bin" alt="...">
             <p>burger tres delicieux !!! </p>
         </a>
@@ -10,14 +10,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link" href="">MENUS </a></li>
-                <li class="nav-item"><a class="nav-link" href="">BURGERS</a></li>
-                <li class="nav-item"><a class="nav-link" href="">ABOUT US</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/client/produits/catalogues">MENUS </a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/client/produits/catalogues">BURGERS</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/client/produits/catalogues">ABOUT US</a></li>
                 <li class="nav-item"><a class="nav-link" href="">S INSCRIRE </a></li>
                 <li class="nav-item"><a class="nav-link" href="">LOGIN</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/client/commande/suivi">SUIVI</a></li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://restaurant.bdtask.com/demo/cart" id="navbarDropdown3">
-                        <i class="fa-regular fa-cart-shopping"></i>
+                    <a class="nav-link" routerLink="/client/commande/panier" id="navbarDropdown3">
+                        <i class="fa-solid fa-cart-shopping"></i>
                         <span class="badge badge-notify my-cart-badge" id="itemnum">0</span>
                     </a>
                 </li>
