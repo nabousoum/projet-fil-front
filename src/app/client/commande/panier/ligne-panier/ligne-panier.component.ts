@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'ss-ligne-panier',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ligne-panier.component.css']
 })
 export class LignePanierComponent implements OnInit {
-
+  @Input() isPanier = true;
   constructor() { }
 
   ngOnInit(): void {

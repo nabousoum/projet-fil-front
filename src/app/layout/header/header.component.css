@@ -11,6 +11,7 @@
 }
 a{
     color: black;
+    font-size: large;
 }
 .navbar-brand{
     display: flex;
