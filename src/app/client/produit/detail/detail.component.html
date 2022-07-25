@@ -32,94 +32,26 @@
         </div>
     </div>
     <div class="bottom">
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">CANNETTES DISPONIBLES</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">GRAND MODELES DISPONIBLES</a>
-            </li>
-        </ul>
-        <div class="bottom-components">
-            <div class="component-bottom">
-                <div class="cart_counter cart-style">
-                    <button  class="reduced items-count" type="button">
-                        <i class="fa fa-minus"></i>
-                    </button>
-                    <input type="text" name="qty" id="sst61_menu" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                    <button onclick="var result = document.getElementById('sst61_menu'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
-                        <i class="fa fa-plus"></i>
-                    </button>
-                </div>
-                <img src="assets/images/coca.jpg" alt="">
-                <p>Coca cola</p>
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"  type="button" data-bs-target ="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</button>
+              <button class="nav-item nav-link" id="nav-profile-tab" data-bs-toggle="tab" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</button>
             </div>
-            <div class="component-bottom">
-                <div class="cart_counter cart-style">
-                    <button  class="reduced items-count" type="button">
-                        <i class="fa fa-minus"></i>
-                    </button>
-                    <input type="text" name="qty" id="sst61_menu" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                    <button onclick="var result = document.getElementById('sst61_menu'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
-                        <i class="fa fa-plus"></i>
-                    </button>
-                </div>
-                <img src="assets/images/coca.jpg" alt="">
-                <p>Coca cola</p>
+          </nav>
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active p-3" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <div class="bottom-components">
+                    <ss-choix-boisson></ss-choix-boisson>
+                    <ss-choix-boisson></ss-choix-boisson>
+                    <ss-choix-boisson></ss-choix-boisson>
+                    <ss-choix-boisson></ss-choix-boisson>
+                    <ss-choix-boisson></ss-choix-boisson>
+                    <ss-choix-boisson></ss-choix-boisson>
+                 </div>
             </div>
-            <div class="component-bottom">
-                <div class="cart_counter cart-style">
-                    <button  class="reduced items-count" type="button">
-                        <i class="fa fa-minus"></i>
-                    </button>
-                    <input type="text" name="qty" id="sst61_menu" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                    <button onclick="var result = document.getElementById('sst61_menu'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
-                        <i class="fa fa-plus"></i>
-                    </button>
-                </div>
-                <img src="assets/images/coca.jpg" alt="">
-                <p>Coca cola</p>
-            </div>
-            <div class="component-bottom">
-                <div class="cart_counter cart-style">
-                    <button  class="reduced items-count" type="button">
-                        <i class="fa fa-minus"></i>
-                    </button>
-                    <input type="text" name="qty" id="sst61_menu" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                    <button onclick="var result = document.getElementById('sst61_menu'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
-                        <i class="fa fa-plus"></i>
-                    </button>
-                </div>
-                <img src="assets/images/coca.jpg" alt="">
-                <p>Coca cola</p>
-            </div>
-            <div class="component-bottom">
-                <div class="cart_counter cart-style">
-                    <button  class="reduced items-count" type="button">
-                        <i class="fa fa-minus"></i>
-                    </button>
-                    <input type="text" name="qty" id="sst61_menu" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                    <button onclick="var result = document.getElementById('sst61_menu'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
-                        <i class="fa fa-plus"></i>
-                    </button>
-                </div>
-                <img src="assets/images/coca.jpg" alt="">
-                <p>Coca cola</p>
-            </div>
-            <div class="component-bottom">
-                <div class="cart_counter cart-style">
-                    <button  class="reduced items-count" type="button">
-                        <i class="fa fa-minus"></i>
-                    </button>
-                    <input type="text" name="qty" id="sst61_menu" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                    <button onclick="var result = document.getElementById('sst61_menu'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
-                        <i class="fa fa-plus"></i>
-                    </button>
-                </div>
-                <img src="assets/images/coca.jpg" alt="">
-                <p>Coca cola</p>
-            </div>
-        </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+          </div>
+       
     </div>
 </div>
 <ss-footer></ss-footer>

@@ -1,0 +1,28 @@
+.component-bottom{
+    display: flex;
+    flex-direction: column;
+}
+.cart-style{
+    margin-top: 10%;
+    margin-left: 25%;
+}
+input{
+    width: 50px;
+}
+img{
+    margin-left: -10%;
+    height: 300px;
+    width: 400px;
+    border-radius: 20px;
+}
+.cart_counter{
+    margin-left: 10%;   
+   }
+   .component-bottom img{
+    height: 200px;
+    width: 200px;
+}
+.component-bottom p{
+  margin-left: 25%;
+}
+

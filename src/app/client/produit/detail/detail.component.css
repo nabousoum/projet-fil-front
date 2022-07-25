@@ -15,9 +15,7 @@ p{
     margin-left: 10%;
     font-size: x-large;
 }
-.cart_counter{
- margin-left: 10%;   
-}
+
 .btn{
     border-radius: 20px;
     background-color: #C2B364;
@@ -48,21 +46,4 @@ p{
 .bottom-components{
     display: flex;
 }
-.component-bottom{
-    display: flex;
-    flex-direction: column;
-}
-.component-bottom img{
-    height: 200px;
-    width: 200px;
-}
-.component-bottom p{
-  margin-left: 25%;
-}
-input{
-    width: 50px;
-}
-.cart-style{
-    margin-top: 10%;
-    margin-left: 25%;
-}
+
