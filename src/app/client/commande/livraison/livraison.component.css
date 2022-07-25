@@ -23,12 +23,12 @@
     justify-content: center;
     align-items: center;
     background-color: #C2B364;
-    width: 100%;
+    width: 200px;
     height: 100px;
     color: white;
 }
 .place{
-    margin-left: 30%;
+    margin-left: 20%;
     color: black;
 }
 .info-container{
@@ -52,4 +52,23 @@ form{
     background-color: #C2B364;
     color: white;
     width: 50%;
+}
+.icon{
+    position: absolute;
+    border: 1px solid #C2B364;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: white;
+}
+.i1{
+    top:19%;
+    left:43%;
+}
+.i2{
+    top:19%;
+    left:57%;
 }
