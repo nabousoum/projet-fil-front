@@ -31,27 +31,44 @@
             <ss-detail-menu></ss-detail-menu>
         </div>
     </div>
-    <div class="bottom">
-        <nav>
-            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-              <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"  type="button" data-bs-target ="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</button>
-              <button class="nav-item nav-link" id="nav-profile-tab" data-bs-toggle="tab" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</button>
-            </div>
-          </nav>
-          <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active p-3" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+   
+         
+     <div class="bottom">
+        <div id="tabs" #tabs>
+
+            <ul class="nav nav-pills">
+              <li class="nav-item">
+                <button class="nav-link active" [ngClass]="{ 'active':activeTab==='search'}" (click)="search('search')"
+                   data-toggle="tab">Search</button>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link"  [ngClass]="{ 'active':activeTab==='result'}" data-toggle="tab"
+                   (click)="result('result')">Results</button>
+              </li>
+            </ul>
+          
+            <div class="tab-content">
+              <div class="tab-pane" id="search" [ngClass]="{ 'active':activeTab==='search'}">
+                    <div class="bottom-components">
+                        <ss-choix-boisson></ss-choix-boisson>
+                        <ss-choix-boisson></ss-choix-boisson>
+                        <ss-choix-boisson></ss-choix-boisson>
+                        <ss-choix-boisson></ss-choix-boisson>
+                        <ss-choix-boisson></ss-choix-boisson>
+                        <ss-choix-boisson></ss-choix-boisson>
+                    </div>
+              </div>
+              <div class="tab-pane" id="results" [ngClass]="{ 'active':activeTab==='result'}">
                 <div class="bottom-components">
-                    <ss-choix-boisson></ss-choix-boisson>
-                    <ss-choix-boisson></ss-choix-boisson>
-                    <ss-choix-boisson></ss-choix-boisson>
                     <ss-choix-boisson></ss-choix-boisson>
                     <ss-choix-boisson></ss-choix-boisson>
                     <ss-choix-boisson></ss-choix-boisson>
                  </div>
             </div>
+            </div>
+          
+        </div>
+    </div>
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
           </div>
-       
-    </div>
-</div>
 <ss-footer></ss-footer>

@@ -25,7 +25,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     CommonModule,
     ProduitRoutingModule,
     RouterModule,
-    LayoutModule
+    LayoutModule,
+    NgbModule
   ],
   exports:[
     CardComponent,
