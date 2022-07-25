@@ -7,7 +7,8 @@
     display: flex;
 }
 img{
-    height: 300px;
+    margin-left: -10%;
+    height: 200px;
     width: 400px;
     border-radius: 20px;
 }
@@ -15,7 +16,9 @@ p{
     margin-left: 10%;
     font-size: x-large;
 }
-
+.cart_counter{
+ margin-left: 10%;   
+}
 .btn{
     border-radius: 20px;
     background-color: #C2B364;
@@ -47,3 +50,13 @@ p{
     display: flex;
 }
 
+.component-bottom img{
+    height: 200px;
+    width: 200px;
+}
+.component-bottom p{
+  margin-left: 25%;
+}
+input{
+    width: 50px;
+}

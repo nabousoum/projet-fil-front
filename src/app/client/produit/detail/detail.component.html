@@ -39,11 +39,11 @@
             <ul class="nav nav-pills">
               <li class="nav-item">
                 <button class="nav-link active" [ngClass]="{ 'active':activeTab==='search'}" (click)="search('search')"
-                   data-toggle="tab">Search</button>
+                   data-toggle="tab">CANNETTES DISPONIBLES</button>
               </li>
               <li class="nav-item">
                 <button class="nav-link"  [ngClass]="{ 'active':activeTab==='result'}" data-toggle="tab"
-                   (click)="result('result')">Results</button>
+                   (click)="result('result')">GRAND MODELE DISPONIBLE</button>
               </li>
             </ul>
           
@@ -60,9 +60,58 @@
               </div>
               <div class="tab-pane" id="results" [ngClass]="{ 'active':activeTab==='result'}">
                 <div class="bottom-components">
-                    <ss-choix-boisson></ss-choix-boisson>
-                    <ss-choix-boisson></ss-choix-boisson>
-                    <ss-choix-boisson></ss-choix-boisson>
+                    <div class="component-bottom">
+                        <div class="cart_counter cart-style">
+                            <button  class="reduced items-count" type="button">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <input type="text" name="qty" id="sst61_menu" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+                            <button onclick="var result = document.getElementById('sst61_menu'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                        <img src="assets/images/gm.jpg" alt="">
+                        <p>Coca cola</p>
+                    </div>
+                    <div class="component-bottom">
+                        <div class="cart_counter cart-style">
+                            <button  class="reduced items-count" type="button">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <input type="text" name="qty" id="sst61_menu" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+                            <button onclick="var result = document.getElementById('sst61_menu'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                        <img src="assets/images/gm.jpg" alt="">
+                        <p>Coca cola</p>
+                    </div>
+                    <div class="component-bottom">
+                        <div class="cart_counter cart-style">
+                            <button  class="reduced items-count" type="button">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <input type="text" name="qty" id="sst61_menu" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+                            <button onclick="var result = document.getElementById('sst61_menu'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                        <img src="assets/images/gm.jpg" alt="">
+                        <p>Coca cola</p>
+                    </div>
+                    <div class="component-bottom">
+                        <div class="cart_counter cart-style">
+                            <button  class="reduced items-count" type="button">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <input type="text" name="qty" id="sst61_menu" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+                            <button onclick="var result = document.getElementById('sst61_menu'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                        <img src="assets/images/gm.jpg" alt="">
+                        <p>Coca cola</p>
+                    </div>
                  </div>
             </div>
             </div>
