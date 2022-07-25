@@ -1,11 +1,18 @@
 <ss-header></ss-header>
 <div class="container">
     <div class="choice-container">
-        <div class="delivery choices">
-            <p>LIVRAISON</p>
-        </div>
-        <div class="place choices">
-            <p>SUR PLACE</p>
+        <div id="tabs" #tabs>
+
+            <ul class="nav nav-pills">
+              <li class="nav-item">
+                <div class=" delivery choices nav-link active" [ngClass]="{ 'active':activeTab==='search'}" (click)="search('search')"
+                   data-toggle="tab">LIVRAISON</div>
+              </li>
+              <li class="nav-item">
+                <div class=" place choices nav-link"  [ngClass]="{ 'active':activeTab==='result'}" data-toggle="tab"
+                   (click)="result('result')">SUR PLACE</div>
+              </li>
+            </ul>
         </div>
     </div>
     <div class="info-container">
@@ -13,32 +20,50 @@
         <p><i class="fa-solid fa-cart-shopping"></i> votre panier </p>
         <p>TOTAL 20 000 FCFA</p>
     </div>
-    <div class="form-container">
+    <div class="tab-content">
+        <div class="form-container tab-pane" id="search" [ngClass]="{ 'active':activeTab==='search'}">
+          
+            <div class="form-container">
+                <form>
+                    <!-- Email input -->
+                    <div class="form-outline mb-4  ">
+                        <label class="form-label" for="form2Example1">Adresse</label>
+                        <input type="email" id="form2Example1" class="form-control" />
+                    </div>
+                    <div class="form-outline mb-4  ">
+                        <label class="form-label" for="form2Example1">Choisissez une zone</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>selectionnez une zone</option>
+                            <option value="1">Zone 1 : Point E </option>
+                            <option value="2">Zone 2 :  Amitié - Baobab -  Zone B - Fann </option>
+                            <option value="3">Zone 3:  Mermoz - sicap - Amitié - sacre coeur </option>
+                            <option value="1">Zone 4 :  parcelles - Mbao - golf  </option>
+                        </select>
+                    </div>
+                    <div class="form-outline mb-4  ">
+                        <label class="form-label" for="form2Example1">Telephone</label>
+                        <input type="email" id="form2Example1" class="form-control" />
+                    </div>
+                    <a routerLink="/client/commande/suivi">
+                        <button class="btn">Commander</button>
+                    </a>
+                </form>
+            
+            </div>
+        </div>
+       <div class="tab-pane" id="results" [ngClass]="{ 'active':activeTab==='result'}">
         <form>
             <!-- Email input -->
             <div class="form-outline mb-4  ">
                 <label class="form-label" for="form2Example1">Adresse</label>
                 <input type="email" id="form2Example1" class="form-control" />
             </div>
-            <div class="form-outline mb-4  ">
-                <label class="form-label" for="form2Example1">Choisissez une zone</label>
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>selectionnez une zone</option>
-                    <option value="1">Zone 1 : Point E </option>
-                    <option value="2">Zone 2 :  Amitié - Baobab -  Zone B - Fann </option>
-                    <option value="3">Zone 3:  Mermoz - sicap - Amitié - sacre coeur </option>
-                    <option value="1">Zone 4 :  parcelles - Mbao - golf  </option>
-                </select>
-            </div>
-            <div class="form-outline mb-4  ">
-                <label class="form-label" for="form2Example1">Telephone</label>
-                <input type="email" id="form2Example1" class="form-control" />
-            </div>
+           
             <a routerLink="/client/commande/suivi">
                 <button class="btn">Commander</button>
             </a>
         </form>
-    
-    </div>
+       </div>
+   </div>
 </div>
 <ss-footer></ss-footer>

@@ -11,6 +11,7 @@ import { LayoutModule } from 'src/app/layout/layout.module';
 import { LigneCommandeComponent } from './ligne-commande/ligne-commande.component';
 import { CardCountComponent } from '../card-count/card-count.component';
 import { LignePanierComponent } from './panier/ligne-panier/ligne-panier.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { LignePanierComponent } from './panier/ligne-panier/ligne-panier.compone
     CommonModule,
     CommandeRoutingModule,
     LayoutModule,
+    NgbModule
   ],
   exports: [
     LigneCommandeComponent,

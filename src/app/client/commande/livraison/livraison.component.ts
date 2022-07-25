@@ -8,6 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class LivraisonComponent implements OnInit {
 
   constructor() { }
+  activeTab = 'search';
+
+  search(activeTab:any){
+    this.activeTab = activeTab;
+  }
+
+  result(activeTab:any){
+    this.activeTab = activeTab;
+  }
 
   ngOnInit(): void {
   }
