@@ -6,7 +6,6 @@ const routes: Routes = [
   { path: 'produits', loadChildren: () => import('./produit/produit.module').then(m => m.ProduitModule) },
   { path: '', redirectTo: 'produits',  pathMatch: 'full' },
   { path: 'commande', loadChildren: () => import('./commande/commande.module').then(m => m.CommandeModule) },
-  { path: 'securite', loadChildren: () => import('./securite/securite.module').then(m => m.SecuriteModule) },
 ];
 
 @NgModule({

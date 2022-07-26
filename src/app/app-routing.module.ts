@@ -9,10 +9,13 @@ const routes: Routes = [
     path:"notFound",
     component: PageNotFoundComponent
   },
+  { 
+    path: 'securite', loadChildren: () => import('./securite/securite.module').then(m => m.SecuriteModule) 
+  },
   {
     path: '**',
     redirectTo: "notFound"
-  }
+  },
 ];
 
 @NgModule({
