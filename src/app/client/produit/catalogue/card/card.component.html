@@ -1,14 +1,14 @@
-<!-- [src]="data:image/png;base64,catalogue?.image"  -->
+
 <div class="card">
     <img class="card__image" src="data:image/png;base64,{{catalogue?.image}}" alt="">
     <div class="card__content">
         <div class="card__header">
             <h4 class="card__title">{{catalogue?.nom}}</h4>
-            <span class="card__price">{{catalogue?.prix}}</span>
+            <span class="card__price">{{catalogue?.prix}} FCFA</span>
         </div>
        <div class="btns">
             <a routerLink="/client/commande/panier" >
-                 <button class="btn btn1">ADD</button>
+                 <button class="btn btn1">ADD </button>
              </a>
             <a routerLink="/client/produits/detail/1">
                 <button class="btn btn2">DETAIL</button>
