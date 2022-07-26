@@ -20,12 +20,13 @@ p{
  margin-left: 10%;   
 }
 .btn{
-    border-radius: 20px;
+    border-radius: 10px;
     background-color: #C2B364;
     color: white;
-    font-size: large;
-    margin-left: 10%;
-    margin-top: 10%;
+    font-size: large;   
+    margin-left: 15%;
+    height: 50px;
+    margin-top: 5%;
 }
 .middle p{
     font-size: larger;
@@ -59,4 +60,10 @@ p{
 }
 input{
     width: 50px;
+}
+.btn-count{
+   margin-top: -1%;
+   height: 40px;
+   border-radius: 5px;
+   border: none;
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Menu } from '../../shared/models/menu';
 
 @Component({
   selector: 'ss-card',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class CardComponent implements OnInit {
 
   constructor() { }
-
+  @Input('catalogues') catalogue :Menu |null = null; 
   ngOnInit(): void {
   }
 

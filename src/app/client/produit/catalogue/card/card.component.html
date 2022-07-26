@@ -1,16 +1,16 @@
 <div class="card">
-    <img class="card__image" src="assets/images/burgerCard.jpg" alt="">
+    <img class="card__image" src="assets/images/burgerHome.jpg" alt="">
     <div class="card__content">
         <div class="card__header">
-            <h4 class="card__title">Cheese burger</h4>
-            <span class="card__price">4000 fcfa</span>
+            <h4 class="card__title">{{catalogue?.nom}}</h4>
+            <span class="card__price">{{catalogue?.prix}}</span>
         </div>
        <div class="btns">
             <a routerLink="/client/commande/panier" >
-                 <button class="btn btn1">Add</button>
+                 <button class="btn btn1">ADD</button>
              </a>
             <a routerLink="/client/produits/detail/1">
-                <button class="btn btn2">Detail</button>
+                <button class="btn btn2">DETAIL</button>
             </a>
        </div>
     </div>

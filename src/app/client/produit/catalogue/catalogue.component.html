@@ -24,17 +24,10 @@
 </div>
 
 <div class="wrapper">
-    <div class="cards">
-        <ss-card></ss-card>
-        <ss-card></ss-card>
-        <ss-card></ss-card>
-        <ss-card></ss-card>
-        <ss-card></ss-card>
-        <ss-card></ss-card>
-        <ss-card></ss-card>
-        <ss-card></ss-card>
-        <ss-card></ss-card>
-
+    <div class="cards" >
+        <div *ngFor="let catalogue of catalogues$|async">
+            <ss-card [catalogues]="catalogue"></ss-card>
+        </div>
     </div>
-  </div>
+</div>
 <ss-footer></ss-footer>
