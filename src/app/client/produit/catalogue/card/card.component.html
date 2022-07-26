@@ -1,5 +1,6 @@
+<!-- [src]="data:image/png;base64,catalogue?.image"  -->
 <div class="card">
-    <img class="card__image" src="assets/images/burgerHome.jpg" alt="">
+    <img class="card__image" src="data:image/png;base64,{{catalogue?.image}}" alt="">
     <div class="card__content">
         <div class="card__header">
             <h4 class="card__title">{{catalogue?.nom}}</h4>
