@@ -1,18 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Menu } from '../models/menu';
+import { catchError, tap, map } from 'rxjs/operators';
+import { Catalogue } from '../models/catalogue';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CatalogueStoreService {
 
-  private url:string = "https://brazil-burger-project.herokuapp.com/api/menus"
+  private url:string = "https://brazil-burger-project.herokuapp.com/api/catalogues"
 
   constructor(private http:HttpClient) { }
 
-  all():Observable<Menu[]> {
-    return this.http.get<Menu[]>(this.url)
+  all():Observable<Catalogue> {
+    return this.http.get<Catalogue>(this.url).pipe(
+      map(data=>{
+        data.produits=[...data.menus,...data.burgers]
+        return data
+      }),
+    )
   }
 }

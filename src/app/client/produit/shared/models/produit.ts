@@ -1,7 +1,6 @@
-export interface Menu {
+export interface Produit {
     id?:number
     nom?:string
     image?:Blob
-    description?:string,
     prix?:number
 }

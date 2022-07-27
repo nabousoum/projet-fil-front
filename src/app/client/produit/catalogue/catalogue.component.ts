@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Menu } from '../shared/models/menu';
+import { Catalogue } from '../shared/models/catalogue';
 import { CatalogueStoreService } from '../shared/services/catalogue-store.service';
 
 @Component({
@@ -10,7 +10,8 @@ import { CatalogueStoreService } from '../shared/services/catalogue-store.servic
 })
 export class CatalogueComponent implements OnInit {
 
-  catalogues$ : Observable<Menu[]> | null = null;
+  catalogues$ : Observable<Catalogue> | null = null;
+  //  catalogues: Catalogue |null = null;
   constructor(private serv:CatalogueStoreService) { }
 
   ngOnInit(): void {

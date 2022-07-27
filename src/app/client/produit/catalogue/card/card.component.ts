@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Menu } from '../../shared/models/menu';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
+import { Catalogue } from '../../shared/models/catalogue';
+import { Produit } from '../../shared/models/produit';
 
 @Component({
   selector: 'ss-card',
@@ -11,7 +12,7 @@ import { Observable } from 'rxjs';
 export class CardComponent implements OnInit {
 
   constructor(private sanitizer:DomSanitizer) { }
-  @Input('catalogues') catalogue :Menu |null = null;
+  @Input('catalogues') catalogue :Produit |undefined = undefined;
 
   ngOnInit(): void {
    
