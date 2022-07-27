@@ -22,38 +22,57 @@
         incomparable
     </h3>
 </div>
+<!-- <div class="select">
+    <select>
+      <option value="1" >Pure CSS Select</option>
+      <option value="2" class="nav-link active" [ngClass]="{ 'active':activeTab==='search'}" (click)="search('search')">MENUS</option>
+      <option value="3"  class="nav-link" [ngClass]="{ 'active':activeTab==='result'}" data-toggle="tab" (click)="result('result')">BURGERS</option>
+    </select>
+  </div> -->
 <div class="choices-catalogues">
     <ul class="nav nav-pills">
         <li class="nav-item">
-          <button class="btn-choices nav-link active" [ngClass]="{ 'active':activeTab==='search'}" (click)="search('search')"
-             data-toggle="tab">MENUS</button>
+          <button class=" nav-link active" [ngClass]="{ 'active':activeTab==='search'}" (click)="search('search')"
+             data-toggle="tab">CATALOGUE</button>
         </li>
-        <li class="btn-choices nav-item li2">
-          <button class="nav-link"  [ngClass]="{ 'active':activeTab==='result'}" data-toggle="tab"
-             (click)="result('result')">BURGERS</button>
+        <li class=" nav-item li2">
+          <button class="nav-link"  [ngClass]="{ 'active':activeTab==='result'}" data-toggle="tab" (click)="result('result')">BURGERS</button>
         </li>
+        <li class=" nav-item li2">
+            <button class="nav-link"  [ngClass]="{ 'active':activeTab==='result2'}" data-toggle="tab" (click)="result('result2')">MENUS</button>
+          </li>
       </ul>
 </div>
 <!-- {{catalogues$|async|json}} -->
 <div class="wrapper">
-    <ng-container *ngIf="(catalogues$|async)?.produits != undefined">
-        <div class="cards" >
-            <div *ngFor="let catalogue of (catalogues$|async)?.produits">
-                 <ss-card [catalogues]="catalogue"></ss-card>
-             </div>
-         </div>
+<ng-container *ngIf="(catalogues$|async)?.produits != undefined">
+    <div class="tab-content">
+        <div class="tab-pane" id="search" [ngClass]="{ 'active':activeTab==='search'}">
+            <div class="cards">
+                <div *ngFor="let catalogue of (catalogues$|async)?.produits">
+                    <ss-card [catalogues]="catalogue"></ss-card>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="results" [ngClass]="{ 'active':activeTab==='result'}">
+            <div class="cards">
+                <div *ngFor="let catalogue of (catalogues$|async)?.burgers">
+                    <ss-card [catalogues]="catalogue"></ss-card>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="results" [ngClass]="{ 'active':activeTab==='result2'}">
+           <div class="cards">
+                <div *ngFor="let catalogue of (catalogues$|async)?.menus">
+                    <ss-card [catalogues]="catalogue"></ss-card>
+                </div>
+           </div>
+        </div>
+    </div>
     </ng-container>
     <ng-container *ngIf="(catalogues$|async)?.produits == undefined" >
         <div class="loader"></div>
     </ng-container>
 </div>
 
-<div class="tab-content">
-    <div class="tab-pane" id="search" [ngClass]="{ 'active':activeTab==='search'}">
-        wesh
-    </div>
-    <div class="tab-pane" id="results" [ngClass]="{ 'active':activeTab==='result'}">
-        wep
-    </div>
-</div>
 <ss-footer></ss-footer>

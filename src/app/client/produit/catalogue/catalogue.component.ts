@@ -19,12 +19,18 @@ export class CatalogueComponent implements OnInit {
   result(activeTab:any){
     this.activeTab = activeTab;
   }
-  
+  result2(activeTab:any){
+    this.activeTab = activeTab;
+  }
   catalogues$ : Observable<Catalogue> | null = null;
+  burgers$ : Observable<Catalogue> | null = null;
+  menus$ : Observable<Catalogue> | null = null;
   //  catalogues: Catalogue |null = null;
   constructor(private serv:CatalogueStoreService) { }
 
   ngOnInit(): void {
     this.catalogues$ = this.serv.all();
+    this.burgers$ = this.serv.burgers();
+    this.menus$ = this.serv.menus();
   }
 }

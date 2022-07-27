@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Produit } from '../shared/models/produit';
+import { CatalogueStoreService } from '../shared/services/catalogue-store.service';
 
 @Component({
   selector: 'ss-detail',
@@ -6,8 +9,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
-
-  constructor() { }
   activeTab = 'search';
 
   search(activeTab:any){
@@ -18,7 +19,11 @@ export class DetailComponent implements OnInit {
     this.activeTab = activeTab;
   }
 
-  ngOnInit(): void {
-  }
+  produit$ : Observable<Produit> | null = null;
+  //  catalogues: Catalogue |null = null;
+  constructor(private serv:CatalogueStoreService) { }
 
+  ngOnInit(): void {
+    this.produit$ = this.serv.produit$();
+  }
 }
