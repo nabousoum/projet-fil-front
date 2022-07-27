@@ -97,6 +97,11 @@ h2 {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 1rem;
 }
+.choices-catalogues{
+  margin-top: 5%;
+  margin-left: 40%;
+  font-size: x-large;
+}
 
 .loader {
   margin-left: 32%;
@@ -107,6 +112,16 @@ h2 {
   height: 100px;
   -webkit-animation: spin 2s linear infinite; /* Safari */
   animation: spin 2s linear infinite;
+}
+
+.nav-link{
+  background-color: white;
+  height: 50px;
+  color: #866B0E;
+}
+
+.li2{
+  margin-left: 10%;
 }
 
 @-webkit-keyframes spin {
