@@ -24,10 +24,15 @@
 </div>
 <!-- {{catalogues$|async|json}} -->
 <div class="wrapper">
-    <div class="cards" >
-       <div *ngFor="let catalogue of (catalogues$|async)?.produits">
-            <ss-card [catalogues]="catalogue"></ss-card>
-        </div>
-    </div>
+    <ng-container *ngIf="catalogues$ != null">
+        <div class="cards" >
+            <div *ngFor="let catalogue of (catalogues$|async)?.produits">
+                 <ss-card [catalogues]="catalogue"></ss-card>
+             </div>
+         </div>
+    </ng-container>
+    <ng-container *ngIf="catalogues$ != null" >
+        <div class="loader"></div>
+    </ng-container>
 </div>
 <ss-footer></ss-footer>
