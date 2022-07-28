@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Detail } from '../shared/models/detail';
 import { Produit } from '../shared/models/produit';
@@ -22,8 +23,13 @@ export class DetailComponent implements OnInit {
 
   produit$ : Observable<Detail> | null = null;
   //  catalogues: Catalogue |null = null;
-  constructor(private serv:CatalogueStoreService) { }
+  constructor(private serv:CatalogueStoreService,private route: ActivatedRoute) {
+    
+   }
+  private id :any = 0
   ngOnInit(): void {
-    this.produit$ = this.serv.produit$();
+    this.id = this.route.snapshot.paramMap.get('id');
+    console.log(this.id);
+    this.produit$ = this.serv.produit$(this.id);
   }
 }

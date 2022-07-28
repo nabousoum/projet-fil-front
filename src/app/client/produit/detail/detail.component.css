@@ -87,3 +87,8 @@ input{
 .cart-text{
     flex: 2;
 }
+.title{
+    font-size: x-large;
+    color: #847528;
+    text-transform: uppercase;
+}

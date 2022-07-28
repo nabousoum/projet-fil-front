@@ -1,6 +1,7 @@
 <ss-header></ss-header>
 
 <div class="container">
+    <p class="title"> {{(produit$|async)?.nom}}</p>
     <div class="top">
         <div class="fix-1">
             <img src="data:image/png;base64,{{(produit$|async)?.image}}" alt="...">
