@@ -26,45 +26,27 @@
 <div class="choices-catalogues">
     <ul class="nav nav-pills">
         <li class="nav-item">
-          <button class=" nav-link active" [ngClass]="{ 'active':activeTab==='search'}" (click)="search('search')"
+          <button class=" nav-link" (click)="filterProduct('')"
              data-toggle="tab">CATALOGUE</button>
         </li>
         <li class=" nav-item li2">
-          <button class="nav-link"  [ngClass]="{ 'active':activeTab==='result'}" data-toggle="tab" (click)="result('result')">BURGERS</button>
+          <button class="nav-link"  (click)="filterProduct('burger')">BURGERS</button>
         </li>
         <li class=" nav-item li2">
-            <button class="nav-link"  [ngClass]="{ 'active':activeTab==='result2'}" data-toggle="tab" (click)="result('result2')">MENUS</button>
+            <button class="nav-link" (click)="filterProduct('menu')">MENUS</button>
           </li>
       </ul>
 </div>
 
 <div class="wrapper">
-<ng-container *ngIf="(catalogues$|async)?.produits != undefined">
-    <div class="tab-content">
-        <div class="tab-pane" id="search" [ngClass]="{ 'active':activeTab==='search'}">
+    <ng-container *ngIf="catas != null">
             <div class="cards">
-                <div *ngFor="let catalogue of (catalogues$|async)?.produits">
+                <div *ngFor="let catalogue of catas">
                     <ss-card [catalogues]="catalogue"></ss-card>
                 </div>
             </div>
-        </div>
-        <div class="tab-pane" id="results" [ngClass]="{ 'active':activeTab==='result'}">
-            <div class="cards">
-                <div *ngFor="let catalogue of (catalogues$|async)?.burgers">
-                    <ss-card [catalogues]="catalogue"></ss-card>
-                </div>
-            </div>
-        </div>
-        <div class="tab-pane" id="results" [ngClass]="{ 'active':activeTab==='result2'}">
-           <div class="cards">
-                <div *ngFor="let catalogue of (catalogues$|async)?.menus">
-                    <ss-card [catalogues]="catalogue"></ss-card>
-                </div>
-           </div>
-        </div>
-    </div>
     </ng-container>
-    <ng-container *ngIf="(catalogues$|async)?.produits == undefined" >
+    <ng-container *ngIf="catas == null" >
         <div class="loader"></div>
     </ng-container>
 </div>

@@ -12,7 +12,8 @@ import { Detail } from '../models/detail';
 export class CatalogueStoreService {
 
   private url:string = "https://brazil-burger-project.herokuapp.com/api/catalogues"
-  private urlDetail:string = "https://brazil-burger-project.herokuapp.com/api/menus"
+  private urlDetail:string = "https://brazil-burger-project.herokuapp.com/api"
+
   constructor(private http:HttpClient) { }
 
   all():Observable<Catalogue> {
@@ -41,10 +42,11 @@ export class CatalogueStoreService {
     )
   }
 
-  produit$(id:number):Observable<Detail> {
-    return this.http.get<Detail>(`${this.urlDetail}/${id}`)
+  produit$(id:number,type:string):Observable<Detail> {
+    if(type=="menu"){
+      return this.http.get<Detail>(`${this.urlDetail}/menus/${id}`)
+    }
+    return this.http.get<Detail>(`${this.urlDetail}/burgers/${id}`)
+    
   }
-  // post$ = (id:number) => {
-  //   return this.http.get<Post>(`${this.url}/${id}`)
-  // }
 }

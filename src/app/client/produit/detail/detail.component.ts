@@ -26,10 +26,12 @@ export class DetailComponent implements OnInit {
   constructor(private serv:CatalogueStoreService,private route: ActivatedRoute) {
     
    }
-  private id :any = 0
+  private id :any = 0;
+  private type:any =""
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
+    this.type = this.route.snapshot.paramMap.get('type');
     console.log(this.id);
-    this.produit$ = this.serv.produit$(this.id);
+    this.produit$ = this.serv.produit$(this.id,this.type);
   }
 }
