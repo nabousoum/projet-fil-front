@@ -22,13 +22,7 @@
         incomparable
     </h3>
 </div>
-<!-- <div class="select">
-    <select>
-      <option value="1" >Pure CSS Select</option>
-      <option value="2" class="nav-link active" [ngClass]="{ 'active':activeTab==='search'}" (click)="search('search')">MENUS</option>
-      <option value="3"  class="nav-link" [ngClass]="{ 'active':activeTab==='result'}" data-toggle="tab" (click)="result('result')">BURGERS</option>
-    </select>
-  </div> -->
+
 <div class="choices-catalogues">
     <ul class="nav nav-pills">
         <li class="nav-item">
@@ -43,7 +37,7 @@
           </li>
       </ul>
 </div>
-<!-- {{catalogues$|async|json}} -->
+
 <div class="wrapper">
 <ng-container *ngIf="(catalogues$|async)?.produits != undefined">
     <div class="tab-content">

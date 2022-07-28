@@ -1,18 +1,16 @@
 <ss-header></ss-header>
+
 <div class="container">
     <div class="top">
-        <div>
+        <div class="fix-1">
             <img src="data:image/png;base64,{{(produit$|async)?.image}}" alt="...">
         </div>
-        <div>
-            <p>
-                BRASIL CHEESE MENU
-                Pain grillé, burger 130g, fromage et sauce maison
-                le steak haché et/ou le bacon,
-                le fromage (bien souvent du cheddar déjà en tranches),
-                la salade,
-                les rondelles de tomate et d’oignon,
-            </p>
+        <div class="fix-2">
+            <div class="cart-text">
+                <p>
+                    {{(produit$|async)?.description}}
+                </p>
+            </div>
             <div class="cart_counter">
                 <div class="d-flex mb-4" style="max-width: 300px">
                     <button class="btn btn-count btn-primary px-3 me-2 size"
@@ -36,13 +34,15 @@
         </div>
     </div>
     <div class="middle">
-        <p>COMPOSANTS DU MENU</p>
-        <div class="middle-components">
-            <ss-detail-menu></ss-detail-menu>
-            <ss-detail-menu></ss-detail-menu>
-            <ss-detail-menu></ss-detail-menu>
-            <ss-detail-menu></ss-detail-menu>
-            <ss-detail-menu></ss-detail-menu>
+        <div class="middle-components comp-1">
+            <div *ngFor="let menuBurger of (produit$|async)?.menuBurgers">
+                <ss-detail-menu [menuBurgers]="menuBurger"></ss-detail-menu>
+            </div>
+        </div>
+        <div class="middle-components comp-2">
+            <div *ngFor="let menuPortion of (produit$|async)?.menuPortionFrites">
+                <ss-detail-menu [menuPortions]="menuPortion"></ss-detail-menu>
+            </div>
         </div>
     </div>
    

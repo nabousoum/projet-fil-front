@@ -99,7 +99,7 @@ h2 {
 }
 .choices-catalogues{
   margin-top: 2%;
-  margin-left: 70%;
+  margin-left: 35%;
   font-size: x-large;
 }
 
@@ -121,7 +121,7 @@ h2 {
 }
 
 .li2{
-  margin-left: 10%;
+  margin-left: 5%;
 }
 :root {
   --background-gradient: linear-gradient(30deg, #f39c12 30%, #f1c40f);
@@ -178,6 +178,7 @@ select::-ms-expand {
   background-color: #C2B364;
 }
 .nav-link{
+  text-decoration: underline;
   width: 6em;
 }
 @-webkit-keyframes spin {

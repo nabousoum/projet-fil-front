@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 import { Catalogue } from '../models/catalogue';
 import { Produit } from '../models/produit';
+import { Detail } from '../models/detail';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +12,14 @@ import { Produit } from '../models/produit';
 export class CatalogueStoreService {
 
   private url:string = "https://brazil-burger-project.herokuapp.com/api/catalogues"
-  private urlDetail:string = "https://brazil-burger-project.herokuapps.com/api/menus/7"
+  private urlDetail:string = "https://brazil-burger-project.herokuapp.com/api/menus/7"
   constructor(private http:HttpClient) { }
 
   all():Observable<Catalogue> {
     return this.http.get<Catalogue>(this.url).pipe(
       map(data=>{
         data.produits=[...data.menus,...data.burgers]
+        console.log(data.produits)
         return data
       }),
     )
@@ -40,7 +42,10 @@ export class CatalogueStoreService {
     )
   }
 
-  produit$():Observable<Produit> {
-    return this.http.get<Produit>(this.urlDetail)
+  produit$():Observable<Detail> {
+    return this.http.get<Detail>(this.urlDetail)
   }
+  // post$ = (id:number) => {
+  //   return this.http.get<Post>(`${this.url}/${id}`)
+  // }
 }

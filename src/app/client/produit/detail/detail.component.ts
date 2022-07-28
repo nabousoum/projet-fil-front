@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Detail } from '../shared/models/detail';
 import { Produit } from '../shared/models/produit';
 import { CatalogueStoreService } from '../shared/services/catalogue-store.service';
 
@@ -19,10 +20,9 @@ export class DetailComponent implements OnInit {
     this.activeTab = activeTab;
   }
 
-  produit$ : Observable<Produit> | null = null;
+  produit$ : Observable<Detail> | null = null;
   //  catalogues: Catalogue |null = null;
   constructor(private serv:CatalogueStoreService) { }
-
   ngOnInit(): void {
     this.produit$ = this.serv.produit$();
   }

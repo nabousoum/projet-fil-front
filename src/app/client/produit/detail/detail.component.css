@@ -7,7 +7,7 @@
     display: flex;
 }
 img{
-    margin-left: -10%;
+    margin-left: 10%;
     height: 200px;
     width: 400px;
     border-radius: 20px;
@@ -17,6 +17,7 @@ p{
     font-size: x-large;
 }
 .cart_counter{
+    flex: 1;
  margin-left: 10%;   
 }
 .btn{
@@ -28,22 +29,29 @@ p{
     height: 50px;
     margin-top: 5%;
 }
-.middle p{
+.comp{
+    margin-top: 10%;
     font-size: larger;
     color: #C2B364;
 }
+.comp-2{
+    margin-left: 10%;
+
+}
 .middle{
+    display: flex;
     margin-top: 5%;
 
 }
 .middle-components{
     border: 3px solid #C2B364;
     display: flex;
-    margin-bottom: 10%;
-    margin-left: 10%;
-    margin-right: 10%;
+    width: 40em;
+    overflow-x: scroll;
+
 }
 .bottom{
+    margin-top: 5%;
     display: flex;
     flex-direction: column;
 }
@@ -66,4 +74,16 @@ input{
    height: 40px;
    border-radius: 5px;
    border: none;
+}
+.fix-1{
+    display: flex;
+    flex: 1;
+}
+.fix-2{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.cart-text{
+    flex: 2;
 }
