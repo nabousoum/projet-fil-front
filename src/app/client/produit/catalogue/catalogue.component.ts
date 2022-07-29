@@ -14,7 +14,7 @@ export class CatalogueComponent implements OnInit {
 
  
   catalogues$ : Observable<Catalogue> | null = null;
-  catas: Produit[]| null = null;
+  catas: Produit[]| undefined = undefined;
 
   //  catalogues: Catalogue |null = null;
   constructor(private serv:CatalogueStoreService) { }

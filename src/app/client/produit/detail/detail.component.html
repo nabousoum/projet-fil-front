@@ -40,105 +40,125 @@
                 </div>
             </div>
             <div class="middle">
-                <div class="middle-components comp-1">
-                    <div *ngFor="let menuBurger of (produit$|async)?.menuBurgers">
-                        <ss-detail-menu [menuBurgers]="menuBurger"></ss-detail-menu>
-                    </div>
-                </div>
-                <div class="middle-components comp-2">
-                    <div *ngFor="let menuPortion of (produit$|async)?.menuPortionFrites">
-                        <ss-detail-menu [menuPortions]="menuPortion"></ss-detail-menu>
-                    </div>
-                </div>
-            </div>
-        
-                
-            <div class="bottom">
-                <div id="tabs" #tabs>
-        
-                    <ul class="nav nav-pills">
-                    <li class="nav-item">
-                        <button class="nav-link active" [ngClass]="{ 'active':activeTab==='search'}" (click)="search('search')"
-                        data-toggle="tab">CANNETTES DISPONIBLES</button>
-                    </li>
-                    <li class="nav-item">
-                        <button class="nav-link"  [ngClass]="{ 'active':activeTab==='result'}" data-toggle="tab"
-                        (click)="result('result')">GRAND MODELE DISPONIBLE</button>
-                    </li>
-                    </ul>
-                
-                    <div class="tab-content">
-                    <div class="tab-pane" id="search" [ngClass]="{ 'active':activeTab==='search'}">
-                            <div class="bottom-components">
-                                <ss-choix-boisson></ss-choix-boisson>
-                                <ss-choix-boisson></ss-choix-boisson>
-                                <ss-choix-boisson></ss-choix-boisson>
-                                <ss-choix-boisson></ss-choix-boisson>
-                                <ss-choix-boisson></ss-choix-boisson>
-                                <ss-choix-boisson></ss-choix-boisson>
-                            </div>
-                    </div>
-                    <div class="tab-pane" id="results" [ngClass]="{ 'active':activeTab==='result'}">
-                        <div class="bottom-components">
-                            <div class="component-bottom">
-                                <div class="cart_counter cart-style">
-                                    <button  class="reduced items-count" type="button">
-                                        <i class="fa fa-minus"></i>
-                                    </button>
-                                    <input type="text" name="qty" id="sst61_menu" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                                    <button onclick="var result = document.getElementById('sst61_menu'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
-                                <img src="assets/images/gm.jpg" alt="">
-                                <p>Coca cola</p>
-                            </div>
-                            <div class="component-bottom">
-                                <div class="cart_counter cart-style">
-                                    <button  class="reduced items-count" type="button">
-                                        <i class="fa fa-minus"></i>
-                                    </button>
-                                    <input type="text" name="qty" id="sst61_menu" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                                    <button onclick="var result = document.getElementById('sst61_menu'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
-                                <img src="assets/images/gm.jpg" alt="">
-                                <p>Coca cola</p>
-                            </div>
-                            <div class="component-bottom">
-                                <div class="cart_counter cart-style">
-                                    <button  class="reduced items-count" type="button">
-                                        <i class="fa fa-minus"></i>
-                                    </button>
-                                    <input type="text" name="qty" id="sst61_menu" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                                    <button onclick="var result = document.getElementById('sst61_menu'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
-                                <img src="assets/images/gm.jpg" alt="">
-                                <p>Coca cola</p>
-                            </div>
-                            <div class="component-bottom">
-                                <div class="cart_counter cart-style">
-                                    <button  class="reduced items-count" type="button">
-                                        <i class="fa fa-minus"></i>
-                                    </button>
-                                    <input type="text" name="qty" id="sst61_menu" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                                    <button onclick="var result = document.getElementById('sst61_menu'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
-                                <img src="assets/images/gm.jpg" alt="">
-                                <p>Coca cola</p>
-                            </div>
+                <ng-container *ngIf="(produit$|async)?.type == 'menu'" >
+                    <div class="middle-components comp-1">
+                        <div *ngFor="let menuBurger of (produit$|async)?.menuBurgers">
+                            <ss-detail-menu [menuBurgers]="menuBurger"></ss-detail-menu>
                         </div>
                     </div>
+                    <div class="middle-components comp-2">
+                        <div *ngFor="let menuPortion of (produit$|async)?.menuPortionFrites">
+                            <ss-detail-menu [menuPortions]="menuPortion"></ss-detail-menu>
+                        </div>
                     </div>
-                
-                </div>
+                </ng-container>
+                <ng-container *ngIf="(produit$|async)?.type == 'burger'" >
+                    <div class="middle-components comp-1">
+                        <ss-choix-boisson></ss-choix-boisson>
+                        <ss-choix-boisson></ss-choix-boisson>
+                        <ss-choix-boisson></ss-choix-boisson>
+                        <ss-choix-boisson></ss-choix-boisson>
+                    </div>
+                    <div class="middle-components comp-2">
+                        <ss-choix-boisson></ss-choix-boisson>
+                        <ss-choix-boisson></ss-choix-boisson>
+                        <ss-choix-boisson></ss-choix-boisson>
+                        <ss-choix-boisson></ss-choix-boisson>
+                    </div>
+                </ng-container>
+               
             </div>
-                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+        
+            <ng-container *ngIf="(produit$|async)?.type == 'menu'">
+                <div class="bottom">
+                    <div id="tabs" #tabs>
+            
+                        <ul class="nav nav-pills">
+                        <li class="nav-item">
+                            <button class="nav-link active" [ngClass]="{ 'active':activeTab==='search'}" (click)="search('search')"
+                            data-toggle="tab">CANNETTES DISPONIBLES</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link"  [ngClass]="{ 'active':activeTab==='result'}" data-toggle="tab"
+                            (click)="result('result')">GRAND MODELE DISPONIBLE</button>
+                        </li>
+                        </ul>
+                    
+                        <div class="tab-content">
+                        <div class="tab-pane" id="search" [ngClass]="{ 'active':activeTab==='search'}">
+                                <div class="bottom-components">
+                                    <ss-choix-boisson></ss-choix-boisson>
+                                    <ss-choix-boisson></ss-choix-boisson>
+                                    <ss-choix-boisson></ss-choix-boisson>
+                                    <ss-choix-boisson></ss-choix-boisson>
+                                    <ss-choix-boisson></ss-choix-boisson>
+                                    <ss-choix-boisson></ss-choix-boisson>
+                                </div>
+                        </div>
+                        <div class="tab-pane" id="results" [ngClass]="{ 'active':activeTab==='result'}">
+                            <div class="bottom-components">
+                                <div class="component-bottom">
+                                    <div class="cart_counter cart-style">
+                                        <button  class="reduced items-count" type="button">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                        <input type="text" name="qty" id="sst61_menu" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+                                        <button onclick="var result = document.getElementById('sst61_menu'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                    <img src="assets/images/gm.jpg" alt="">
+                                    <p>Coca cola</p>
+                                </div>
+                                <div class="component-bottom">
+                                    <div class="cart_counter cart-style">
+                                        <button  class="reduced items-count" type="button">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                        <input type="text" name="qty" id="sst61_menu" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+                                        <button onclick="var result = document.getElementById('sst61_menu'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                    <img src="assets/images/gm.jpg" alt="">
+                                    <p>Coca cola</p>
+                                </div>
+                                <div class="component-bottom">
+                                    <div class="cart_counter cart-style">
+                                        <button  class="reduced items-count" type="button">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                        <input type="text" name="qty" id="sst61_menu" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+                                        <button onclick="var result = document.getElementById('sst61_menu'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                    <img src="assets/images/gm.jpg" alt="">
+                                    <p>Coca cola</p>
+                                </div>
+                                <div class="component-bottom">
+                                    <div class="cart_counter cart-style">
+                                        <button  class="reduced items-count" type="button">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                        <input type="text" name="qty" id="sst61_menu" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+                                        <button onclick="var result = document.getElementById('sst61_menu'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                    <img src="assets/images/gm.jpg" alt="">
+                                    <p>Coca cola</p>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    
+                    </div>
+                </div>
+            </ng-container>
+            
+                    
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
         </div>
 
     <ss-footer></ss-footer>

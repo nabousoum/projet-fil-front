@@ -10,7 +10,8 @@ import { RouterModule } from '@angular/router';
 import { LayoutModule } from 'src/app/client/layout/layout.module';
 import { DetailMenuComponent } from './detail/detail-menu/detail-menu.component';
 import { ChoixBoissonComponent } from './detail/choix-boisson/choix-boisson.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';  
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { BoissonsComponent } from './detail/boissons/boissons.component';  
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     CardComponent,
     DetailComponent,
     DetailMenuComponent,
-    ChoixBoissonComponent
+    ChoixBoissonComponent,
+    BoissonsComponent
   ],
   imports: [
     CommonModule,

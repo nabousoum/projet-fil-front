@@ -6,6 +6,7 @@ export interface Detail{
     prix?:number
     etat?:string
     description?:string
+    type?:string
     image?:Blob
     catalogue?:string
     menuBurgers?:MenuBurger[]

@@ -31,7 +31,6 @@ export class DetailComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
     this.type = this.route.snapshot.paramMap.get('type');
-    console.log(this.id);
     this.produit$ = this.serv.produit$(this.id,this.type);
   }
 }
