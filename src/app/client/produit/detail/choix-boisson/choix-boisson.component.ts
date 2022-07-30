@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MenuTailleBoisson, TailleBoisson } from '../../shared/models/detail';
 
 @Component({
   selector: 'ss-choix-boisson',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./choix-boisson.component.css']
 })
 export class ChoixBoissonComponent implements OnInit {
+  @Input('boissons') boissons : TailleBoisson|null = null;
+  @Input('tailleBoissons') tailleBoissons : MenuTailleBoisson|null = null;
 
   constructor() { }
 

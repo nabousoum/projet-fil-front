@@ -3,18 +3,17 @@
 </ng-container>
 <ng-container *ngIf="(produit$|async) != null">
     <ss-header></ss-header>
-        <div class="container">
-        
-            <p class="title"> {{(produit$|async)?.nom}}</p>
+        <div class="container">       
+            <p class="title"> {{(produit$|async)?.id}}</p>
             <div class="top">
                 
                 <div class="fix-1">
-                    <img src="data:image/png;base64,{{(produit$|async)?.image}}" alt="...">
+                    <img src="data:image/png;base64,{{(produit$|async)?.menu?.image}}" alt="...">
                 </div>
                 <div class="fix-2">
                     <div class="cart-text">
                         <p>
-                            {{(produit$|async)?.description}}
+                            {{(produit$|async)?.menu?.description}}
                         </p>
                     </div>
                     <div class="cart_counter">
@@ -40,19 +39,19 @@
                 </div>
             </div>
             <div class="middle">
-                <ng-container *ngIf="(produit$|async)?.type == 'menu'" >
+                <ng-container *ngIf="(produit$|async)?.menu" >
                     <div class="middle-components comp-1">
-                        <div *ngFor="let menuBurger of (produit$|async)?.menuBurgers">
+                        <div *ngFor="let menuBurger of (produit$|async)?.menu?.menuBurgers">
                             <ss-detail-menu [menuBurgers]="menuBurger"></ss-detail-menu>
                         </div>
                     </div>
                     <div class="middle-components comp-2">
-                        <div *ngFor="let menuPortion of (produit$|async)?.menuPortionFrites">
+                        <div *ngFor="let menuPortion of (produit$|async)?.menu?.menuPortionFrites">
                             <ss-detail-menu [menuPortions]="menuPortion"></ss-detail-menu>
                         </div>
                     </div>
                 </ng-container>
-                <ng-container *ngIf="(produit$|async)?.type == 'burger'" >
+                <ng-container *ngIf="(produit$|async)?.burger" >
                     <div class="middle-components comp-1">
                         <ss-choix-boisson></ss-choix-boisson>
                         <ss-choix-boisson></ss-choix-boisson>
@@ -69,7 +68,7 @@
                
             </div>
         
-            <ng-container *ngIf="(produit$|async)?.type == 'menu'">
+            <ng-container *ngIf="(produit$|async)?.menu">
                 <div class="bottom">
                     <div id="tabs" #tabs>
             
@@ -87,12 +86,9 @@
                         <div class="tab-content">
                         <div class="tab-pane" id="search" [ngClass]="{ 'active':activeTab==='search'}">
                                 <div class="bottom-components">
-                                    <ss-choix-boisson></ss-choix-boisson>
-                                    <ss-choix-boisson></ss-choix-boisson>
-                                    <ss-choix-boisson></ss-choix-boisson>
-                                    <ss-choix-boisson></ss-choix-boisson>
-                                    <ss-choix-boisson></ss-choix-boisson>
-                                    <ss-choix-boisson></ss-choix-boisson>
+                                    <div *ngFor="let tailleBoisson of (produit$|async)?.menu?.menuTailleBoissons">
+                                        <ss-choix-boisson [tailleBoissons]= "tailleBoisson"></ss-choix-boisson>
+                                    </div>
                                 </div>
                         </div>
                         <div class="tab-pane" id="results" [ngClass]="{ 'active':activeTab==='result'}">
@@ -153,6 +149,16 @@
                         </div>
                         </div>
                     
+                    </div>
+                </div>
+                <div class="bottom-2">
+                    <p>Autres boissons</p>
+                    <div class="bottom-components">
+                        <div class="bottom-components">
+                            <div *ngFor="let boisson of (produit$|async)?.tailleBoissons">
+                                <ss-choix-boisson [boissons]= "boisson"></ss-choix-boisson>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </ng-container>

@@ -12,7 +12,7 @@ import { Detail } from '../models/detail';
 export class CatalogueStoreService {
 
   private url:string = "https://brazil-burger-project.herokuapp.com/api/catalogues"
-  private urlDetail:string = "https://brazil-burger-project.herokuapp.com/api"
+  private urlDetail:string = "https://brazil-burger-project.herokuapp.com/api/details"
 
   constructor(private http:HttpClient) { }
 
@@ -23,19 +23,25 @@ export class CatalogueStoreService {
           burgers: data['hydra:member'][0]['burgers'],
           menus:data['hydra:member'][1]['menus'],
         }
-        
         data.produits=[...catalogues.menus,...catalogues.burgers]
-        console.log(data)
         return data
       }),
     )
   }
+  // detail(id:number):Observable<Detail>{
+  //   return this.http.get<any>(`${this.urlDetail}/${id}`).pipe(
+  //     map(data=>{
+  //       console.log(data)
+  //       return data
+  //     }),
+  //   )
+  // }
 
-  produit$(id:number,type:string):Observable<Detail> {
-    if(type=="menu"){
-      return this.http.get<Detail>(`${this.urlDetail}/menus/${id}`)
-    }
-    return this.http.get<Detail>(`${this.urlDetail}/burgers/${id}`)
-    
+  produit$(id:number):Observable<Detail> {
+    return this.http.get<any>(`${this.urlDetail}/${id}`).pipe(
+      map(data=>{
+        return data
+      }),
+    )
   }
 }
