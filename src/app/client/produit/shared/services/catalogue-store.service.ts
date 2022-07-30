@@ -11,8 +11,8 @@ import { Detail } from '../models/detail';
 })
 export class CatalogueStoreService {
 
-  private url:string = "https://brazil-burger-project.herokuapp.com/api/catalogues"
-  private urlDetail:string = "https://brazil-burger-project.herokuapp.com/api/details"
+  private url:string = "http://127.0.0.1:8000/api/catalogues"
+  private urlDetail:string = "http://127.0.0.1:8000/api/details"
 
   constructor(private http:HttpClient) { }
 
