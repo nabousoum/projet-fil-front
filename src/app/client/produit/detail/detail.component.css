@@ -44,11 +44,17 @@ p{
 
 }
 .middle-components{
-    border: 3px solid #C2B364;
     display: flex;
     width: 40em;
     overflow-x: scroll;
 
+}
+.component{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 8em;
 }
 .bottom{
     margin-top: 5%;
@@ -57,6 +63,7 @@ p{
 }
 .bottom-components{
     display: flex;
+    margin-left: 10%;
 }
 
 .component-bottom img{
@@ -110,6 +117,17 @@ input{
   }
   .lds-ripple div:nth-child(2) {
     animation-delay: -0.5s;
+  }
+  .bottom-2{
+    display: flex;
+  }
+  .bot{
+    width: 50em;
+    overflow-x: scroll;
+
+  }
+  .bottom-right{
+    margin-left: 10%;
   }
   @keyframes lds-ripple {
     0% {

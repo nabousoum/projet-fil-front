@@ -27,9 +27,10 @@ export class DetailComponent implements OnInit {
     
    }
   private id :any = 0;
-  // private type:any =""
+  private type:any =""
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
+    this.type = this.route.snapshot.paramMap.get('type');
     this.produit$ = this.serv.produit$(this.id);
   }
 }

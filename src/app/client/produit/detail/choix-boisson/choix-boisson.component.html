@@ -1,5 +1,6 @@
 <div *ngIf="tailleBoissons" class="component-bottom">
     <div class="cart_counter cart-style">
+        <p class="qte">({{tailleBoissons.quantite}})</p>
         <button  class="reduced items-count" type="button">
             <i class="fa fa-minus"></i>
         </button>
@@ -8,8 +9,10 @@
             <i class="fa fa-plus"></i>
         </button>
     </div>
-    <img src="assets/images/coca.jpg" alt="">
-    <p>{{tailleBoissons?.tailleBoisson}}</p>
+    <ng-container *ngFor="let boissonTailleBoisson of tailleBoissons.tailleBoisson?.boissonTailleBoissons">
+        <img src="data:image/png;base64,{{boissonTailleBoisson?.boisson?.image}}" alt="">
+        <p>{{boissonTailleBoisson?.boisson?.nom}}</p>
+    </ng-container>
 </div>
 <div *ngIf="boissons" class="component-bottom">
     <div class="cart_counter cart-style">
@@ -21,6 +24,20 @@
             <i class="fa fa-plus"></i>
         </button>
     </div>
-    <img src="data:image/png;base64,{{boissons?.boisson?.image}}" alt="">
-    <p>{{boissons?.boisson?.nom}}</p>
+    <img src="data:image/png;base64,{{boissons.boisson?.image}}" alt="">
+    <p>{{boissons.boisson?.nom}}</p>
 </div>
+<div *ngIf="frites" class="component-bottom">
+    <div class="cart_counter cart-style">
+        <button  class="reduced items-count" type="button">
+            <i class="fa fa-minus"></i>
+        </button>
+        <input type="text" name="qty" id="sst61_menu" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+        <button onclick="var result = document.getElementById('sst61_menu'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
+            <i class="fa fa-plus"></i>
+        </button>
+    </div>
+    <img src="data:image/png;base64,{{frites.image}}" alt="">
+    <p>{{frites.nom}}</p>
+</div>
+

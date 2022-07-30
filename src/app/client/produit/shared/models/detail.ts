@@ -21,14 +21,15 @@ export interface Menu{
     menuPortionFrites?:MenuPortion[]
     menuTailleBoissons?:MenuTailleBoisson[]
 }
-export interface TailleBoisson{
-    stock?:number
-    boisson?:Produit
-}
 
 export interface MenuTailleBoisson{
     quantite?:number
-    tailleBoisson?:TailleBoissonMenu[]
+    tailleBoisson?:TailleBoissonMenu
+}
+
+export interface TailleBoisson{
+    stock?:number
+    boisson?:Produit
 }
 export interface TailleBoissonMenu{
     id?:number
