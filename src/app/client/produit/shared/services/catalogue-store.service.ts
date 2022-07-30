@@ -28,14 +28,6 @@ export class CatalogueStoreService {
       }),
     )
   }
-  // detail(id:number):Observable<Detail>{
-  //   return this.http.get<any>(`${this.urlDetail}/${id}`).pipe(
-  //     map(data=>{
-  //       console.log(data)
-  //       return data
-  //     }),
-  //   )
-  // }
 
   produit$(id:number):Observable<Detail> {
     return this.http.get<any>(`${this.urlDetail}/${id}`).pipe(

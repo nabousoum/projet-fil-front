@@ -3,9 +3,14 @@
 </ng-container>
 <ng-container *ngIf="(produit$|async) != null">
     <ss-header></ss-header>
+        <ng-container *ngIf="(produit$|async)?.menu?.type == 'menu'" >
+            <h2>{{(produit$|async)?.menu?.nom}}</h2> 
+        </ng-container>
+        <ng-container *ngIf="(produit$|async)?.burger?.type == 'burger'" >
+            <h2>{{(produit$|async)?.burger?.nom}}</h2> 
+        </ng-container>
         <div class="container">    
             <div class="top">
-                
                 <div class="fix-1">
                     <ng-container *ngIf="(produit$|async)?.menu?.type == 'menu'">
                         <img src="data:image/png;base64,{{(produit$|async)?.menu?.image}}" alt="...">
@@ -63,21 +68,6 @@
                         </div>
                     </div>
                 </ng-container>
-                <ng-container *ngIf="(produit$|async)?.menu?.type=='burger'" >
-                    <div class="middle-components comp-1">
-                        <ss-choix-boisson></ss-choix-boisson>
-                        <ss-choix-boisson></ss-choix-boisson>
-                        <ss-choix-boisson></ss-choix-boisson>
-                        <ss-choix-boisson></ss-choix-boisson>
-                    </div>
-                    <div class="middle-components comp-2">
-                        <ss-choix-boisson></ss-choix-boisson>
-                        <ss-choix-boisson></ss-choix-boisson>
-                        <ss-choix-boisson></ss-choix-boisson>
-                        <ss-choix-boisson></ss-choix-boisson>
-                    </div>
-                </ng-container>
-               
             </div>
         
             <ng-container *ngIf="(produit$|async)?.menu?.type=='menu'">
@@ -104,71 +94,16 @@
                                 </div>
                         </div>
                         <div class="tab-pane" id="results" [ngClass]="{ 'active':activeTab==='result'}">
-                            <div class="bottom-components">
-                                <div class="component-bottom">
-                                    <div class="cart_counter cart-style">
-                                        <button  class="reduced items-count" type="button">
-                                            <i class="fa fa-minus"></i>
-                                        </button>
-                                        <input type="text" name="qty" id="sst61_menu" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                                        <button onclick="var result = document.getElementById('sst61_menu'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                    <img src="assets/images/gm.jpg" alt="">
-                                    <p>Coca cola</p>
-                                </div>
-                                <div class="component-bottom">
-                                    <div class="cart_counter cart-style">
-                                        <button  class="reduced items-count" type="button">
-                                            <i class="fa fa-minus"></i>
-                                        </button>
-                                        <input type="text" name="qty" id="sst61_menu" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                                        <button onclick="var result = document.getElementById('sst61_menu'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                    <img src="assets/images/gm.jpg" alt="">
-                                    <p>Coca cola</p>
-                                </div>
-                                <div class="component-bottom">
-                                    <div class="cart_counter cart-style">
-                                        <button  class="reduced items-count" type="button">
-                                            <i class="fa fa-minus"></i>
-                                        </button>
-                                        <input type="text" name="qty" id="sst61_menu" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                                        <button onclick="var result = document.getElementById('sst61_menu'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                    <img src="assets/images/gm.jpg" alt="">
-                                    <p>Coca cola</p>
-                                </div>
-                                <div class="component-bottom">
-                                    <div class="cart_counter cart-style">
-                                        <button  class="reduced items-count" type="button">
-                                            <i class="fa fa-minus"></i>
-                                        </button>
-                                        <input type="text" name="qty" id="sst61_menu" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                                        <button onclick="var result = document.getElementById('sst61_menu'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                    <img src="assets/images/gm.jpg" alt="">
-                                    <p>Coca cola</p>
-                                </div>
-                            </div>
+                            hello
                         </div>
                         </div>
                     
                     </div>
                 </div>
-                
-                
             </ng-container>
             <div class="bottom-2">
                     <div class="bot bottom-left">
-                        <p>Autres boissons</p>
+                        <h4>Accompagnements boissons</h4>
                             <div class="bottom-components">
                                 <div  *ngFor="let boisson of (produit$|async)?.tailleBoissons">
                                     <ss-choix-boisson [boissons]= "boisson"></ss-choix-boisson>
@@ -176,7 +111,7 @@
                             </div>
                     </div>
                     <div class="bot bottom-right">
-                            <p>Frites</p>
+                            <h4>Accompagnements Frites</h4>
                                 <div class="bottom-components">
                                     <div *ngFor="let frite of (produit$|async)?.portionFrites">
                                         <ss-choix-boisson [frites]= "frite"></ss-choix-boisson>

@@ -11,7 +11,10 @@
     </div>
     <ng-container *ngFor="let boissonTailleBoisson of tailleBoissons.tailleBoisson?.boissonTailleBoissons">
         <img src="data:image/png;base64,{{boissonTailleBoisson?.boisson?.image}}" alt="">
-        <p>{{boissonTailleBoisson?.boisson?.nom}}</p>
+        <label class="container">
+            <input type="checkbox" checked="checked">
+            <span class="checkmark"></span>
+          </label>
     </ng-container>
 </div>
 <div *ngIf="boissons" class="component-bottom">
@@ -25,7 +28,10 @@
         </button>
     </div>
     <img src="data:image/png;base64,{{boissons.boisson?.image}}" alt="">
-    <p>{{boissons.boisson?.nom}}</p>
+    <label class="container">
+        <input type="checkbox" checked="checked">
+        <span class="checkmark"></span>
+    </label>
 </div>
 <div *ngIf="frites" class="component-bottom">
     <div class="cart_counter cart-style">
@@ -38,6 +44,9 @@
         </button>
     </div>
     <img src="data:image/png;base64,{{frites.image}}" alt="">
-    <p>{{frites.nom}}</p>
+    <label class="container">
+        <input type="checkbox" checked="checked">
+        <span class="checkmark"></span>
+      </label>
 </div>
 
