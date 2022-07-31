@@ -4,13 +4,12 @@ import { CommonModule } from '@angular/common';
 import { ClientRoutingModule } from './client-routing.module';
 import { ClientComponent } from './client.component';
 import { LayoutModule } from './layout/layout.module';
-import { CardCountComponent } from './card-count/card-count.component';
+
 
 
 @NgModule({
   declarations: [
-    ClientComponent,
-    CardCountComponent
+    ClientComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +17,6 @@ import { CardCountComponent } from './card-count/card-count.component';
     LayoutModule,
   ],
   exports: [
-    CardCountComponent,
     ClientComponent,
   ]
 })

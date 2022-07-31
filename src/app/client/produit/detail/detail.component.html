@@ -56,52 +56,37 @@
                 </div>
             </div>
             <div class="middle">
-                <ng-container *ngIf="(produit$|async)?.menu?.type == 'menu'" >
-                    <div class="middle-components comp-1">
-                        <div class="component" *ngFor="let menuBurger of (produit$|async)?.menu?.menuBurgers">
-                            <ss-detail-menu [menuBurgers]="menuBurger"></ss-detail-menu>
-                        </div>
-                    </div>
-                    <div class="middle-components comp-2">
-                        <div class="component" *ngFor="let menuPortion of (produit$|async)?.menu?.menuPortionFrites">
-                            <ss-detail-menu [menuPortions]="menuPortion"></ss-detail-menu>
-                        </div>
-                    </div>
+                <ng-container *ngIf="(produit$|async)?.menu?.type == 'menu'">
+                    <h3 class="h3-middle">Composants</h3>
                 </ng-container>
+                <div class="middle-container">
+                    <ng-container *ngIf="(produit$|async)?.menu?.type == 'menu'" >
+                        <div class="middle-components comp-1">
+                            <div class="component" *ngFor="let menuBurger of (produit$|async)?.menu?.menuBurgers">
+                                <ss-detail-menu [menuBurgers]="menuBurger"></ss-detail-menu>
+                            </div>
+                        </div>
+                        <div class="middle-components comp-2">
+                            <div class="component" *ngFor="let menuPortion of (produit$|async)?.menu?.menuPortionFrites">
+                                <ss-detail-menu [menuPortions]="menuPortion"></ss-detail-menu>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+                
             </div>
         
             <ng-container *ngIf="(produit$|async)?.menu?.type=='menu'">
+                <h3>Choisissez les varietes disponibles</h3>
                 <div class="bottom">
-                    <div id="tabs" #tabs>
-            
-                        <ul class="nav nav-pills">
-                        <li class="nav-item">
-                            <button class="nav-link active" [ngClass]="{ 'active':activeTab==='search'}" (click)="search('search')"
-                            data-toggle="tab">CANNETTES DISPONIBLES</button>
-                        </li>
-                        <li class="nav-item">
-                            <button class="nav-link"  [ngClass]="{ 'active':activeTab==='result'}" data-toggle="tab"
-                            (click)="result('result')">GRAND MODELE DISPONIBLE</button>
-                        </li>
-                        </ul>
-                    
-                        <div class="tab-content">
-                        <div class="tab-pane" id="search" [ngClass]="{ 'active':activeTab==='search'}">
-                                <div class="bottom-components">
-                                    <div *ngFor="let tailleBoisson of (produit$|async)?.menu?.menuTailleBoissons">
-                                        <ss-choix-boisson [tailleBoissons]= "tailleBoisson"></ss-choix-boisson>
-                                    </div>
-                                </div>
-                        </div>
-                        <div class="tab-pane" id="results" [ngClass]="{ 'active':activeTab==='result'}">
-                            hello
-                        </div>
-                        </div>
-                    
+                    <div class="bottom-components components" *ngFor="let tailleBoisson of (produit$|async)?.menu?.menuTailleBoissons">
+                        <ss-choix-boisson [tailleBoissons]= "tailleBoisson"></ss-choix-boisson>
                     </div>
                 </div>
             </ng-container>
             <div class="bottom-2">
+                <h3>Choisissez des Accompagnements</h3>
+                <div class="bot-2">
                     <div class="bot bottom-left">
                         <h4>Accompagnements boissons</h4>
                             <div class="bottom-components">
@@ -118,8 +103,8 @@
                                     </div>
                                 </div>
                     </div>
-                    
                 </div>
+            </div>
                     
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
         </div>

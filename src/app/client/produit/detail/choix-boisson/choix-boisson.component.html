@@ -1,52 +1,15 @@
 <div *ngIf="tailleBoissons" class="component-bottom">
-    <div class="cart_counter cart-style">
-        <p class="qte">({{tailleBoissons.quantite}})</p>
-        <button  class="reduced items-count" type="button">
-            <i class="fa fa-minus"></i>
-        </button>
-        <input type="text" name="qty" id="sst61_menu" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-        <button onclick="var result = document.getElementById('sst61_menu'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
-            <i class="fa fa-plus"></i>
-        </button>
+    <h4> {{tailleBoissons.tailleBoisson?.libelle}} ({{tailleBoissons.quantite}})</h4>
+    <div class="test">
+        <ng-container *ngFor="let boissonTailleBoisson of tailleBoissons.tailleBoisson?.boissonTailleBoissons">
+            <ss-card-detail [boissonTailleBoissons]="boissonTailleBoisson"></ss-card-detail>
+        </ng-container>
     </div>
-    <ng-container *ngFor="let boissonTailleBoisson of tailleBoissons.tailleBoisson?.boissonTailleBoissons">
-        <img src="data:image/png;base64,{{boissonTailleBoisson?.boisson?.image}}" alt="">
-        <label class="container">
-            <input type="checkbox" checked="checked">
-            <span class="checkmark"></span>
-          </label>
-    </ng-container>
 </div>
 <div *ngIf="boissons" class="component-bottom">
-    <div class="cart_counter cart-style">
-        <button  class="reduced items-count" type="button">
-            <i class="fa fa-minus"></i>
-        </button>
-        <input type="text" name="qty" id="sst61_menu" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-        <button onclick="var result = document.getElementById('sst61_menu'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
-            <i class="fa fa-plus"></i>
-        </button>
-    </div>
-    <img src="data:image/png;base64,{{boissons.boisson?.image}}" alt="">
-    <label class="container">
-        <input type="checkbox" checked="checked">
-        <span class="checkmark"></span>
-    </label>
+    <ss-card-detail [boissons]="boissons"></ss-card-detail>
 </div>
 <div *ngIf="frites" class="component-bottom">
-    <div class="cart_counter cart-style">
-        <button  class="reduced items-count" type="button">
-            <i class="fa fa-minus"></i>
-        </button>
-        <input type="text" name="qty" id="sst61_menu" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-        <button onclick="var result = document.getElementById('sst61_menu'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
-            <i class="fa fa-plus"></i>
-        </button>
-    </div>
-    <img src="data:image/png;base64,{{frites.image}}" alt="">
-    <label class="container">
-        <input type="checkbox" checked="checked">
-        <span class="checkmark"></span>
-      </label>
+    <ss-card-detail [frites]="frites"></ss-card-detail>
 </div>
 
