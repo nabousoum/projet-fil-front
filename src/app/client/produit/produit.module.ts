@@ -13,6 +13,7 @@ import { ChoixBoissonComponent } from './detail/choix-boisson/choix-boisson.comp
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { CardCountComponent } from './detail/card-count/card-count.component';
 import { CardDetailComponent } from './detail/card-detail/card-detail.component';  
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { CardDetailComponent } from './detail/card-detail/card-detail.component'
     RouterModule,
     LayoutModule,
     NgbModule,
+    FormsModule
   ],
   exports:[
     CardComponent,

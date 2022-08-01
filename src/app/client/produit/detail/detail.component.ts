@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Detail } from '../shared/models/detail';
@@ -11,6 +11,11 @@ import { CatalogueStoreService } from '../shared/services/catalogue-store.servic
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
+
+  disabled_attr = false
+  disabledButton(event: any) {
+      this.disabled_attr =  event 
+  }
   activeTab = 'search';
 
   search(activeTab:any){

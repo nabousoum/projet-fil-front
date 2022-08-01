@@ -33,51 +33,38 @@
                             </p>
                         </ng-container>
                     </div>
-                    <div class="cart_counter">
-                        <div class="d-flex mb-4" style="max-width: 300px">
-                            <button class="btn btn-count btn-primary px-3 me-2 size"
-                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                            <i class="fas fa-minus"></i>
-                            </button>
-                    
-                            <div class="form-outline">
-                            <input id="form1" min="0" name="quantity" value="1" type="number" class="form-control" />
-                            </div>
-                    
-                            <button class="btn btn-count btn-primary px-3 ms-2 size"
-                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                            <i class="fas fa-plus"></i>
-                            </button>
-                        </div>
+                    <div class="card-count">
+                        <ss-card-count (disabled) = "disabledButton($event)"></ss-card-count>
                     </div>
                     <a routerLink="/client/commande/panier">
-                        <button class="btn">Ajouter au panier</button>
+                        <button [disabled] = disabled_attr class="btn">AJOUTER AU PANIER</button>
                     </a>
                 </div>
             </div>
-            <div class="middle">
-                <ng-container *ngIf="(produit$|async)?.menu?.type == 'menu'">
-                    <h3 class="h3-middle">Composants</h3>
-                </ng-container>
-                <div class="middle-container">
-                    <ng-container *ngIf="(produit$|async)?.menu?.type == 'menu'" >
-                        <div class="middle-components comp-1">
-                            <div class="component" *ngFor="let menuBurger of (produit$|async)?.menu?.menuBurgers">
-                                <ss-detail-menu [menuBurgers]="menuBurger"></ss-detail-menu>
-                            </div>
-                        </div>
-                        <div class="middle-components comp-2">
-                            <div class="component" *ngFor="let menuPortion of (produit$|async)?.menu?.menuPortionFrites">
-                                <ss-detail-menu [menuPortions]="menuPortion"></ss-detail-menu>
-                            </div>
-                        </div>
-                    </ng-container>
-                </div>
+            <ng-container *ngIf="(produit$|async)?.menu?.type == 'menu'">
+                <div class="middle">
+                    
+                        <h3 class="h3-middle">Composants</h3>
                 
-            </div>
-        
+                    <div class="middle-container">
+                    
+                            <div class="middle-components comp-1">
+                                <div class="component" *ngFor="let menuBurger of (produit$|async)?.menu?.menuBurgers">
+                                    <ss-detail-menu [menuBurgers]="menuBurger"></ss-detail-menu>
+                                </div>
+                            </div>
+                            <div class="middle-components comp-2">
+                                <div class="component" *ngFor="let menuPortion of (produit$|async)?.menu?.menuPortionFrites">
+                                    <ss-detail-menu [menuPortions]="menuPortion"></ss-detail-menu>
+                                </div>
+                            </div>
+                    
+                    </div>
+                
+                </div>
+            </ng-container>
             <ng-container *ngIf="(produit$|async)?.menu?.type=='menu'">
-                <h3>Choisissez les varietes disponibles</h3>
+                <h3 class="text-h">Choisissez les varietes disponibles</h3>
                 <div class="bottom">
                     <div class="bottom-components components" *ngFor="let tailleBoisson of (produit$|async)?.menu?.menuTailleBoissons">
                         <ss-choix-boisson [tailleBoissons]= "tailleBoisson"></ss-choix-boisson>

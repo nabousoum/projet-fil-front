@@ -1,4 +1,5 @@
 <div class="cart_counter">
+    <p>{{validateNumber()}}</p>
     <div class="d-flex mb-4" style="max-width: 300px">
         <button class="btn btn-count btn-primary px-3 me-2 size"
         onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
@@ -6,7 +7,7 @@
         </button>
 
         <div class="form-outline">
-        <input id="form1" min="0" name="quantity" value="1" type="number" class="form-control" />
+        <input (input)="testDisabled($event)" [(ngModel)]="number" id="form1" min="1" name="quantity" value="1" type="number" class="form-control" />
         </div>
 
         <button class="btn btn-count btn-primary px-3 ms-2 size"

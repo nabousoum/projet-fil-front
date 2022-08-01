@@ -14,7 +14,7 @@ import { LayoutModule } from './layout/layout.module';
   imports: [
     CommonModule,
     ClientRoutingModule,
-    LayoutModule,
+    LayoutModule
   ],
   exports: [
     ClientComponent,
