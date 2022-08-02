@@ -1,5 +1,7 @@
 <div class="cart_counter">
-    <p>{{validateNumber()}}</p>
+    <ng-container *ngIf="produits">
+        <p>{{validateNumber()}}</p>
+    </ng-container>
     <div class="d-flex mb-4" style="max-width: 300px">
         <button class="btn btn-count btn-primary px-3 me-2 size"
         onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
@@ -7,9 +9,16 @@
         </button>
 
         <div class="form-outline">
-        <input (input)="testDisabled($event)" [(ngModel)]="number" id="form1" min="1" name="quantity" value="1" type="number" class="form-control" />
+            <ng-container *ngIf="boissonTailleBoissons">
+                <input  (change)="compteur($event)" id="form1" min="0" name="quantity" value="0" type="number" class="form-control" />
+            </ng-container>
+            <ng-container *ngIf="produits">
+                <input (input)="testDisabled($event)" [(ngModel)]="number" id="form1" min="1" name="quantity" value="1" type="number" class="form-control" />
+            </ng-container>
+            <ng-container *ngIf=" boissons || frites">
+                <input id="form1" min="0" name="quantity" value="0" type="number" class="form-control" />
+            </ng-container>
         </div>
-
         <button class="btn btn-count btn-primary px-3 ms-2 size"
         onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
         <i class="fas fa-plus"></i>

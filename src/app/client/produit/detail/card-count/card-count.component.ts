@@ -1,4 +1,7 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { BoissonTailleBoisson, MenuTailleBoisson, TailleBoisson } from '../../shared/models/detail';
+import { Produit } from '../../shared/models/produit';
+import { EventService } from '../../shared/services/event.service';
 
 @Component({
   selector: 'ss-card-count',
@@ -7,10 +10,19 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 })
 export class CardCountComponent implements OnInit {
   @Output() disabled: EventEmitter<any> = new EventEmitter();
+  @Output() count: EventEmitter<any> = new EventEmitter();
+  @Input('boissonTailleBoissons') boissonTailleBoissons : BoissonTailleBoisson|null = null;
+  @Input('produits') produits :Produit|null = null;
+  @Input('boissons') boissons : TailleBoisson|null = null;
+  @Input('frites') frites : Produit|null = null;
+  
+
+  constructor(private evtSvc: EventService) { }
+  
   disabled_attr = false
   testDisabled(event :any){
     const value  = event.target.value;
-    if(value == 0){
+    if(value == 0 ){
       this.disabled_attr = true
       this.disabled.emit(this.disabled_attr)
     }
@@ -26,9 +38,14 @@ export class CardCountComponent implements OnInit {
     }
     return ""
   }
- 
-  constructor() { }
+  quantiteClient :number = 0
 
+  compteur(event :any){
+    const value = event.target.value;
+    this.quantiteClient += Number(value)
+    this.evtSvc.emitChildEvent(this.quantiteClient)
+  }
+ 
   ngOnInit(): void {
   }
 

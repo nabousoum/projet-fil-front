@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Detail } from '../shared/models/detail';
 import { Produit } from '../shared/models/produit';
 import { CatalogueStoreService } from '../shared/services/catalogue-store.service';
+import { EventService } from '../shared/services/event.service';
 
 @Component({
   selector: 'ss-detail',
@@ -16,6 +17,7 @@ export class DetailComponent implements OnInit {
   disabledButton(event: any) {
       this.disabled_attr =  event 
   }
+
   activeTab = 'search';
 
   search(activeTab:any){
@@ -28,12 +30,17 @@ export class DetailComponent implements OnInit {
 
   produit$ : Observable<Detail> | null = null;
   //  catalogues: Catalogue |null = null;
-  constructor(private serv:CatalogueStoreService,private route: ActivatedRoute) {
+  constructor(private serv:CatalogueStoreService,private route: ActivatedRoute,private evtSvc: EventService) {
     
    }
+  
   private id :any = 0;
   private type:any =""
+  quantiteClient = 0
   ngOnInit(): void {
+    this.evtSvc.childEventListner().subscribe(qte =>{
+      this.quantiteClient = qte 
+   })
     this.id = this.route.snapshot.paramMap.get('id');
     this.type = this.route.snapshot.paramMap.get('type');
     this.produit$ = this.serv.produit$(this.id);

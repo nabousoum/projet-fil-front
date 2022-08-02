@@ -1,7 +1,6 @@
 .component img{
-    height: 90px;
+    height: 100px;
     width: 100px;
-    border-radius: 50%;
     margin-left: 5px;
 }
 .component p{
@@ -15,4 +14,7 @@
 }
 .bottom{
     background-color: aqua;
+}
+img{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }

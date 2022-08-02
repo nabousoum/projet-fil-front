@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
 import { BoissonTailleBoisson, TailleBoisson } from '../../shared/models/detail';
 import { Produit } from '../../shared/models/produit';
 
@@ -11,6 +11,7 @@ export class CardDetailComponent implements OnInit {
   @Input('boissonTailleBoissons') boissonTailleBoissons : BoissonTailleBoisson|null = null;
   @Input('boissons') boissons : TailleBoisson|null = null;
   @Input('frites') frites : Produit|null = null;
+
   constructor() { }
 
   ngOnInit(): void {
