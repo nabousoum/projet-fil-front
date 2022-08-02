@@ -35,7 +35,8 @@
                     <div class="card-count">
                         <ss-card-count [produits]="(produit$|async)" (disabled) = "disabledButton($event)"></ss-card-count>
                     </div>
-                        <a routerLink="/client/commande/panier">
+                        
+                    <a routerLink="/client/commande/panier">
                             <button [disabled] = disabled_attr class="btn">AJOUTER AU PANIER</button>
                         </a>
                 </div>
