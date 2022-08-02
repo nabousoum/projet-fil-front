@@ -28,8 +28,10 @@ export interface MenuTailleBoisson{
 }
 
 export interface TailleBoisson{
-    stock?:number
-    boisson?:Produit
+    id?:number
+    prix?:number
+    libelle?:number
+    boissonTailleBoissons?:BoissonTailleBoisson[]
 }
 export interface TailleBoissonMenu{
     id?:number

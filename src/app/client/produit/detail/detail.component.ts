@@ -17,7 +17,6 @@ export class DetailComponent implements OnInit {
   disabledButton(event: any) {
       this.disabled_attr =  event 
   }
-
   activeTab = 'search';
 
   search(activeTab:any){
@@ -27,7 +26,6 @@ export class DetailComponent implements OnInit {
   result(activeTab:any){
     this.activeTab = activeTab;
   }
-
   produit$ : Observable<Detail> | null = null;
   //  catalogues: Catalogue |null = null;
   constructor(private serv:CatalogueStoreService,private route: ActivatedRoute,private evtSvc: EventService) {
@@ -39,7 +37,7 @@ export class DetailComponent implements OnInit {
   quantiteClient = 0
   ngOnInit(): void {
     this.evtSvc.childEventListner().subscribe(qte =>{
-      this.quantiteClient = qte 
+      this.quantiteClient += qte 
    })
     this.id = this.route.snapshot.paramMap.get('id');
     this.type = this.route.snapshot.paramMap.get('type');

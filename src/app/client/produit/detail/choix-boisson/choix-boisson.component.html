@@ -2,12 +2,17 @@
     <h4> {{tailleBoissons.tailleBoisson?.libelle}} ({{tailleBoissons.quantite}})</h4>
     <div class="test">
         <ng-container *ngFor="let boissonTailleBoisson of tailleBoissons.tailleBoisson?.boissonTailleBoissons">
-            <ss-card-detail [boissonTailleBoissons]="boissonTailleBoisson"></ss-card-detail>
+            <ss-card-detail [boisson]="boissonTailleBoisson"></ss-card-detail>
         </ng-container>
     </div>
 </div>
 <div *ngIf="boissons" class="component-bottom">
-    <ss-card-detail [boissons]="boissons"></ss-card-detail>
+    <h5>{{boissons.libelle}}</h5>
+    <div class="test">
+        <ng-container *ngFor="let boisson of boissons?.boissonTailleBoissons">
+            <ss-card-detail [boisson]="boisson"></ss-card-detail>
+        </ng-container>
+    </div>
 </div>
 <div *ngIf="frites" class="component-bottom">
     <ss-card-detail [frites]="frites"></ss-card-detail>

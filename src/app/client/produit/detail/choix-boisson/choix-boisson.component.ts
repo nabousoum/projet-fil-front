@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
-import { MenuTailleBoisson, TailleBoisson } from '../../shared/models/detail';
+import { BoissonTailleBoisson, MenuTailleBoisson, TailleBoisson } from '../../shared/models/detail';
 import { Produit } from '../../shared/models/produit';
 
 @Component({
@@ -11,6 +11,7 @@ export class ChoixBoissonComponent implements OnInit {
   @Input('boissons') boissons : TailleBoisson|null = null;
   @Input('tailleBoissons') tailleBoissons : MenuTailleBoisson|null = null;
   @Input('frites') frites : Produit|null = null;
+  
 
   constructor() { }
  

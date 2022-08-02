@@ -11,7 +11,7 @@ export class CardDetailComponent implements OnInit {
   @Input('boissonTailleBoissons') boissonTailleBoissons : BoissonTailleBoisson|null = null;
   @Input('boissons') boissons : TailleBoisson|null = null;
   @Input('frites') frites : Produit|null = null;
-
+  @Input('boisson') boisson : BoissonTailleBoisson|null = null;
   constructor() { }
 
   ngOnInit(): void {

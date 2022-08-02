@@ -5,9 +5,11 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 h2{
+  text-transform: uppercase;
   color: #C2B364;
-  margin-top: 8%;
+  margin-top: 10%;
   margin-left: 40%;
+  text-shadow: 4px 3px 0px #fff, 9px 8px 0px rgba(0,0,0,0.15);
 }
 
 .top{
@@ -16,7 +18,7 @@ h2{
 }
 img{
     margin-left: 10%;
-    height: 200px;
+    height: 300px;
     width: 400px;
     border-radius: 20px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -57,7 +59,8 @@ p{
     display: flex;
     width: 30em;
     overflow-x: scroll;
-
+    margin-left: 30%;
+    margin-top: 5%;
 }
 .text-h{
   margin-top: 5%;
@@ -107,9 +110,9 @@ input{
     flex: 1;
 }
 .fix-2{
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 .cart-text{
   display: flex;
@@ -156,9 +159,7 @@ input{
     color: #C2B364;
     margin-left: 35%;
   }
-  .comp-1{
-    margin-left: 10%;
-  }
+ 
  h3{
   margin-left: 30%;
   color: #b4a55c;
@@ -168,6 +169,7 @@ input{
  .bot-2{
   margin-top: 5%;
   display: flex;
+  flex-direction: column  ;
  }
  .middle-container{
   display: flex;
@@ -177,6 +179,20 @@ input{
  }
  .card-count{
   margin-left: 10%;
+ }
+ .btnDiv{
+  display: flex;
+ }
+ .bottom-left{
+ overflow-y: hidden;
+  width: 82em;
+ }
+.nav-link.active{
+  background-color: #b4a55c;
+  color: white;
+ }
+ .nav-link{
+  color: #b4a55c;
  }
   @keyframes lds-ripple {
     0% {

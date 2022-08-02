@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
-import { BoissonTailleBoisson, MenuTailleBoisson, TailleBoisson } from '../../shared/models/detail';
+import { Observable } from 'rxjs';
+import { BoissonTailleBoisson, MenuTailleBoisson, TailleBoisson, TailleBoissonMenu } from '../../shared/models/detail';
 import { Produit } from '../../shared/models/produit';
 import { EventService } from '../../shared/services/event.service';
 
@@ -9,16 +10,18 @@ import { EventService } from '../../shared/services/event.service';
   styleUrls: ['./card-count.component.css']
 })
 export class CardCountComponent implements OnInit {
+  
   @Output() disabled: EventEmitter<any> = new EventEmitter();
   @Output() count: EventEmitter<any> = new EventEmitter();
+
   @Input('boissonTailleBoissons') boissonTailleBoissons : BoissonTailleBoisson|null = null;
   @Input('produits') produits :Produit|null = null;
-  @Input('boissons') boissons : TailleBoisson|null = null;
+  @Input('boisson') boisson : TailleBoisson|null = null;
   @Input('frites') frites : Produit|null = null;
-  
 
   constructor(private evtSvc: EventService) { }
-  
+
+  /* fonction de desactivation de bouton */
   disabled_attr = false
   testDisabled(event :any){
     const value  = event.target.value;
@@ -31,6 +34,8 @@ export class CardCountComponent implements OnInit {
       this.disabled.emit(this.disabled_attr)
     }
   }
+
+  /* fonction du controle de la quantite */
   number :number = 1 
   validateNumber() :string{
     if(this.number == 0){
@@ -38,15 +43,17 @@ export class CardCountComponent implements OnInit {
     }
     return ""
   }
+  
+  /* fonction de controle de la taille choisie */
   quantiteClient :number = 0
-
   compteur(event :any){
     const value = event.target.value;
-    this.quantiteClient += Number(value)
+    this.quantiteClient = Number(value)
     this.evtSvc.emitChildEvent(this.quantiteClient)
   }
- 
+  
   ngOnInit(): void {
+    
   }
 
 }

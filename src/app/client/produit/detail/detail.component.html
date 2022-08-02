@@ -3,13 +3,13 @@
 </ng-container>
 <ng-container *ngIf="(produit$|async) != null">
     <ss-header></ss-header>
-        <ng-container *ngIf="(produit$|async)?.menu?.type == 'menu'" >
-            <h2>{{(produit$|async)?.menu?.nom}}</h2> 
-        </ng-container>
-        <ng-container *ngIf="(produit$|async)?.burger?.type == 'burger'" >
-            <h2>{{(produit$|async)?.burger?.nom}}</h2> 
-        </ng-container>
-        <div class="container">    
+        <div class="container">
+            <ng-container *ngIf="(produit$|async)?.menu?.type == 'menu'" >
+                <h2>{{(produit$|async)?.menu?.nom}}</h2> 
+            </ng-container>
+            <ng-container *ngIf="(produit$|async)?.burger?.type == 'burger'" >
+                <h2>{{(produit$|async)?.burger?.nom}}</h2> 
+            </ng-container>    
             <div class="top">
                 <div class="fix-1">
                     <ng-container *ngIf="(produit$|async)?.menu?.type == 'menu'">
@@ -18,7 +18,6 @@
                     <ng-container *ngIf="(produit$|async)?.burger?.type == 'burger'">
                         <img src="data:image/png;base64,{{(produit$|async)?.burger?.image}}" alt="...">
                     </ng-container> 
-
                 </div>
                 <div class="fix-2">
                     <div class="cart-text">
@@ -36,9 +35,9 @@
                     <div class="card-count">
                         <ss-card-count [produits]="(produit$|async)" (disabled) = "disabledButton($event)"></ss-card-count>
                     </div>
-                    <a routerLink="/client/commande/panier">
-                        <button [disabled] = disabled_attr class="btn">AJOUTER AU PANIER</button>
-                    </a>
+                        <a routerLink="/client/commande/panier">
+                            <button [disabled] = disabled_attr class="btn">AJOUTER AU PANIER</button>
+                        </a>
                 </div>
             </div>
             <ng-container *ngIf="(produit$|async)?.menu?.type == 'menu'">
@@ -48,16 +47,15 @@
                 
                     <div class="middle-container">
                     
-                            <div class="middle-components comp-1">
+                            <div class="middle-components">
                                 <div class="component" *ngFor="let menuBurger of (produit$|async)?.menu?.menuBurgers">
                                     <ss-detail-menu [menuBurgers]="menuBurger"></ss-detail-menu>
                                 </div>
-                            </div>
-                            <div class="middle-components comp-2">
                                 <div class="component" *ngFor="let menuPortion of (produit$|async)?.menu?.menuPortionFrites">
                                     <ss-detail-menu [menuPortions]="menuPortion"></ss-detail-menu>
                                 </div>
                             </div>
+                    
                     
                     </div>
                 
@@ -75,27 +73,47 @@
             <div class="bottom-2">
                 <h3>Choisissez des Accompagnements</h3>
                 <div class="bot-2">
-                    <div class="bot bottom-left">
-                        <h4>Accompagnements boissons</h4>
-                            <div class="bottom-components">
-                                <div  *ngFor="let boisson of (produit$|async)?.tailleBoissons">
-                                    <ss-choix-boisson [boissons]= "boisson"></ss-choix-boisson>
-                                </div>
-                            </div>
-                    </div>
-                    <div class="bot bottom-right">
-                            <h4>Accompagnements Frites</h4>
+                    <div id="tabs" #tabs>
+
+                        <ul class="nav nav-pills">
+                          <li class="nav-item">
+                            <button class="nav-link active" [ngClass]="{ 'active':activeTab==='search'}" (click)="search('search')"
+                               data-toggle="tab">ACCOMPAGNEMENTS BOISSONS</button>
+                          </li>
+                          <li class="nav-item">
+                            <button class="nav-link"  [ngClass]="{ 'active':activeTab==='result'}" data-toggle="tab"
+                               (click)="result('result')">ACCOMPAGNEMENTS FRITES</button>
+                          </li>
+                        </ul>
+                    
+                        <div class="tab-content">
+                          <div class="tab-pane" id="search" [ngClass]="{ 'active':activeTab==='search'}">
                                 <div class="bottom-components">
-                                    <div *ngFor="let frite of (produit$|async)?.portionFrites">
-                                        <ss-choix-boisson [frites]= "frite"></ss-choix-boisson>
+                                    <div class="bot bottom-left">
+                                            <div class="bottom-components">
+                                                <div class="ngclass2" *ngFor="let boisson of (produit$|async)?.tailleBoissons">
+                                                    <ss-choix-boisson [boissons]= "boisson"></ss-choix-boisson>
+                                                </div>
+                                            </div>
                                     </div>
                                 </div>
-                    </div>
+                          </div>
+                          <div class="tab-pane" id="results" [ngClass]="{ 'active':activeTab==='result'}">
+                            <div class="bottom-components">
+                                <div class="bot bottom-right">
+                                        <div class="bottom-components">
+                                            <div class="ngclass1" *ngFor="let frite of (produit$|async)?.portionFrites">
+                                                <ss-choix-boisson [frites]= "frite"></ss-choix-boisson>
+                                            </div>
+                                        </div>
+                            </div>
+                             </div>
+                        </div>
+                    </div></div>
                 </div>
             </div>
-                    
-            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
         </div>
 
     <ss-footer></ss-footer>
 </ng-container>
+
