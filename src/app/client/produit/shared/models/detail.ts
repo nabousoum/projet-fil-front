@@ -23,7 +23,7 @@ export interface Menu{
 }
 
 export interface MenuTailleBoisson{
-    quantite?:number
+    quantite:number
     tailleBoisson?:TailleBoissonMenu
 }
 

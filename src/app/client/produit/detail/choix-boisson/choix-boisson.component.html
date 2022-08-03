@@ -1,9 +1,8 @@
 <div *ngIf="tailleBoissons" class="component-bottom">
-    {{size}}
-    <h4> {{tailleBoissons.tailleBoisson?.libelle}} ({{tailleBoissons.quantite}})</h4>
+    <h4> {{tailleBoissons.tailleBoisson?.libelle}} ({{tailleBoissons.quantite * qteMenu}}) {{size}}</h4>
     <div class="test">
         <ng-container *ngFor="let boissonTailleBoisson of tailleBoissons.tailleBoisson?.boissonTailleBoissons">
-            <ss-card-detail [boisson]="boissonTailleBoisson"></ss-card-detail>
+            <ss-card-detail (sizeChange)="tailleControle($event)" [boissonTailleBoisson]="boissonTailleBoisson"></ss-card-detail>
         </ng-container>
     </div>
 </div>

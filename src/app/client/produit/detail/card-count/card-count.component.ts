@@ -13,7 +13,9 @@ export class CardCountComponent implements OnInit {
   
   @Output() disabled: EventEmitter<any> = new EventEmitter();
   @Output() count: EventEmitter<any> = new EventEmitter();
-
+  @Output() sizeChange : EventEmitter<any> = new EventEmitter();
+  
+  @Input()  size: number = 0;
   @Input('boissonTailleBoissons') boissonTailleBoissons : BoissonTailleBoisson|null = null;
   @Input('produits') produits :Produit|null = null;
   @Input('boisson') boisson : TailleBoisson|null = null;
@@ -22,15 +24,13 @@ export class CardCountComponent implements OnInit {
   constructor() { }
 
   /* fonction de controle de la taille choisie dans le menu*/
-  @Input()  size: number = 0;
-  @Output() sizeChange = new EventEmitter<number>();
 
   dec() { this.resize(-1); }
   inc() { this.resize(+1); }
 
   resize(delta: number) {
     this.size = Math.min(40, Math.max(1, +this.size + delta));
-    this.sizeChange.emit(this.size);
+    this.sizeChange.emit(this.size)
   }
 
   /* fonction de desactivation de bouton */
@@ -47,6 +47,21 @@ export class CardCountComponent implements OnInit {
     }
   }
 
+  /*fonction de desactivation de bouton  pour la taille*/ 
+  tailleDisabled(event: any){
+    const value  = event.target.value;
+    console.log(value);
+    if(value >4 ){
+      this.disabled_attr = true
+      this.disabled.emit(this.disabled_attr)
+    }
+    else{
+      this.disabled_attr = false
+      this.disabled.emit(this.disabled_attr)
+    }
+  }
+
+  
   /* fonction du controle de la quantite */
   number :number = 1 
   validateNumber() :string{

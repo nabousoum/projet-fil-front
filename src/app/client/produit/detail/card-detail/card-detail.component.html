@@ -1,9 +1,12 @@
-<ng-container *ngIf="boissonTailleBoissons">
+<ng-container *ngIf="boissonTailleBoisson">
     <div class="img-input">
-        <div class="cart_counter"><ss-card-count [(size)]="fontSizePx" [boissonTailleBoissons]="boissonTailleBoissons"></ss-card-count></div>
-        <img src="/assets/images/boissons/{{boissonTailleBoissons.boisson?.id}}" alt="">
+        <div class="cart_counter">
+            <ss-card-count (sizeChange)="tailleControle($event)" [(size)]="fontSizePx" [boissonTailleBoissons]="boissonTailleBoisson"></ss-card-count>
+        </div>
+        <img src="/assets/images/boissons/{{boissonTailleBoisson.boisson?.id}}.png" alt="">
     </div>
 </ng-container>
+
 <ng-container *ngIf="boisson">
     <div class="img-input">
         <div class="cart_counter"><ss-card-count [boisson]="boisson"></ss-card-count></div>

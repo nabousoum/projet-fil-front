@@ -1,26 +1,25 @@
+
 <div class="cart_counter">
-    <ng-container *ngIf="produits">
+    <ng-container *ngIf="produits || boissonTailleBoissons">
         <p>{{validateNumber()}}</p>
     </ng-container>
     {{size}}
     <div class="d-flex mb-4" style="max-width: 300px">
-        <button (click)="dec()" class="btn btn-count btn-primary px-3 me-2 size"
-        onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+        <button (click)="dec()" class="btn btn-count btn-primary px-3 me-2 size">
         <i class="fas fa-minus"></i>
         </button>
         <div class="form-outline">
             <ng-container *ngIf="boissonTailleBoissons">
-                <input  id="form1" min="0" name="quantity" value="0" type="number" class="form-control" />
+                <input (input)="tailleDisabled($event)" [disabled] id="form1" min="0" name="quantity" value="{{size}}" type="number" class="form-control" />
             </ng-container>
             <ng-container *ngIf="produits">
-                <input (input)="testDisabled($event)" [(ngModel)]="number" id="form1" min="1" name="quantity" value="1" type="number" class="form-control" />
+                <input (input)="tailleDisabled($event)" (input)="testDisabled($event)"  [(ngModel)]="number" id="form1" min="1" name="quantity" value="{{size}}" type="number" class="form-control" />
             </ng-container>
             <ng-container *ngIf=" boisson || frites">
                 <input id="form1" min="0" name="quantity" value="0" type="number" class="form-control" />
             </ng-container>
         </div>
-        <button  (click)="inc()" class="btn btn-count btn-primary px-3 ms-2 size"
-        onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+        <button  (click)="inc()" class="btn btn-count btn-primary px-3 ms-2 size">
         <i class="fas fa-plus"></i>
         </button>
     </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Detail } from '../shared/models/detail';
@@ -14,7 +14,7 @@ import { EventService } from '../shared/services/event.service';
 export class DetailComponent implements OnInit {
 
   qte = 0;
-
+  bool = 0
   disabled_attr = false
   disabledButton(event: any) {
       this.disabled_attr =  event 
@@ -33,7 +33,12 @@ export class DetailComponent implements OnInit {
   constructor(private serv:CatalogueStoreService,private route: ActivatedRoute,private evtSvc: EventService) {
     
    }
-  
+   /* controle taille */
+  qteMenu: number = 1;
+  tailleControle(value :number){
+    //alert(value)
+    this.qteMenu = value
+  }
   private id :any = 0;
   private type:any =""
   quantiteClient = 0

@@ -8,14 +8,23 @@ import { Produit } from '../../shared/models/produit';
   styleUrls: ['./card-detail.component.css']
 })
 export class CardDetailComponent implements OnInit {
-  @Input('boissonTailleBoissons') boissonTailleBoissons : BoissonTailleBoisson|null = null;
+  @Input('boissonTailleBoisson') boissonTailleBoisson : BoissonTailleBoisson|null = null;
   @Input('boissons') boissons : TailleBoisson|null = null;
   @Input('frites') frites : Produit|null = null;
   @Input('boisson') boisson : BoissonTailleBoisson|null = null;
+
+  @Output() sizeChange : EventEmitter<number> = new EventEmitter();
+
   constructor() { }
   fontSizePx = 0;
+  size = 0
 
-  
+  tailleControle(value :number){
+    this.size = value
+    //alert(this.size)
+    this.sizeChange.emit(this.size)
+  }
+
   ngOnInit(): void {
   }
 
