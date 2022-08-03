@@ -13,16 +13,48 @@ export class ChoixBoissonComponent implements OnInit {
   @Input('frites') frites : Produit|null = null;
   @Input('qteMenu') qteMenu : number = 1 ;
   @Output() sizeChange : EventEmitter<number> = new EventEmitter();
-
+  @Output() ObjectControl : EventEmitter<any> = new EventEmitter();
   constructor() { }
-  
-  size = 0;
+  newSize :number = 0
+  size = 0
   tailleControle(value :number){
-    this.size = value
+    this.size = value 
     this.sizeChange.emit(this.qteMenu);
   }
+
+  testBool :boolean = false;
   
+  test(value :number,idTaille:any,qteClient:number,idBoisson:any){
+    let obj={
+      idTaille:idTaille,
+      qteClient:qteClient,
+      idBoisson:idBoisson
+    }
+    this.ObjectControl.emit(obj)
+  }
+  textControl():string{
+    if(this.testBool==true){
+      return "vous avez depassé la quantite"
+    }
+    return ""
+  }
   ngOnInit(): void {
   }
 
 }
+ // this.newSize = this.size
+      // console.log(this.newSize ,this.size)
+      // if( qte<=this.newSize){
+      //   this.testBool = true
+      // }
+      // else{
+      //   this.testBool = false
+      // }
+
+      // testBool :boolean = false;
+      // test(value :number,libelle:any,qte:number){
+      //   if(libelle == "this.tailleBoissons?.tailleBoisson?.libelle"){
+      //     alert(this.size)
+      //   }
+        
+      // }

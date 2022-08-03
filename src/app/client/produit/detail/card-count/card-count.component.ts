@@ -50,7 +50,6 @@ export class CardCountComponent implements OnInit {
   /*fonction de desactivation de bouton  pour la taille*/ 
   tailleDisabled(event: any){
     const value  = event.target.value;
-    console.log(value);
     if(value >4 ){
       this.disabled_attr = true
       this.disabled.emit(this.disabled_attr)

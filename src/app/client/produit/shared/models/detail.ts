@@ -30,7 +30,7 @@ export interface MenuTailleBoisson{
 export interface TailleBoisson{
     id?:number
     prix?:number
-    libelle?:number
+    libelle?:string
     boissonTailleBoissons?:BoissonTailleBoisson[]
 }
 export interface TailleBoissonMenu{

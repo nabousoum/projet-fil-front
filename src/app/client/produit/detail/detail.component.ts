@@ -13,9 +13,12 @@ import { EventService } from '../shared/services/event.service';
 })
 export class DetailComponent implements OnInit {
 
-  qte = 0;
+  qte = 0
   bool = 0
   disabled_attr = false
+
+  tab :[] = []
+
   disabledButton(event: any) {
       this.disabled_attr =  event 
   }
@@ -49,5 +52,10 @@ export class DetailComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     this.type = this.route.snapshot.paramMap.get('type');
     this.produit$ = this.serv.produit$(this.id);
+  }
+
+  parentControl(event :any){
+
+    alert(event.idTaille)
   }
 }
