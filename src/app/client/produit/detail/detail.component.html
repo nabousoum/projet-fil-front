@@ -35,8 +35,7 @@
                     <div class="card-count">
                         <ss-card-count [produits]="(produit$|async)" (disabled) = "disabledButton($event)"></ss-card-count>
                     </div>
-                        
-                    <a routerLink="/client/commande/panier">
+                        <a routerLink="/client/commande/panier">
                             <button [disabled] = disabled_attr class="btn">AJOUTER AU PANIER</button>
                         </a>
                 </div>
@@ -66,7 +65,6 @@
                 <h3 class="text-h">Choisissez les varietes disponibles</h3>
                 <div class="bottom">
                     <div class="bottom-components components" *ngFor="let tailleBoisson of (produit$|async)?.menu?.menuTailleBoissons">
-                        {{quantiteClient}}
                         <ss-choix-boisson  [tailleBoissons]= "tailleBoisson"></ss-choix-boisson>
                     </div>
                 </div>

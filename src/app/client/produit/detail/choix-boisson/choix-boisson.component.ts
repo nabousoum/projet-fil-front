@@ -11,7 +11,7 @@ export class ChoixBoissonComponent implements OnInit {
   @Input('boissons') boissons : TailleBoisson|null = null;
   @Input('tailleBoissons') tailleBoissons : MenuTailleBoisson|null = null;
   @Input('frites') frites : Produit|null = null;
-  
+
 
   constructor() { }
  

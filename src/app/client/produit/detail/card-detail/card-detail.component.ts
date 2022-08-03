@@ -13,7 +13,7 @@ export class CardDetailComponent implements OnInit {
   @Input('frites') frites : Produit|null = null;
   @Input('boisson') boisson : BoissonTailleBoisson|null = null;
   constructor() { }
-
+  fontSizePx = 0;
   ngOnInit(): void {
   }
 

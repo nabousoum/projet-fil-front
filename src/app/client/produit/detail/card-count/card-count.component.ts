@@ -20,6 +20,22 @@ export class CardCountComponent implements OnInit {
   @Input('frites') frites : Produit|null = null;
 
   constructor(private evtSvc: EventService) { }
+  quantiteClient :number = 0
+  compteur(event :any){
+    const value = event.target.value;
+    return Number(value)
+  }
+  /*test inc*/
+    @Input()  size: number = 0;
+  @Output() sizeChange = new EventEmitter<number>();
+
+  dec() { this.resize(-1); }
+  inc() { this.resize(+1); }
+
+  resize(delta: number) {
+    this.size = Math.min(40, Math.max(1, +this.size + delta));
+    this.sizeChange.emit(this.size);
+  }
 
   /* fonction de desactivation de bouton */
   disabled_attr = false
@@ -45,12 +61,7 @@ export class CardCountComponent implements OnInit {
   }
   
   /* fonction de controle de la taille choisie */
-  quantiteClient :number = 0
-  compteur(event :any){
-    const value = event.target.value;
-    this.quantiteClient = Number(value)
-    this.evtSvc.emitChildEvent(this.quantiteClient)
-  }
+
   
   ngOnInit(): void {
     

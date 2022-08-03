@@ -13,6 +13,8 @@ import { EventService } from '../shared/services/event.service';
 })
 export class DetailComponent implements OnInit {
 
+  qte = 0;
+
   disabled_attr = false
   disabledButton(event: any) {
       this.disabled_attr =  event 
