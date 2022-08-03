@@ -14,6 +14,8 @@ export class CardDetailComponent implements OnInit {
   @Input('boisson') boisson : BoissonTailleBoisson|null = null;
   constructor() { }
   fontSizePx = 0;
+
+  
   ngOnInit(): void {
   }
 

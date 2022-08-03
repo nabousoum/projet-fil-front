@@ -10,7 +10,7 @@
         </button>
         <div class="form-outline">
             <ng-container *ngIf="boissonTailleBoissons">
-                <input  (change)="compteur($event)" id="form1" min="0" name="quantity" value="0" type="number" class="form-control" />
+                <input  id="form1" min="0" name="quantity" value="0" type="number" class="form-control" />
             </ng-container>
             <ng-container *ngIf="produits">
                 <input (input)="testDisabled($event)" [(ngModel)]="number" id="form1" min="1" name="quantity" value="1" type="number" class="form-control" />

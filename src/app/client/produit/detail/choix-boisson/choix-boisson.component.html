@@ -1,4 +1,5 @@
 <div *ngIf="tailleBoissons" class="component-bottom">
+    {{size}}
     <h4> {{tailleBoissons.tailleBoisson?.libelle}} ({{tailleBoissons.quantite}})</h4>
     <div class="test">
         <ng-container *ngFor="let boissonTailleBoisson of tailleBoissons.tailleBoisson?.boissonTailleBoissons">

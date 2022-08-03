@@ -12,6 +12,7 @@ export class ChoixBoissonComponent implements OnInit {
   @Input('tailleBoissons') tailleBoissons : MenuTailleBoisson|null = null;
   @Input('frites') frites : Produit|null = null;
 
+  size: number = 0;
 
   constructor() { }
  

@@ -19,14 +19,10 @@ export class CardCountComponent implements OnInit {
   @Input('boisson') boisson : TailleBoisson|null = null;
   @Input('frites') frites : Produit|null = null;
 
-  constructor(private evtSvc: EventService) { }
-  quantiteClient :number = 0
-  compteur(event :any){
-    const value = event.target.value;
-    return Number(value)
-  }
-  /*test inc*/
-    @Input()  size: number = 0;
+  constructor() { }
+
+  /* fonction de controle de la taille choisie dans le menu*/
+  @Input()  size: number = 0;
   @Output() sizeChange = new EventEmitter<number>();
 
   dec() { this.resize(-1); }
@@ -59,10 +55,6 @@ export class CardCountComponent implements OnInit {
     }
     return ""
   }
-  
-  /* fonction de controle de la taille choisie */
-
-  
   ngOnInit(): void {
     
   }
