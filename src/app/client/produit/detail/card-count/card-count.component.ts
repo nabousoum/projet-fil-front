@@ -31,6 +31,7 @@ export class CardCountComponent implements OnInit {
   resize(delta: number) {
     this.size = Math.min(40, Math.max(1, +this.size + delta));
     this.sizeChange.emit(this.size)
+    this.count.emit(this.size)
   }
 
   /* fonction de desactivation de bouton */
@@ -48,17 +49,17 @@ export class CardCountComponent implements OnInit {
   }
 
   /*fonction de desactivation de bouton  pour la taille*/ 
-  tailleDisabled(event: any){
-    const value  = event.target.value;
-    if(value >4 ){
-      this.disabled_attr = true
-      this.disabled.emit(this.disabled_attr)
-    }
-    else{
-      this.disabled_attr = false
-      this.disabled.emit(this.disabled_attr)
-    }
-  }
+  // tailleDisabled(event: any){
+  //   const value  = event.target.value;
+  //   if(value >4 ){
+  //     this.disabled_attr = true
+  //     this.disabled.emit(this.disabled_attr)
+  //   }
+  //   else{
+  //     this.disabled_attr = false
+  //     this.disabled.emit(this.disabled_attr)
+  //   }
+  // }
 
   
   /* fonction du controle de la quantite */

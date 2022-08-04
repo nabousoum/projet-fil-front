@@ -14,11 +14,11 @@ export class CardDetailComponent implements OnInit {
   @Input('boisson') boisson : BoissonTailleBoisson|null = null;
 
   @Output() sizeChange : EventEmitter<number> = new EventEmitter();
+  @Output() count: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
   fontSizePx = 0;
   size = 0
-
   tailleControle(value :number){
     this.size = value
     //alert(this.size)

@@ -43,7 +43,7 @@ export class DetailComponent implements OnInit {
 
    /* controle taille */
   qteMenu: number = 1;
-  tailleControle(value :number){
+  countEmit(value :number){
     this.qteMenu = value
   }
 
@@ -129,21 +129,9 @@ export class DetailComponent implements OnInit {
             }
           }
         )
-        console.log(this.tab)
-       
-          // let object={
-          //   idTaille:event.idTaille,
-          //   qte:event.qte,
-          //   boissons:[{}]
-          // }
-          // object.boissons.push(boissonsTab)
-          //this.tab.push(object)
-          //console.log(object.boissons)
-          //console.log(object)
-          //let lastObject = this.tab.pop() 
       }
     }
-     //console.log(this.tab)
+    console.log(this.tab)
   }
  
 }

@@ -33,7 +33,7 @@
                         </ng-container>
                     </div>
                     <div class="card-count">
-                        <ss-card-count (sizeChange)="tailleControle($event)"  [produits]="(produit$|async)" (disabled) = "disabledButton($event)"></ss-card-count>
+                        <ss-card-count (count)="countEmit($event)" [produits]="(produit$|async)" (disabled) = "disabledButton($event)"></ss-card-count>
                     </div>
                         <a routerLink="/client/commande/panier">
                             <button [disabled] = disabled_attr class="btn">AJOUTER AU PANIER</button>
@@ -62,9 +62,8 @@
             <ng-container *ngIf="(produit$|async)?.menu?.type=='menu'">
                 <h3 class="text-h">Choisissez les varietes disponibles</h3>
                 <div class="bottom">
-
                     <div class="bottom-components components" *ngFor="let tailleBoisson of (produit$|async)?.menu?.menuTailleBoissons">
-                        <ss-choix-boisson (sizeChange)="obj($event)" (ObjectControl)="parentControl($event)" [qteMenu]="qteMenu" (sizeChange)="tailleControle($event)"  [tailleBoissons]= "tailleBoisson"></ss-choix-boisson>
+                        <ss-choix-boisson [qteMenu]="qteMenu" (sizeChange)="obj($event)" (ObjectControl)="parentControl($event)"  [tailleBoissons]= "tailleBoisson"></ss-choix-boisson>
                     </div>
                 </div>
             </ng-container>

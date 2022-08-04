@@ -12,8 +12,11 @@ export class ChoixBoissonComponent implements OnInit {
   @Input('tailleBoissons') tailleBoissons : MenuTailleBoisson|null = null;
   @Input('frites') frites : Produit|null = null;
   @Input('qteMenu') qteMenu : number = 1 ;
+
   @Output() sizeChange : EventEmitter<number> = new EventEmitter();
   @Output() ObjectControl : EventEmitter<any> = new EventEmitter();
+  @Output() count: EventEmitter<any> = new EventEmitter();
+
   constructor() { }
   newSize :number = 0
   size = 0
