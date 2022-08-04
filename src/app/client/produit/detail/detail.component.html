@@ -61,6 +61,7 @@
             </ng-container>
             <ng-container *ngIf="(produit$|async)?.menu?.type=='menu'">
                 <h3 class="text-h">Choisissez les varietes disponibles</h3>
+                <p style="color:red;margin-left:40%">{{message}}</p>
                 <div class="bottom">
                     <div class="bottom-components components" *ngFor="let tailleBoisson of (produit$|async)?.menu?.menuTailleBoissons">
                         <ss-choix-boisson [qteMenu]="qteMenu" (sizeChange)="obj($event)" (ObjectControl)="parentControl($event)"  [tailleBoissons]= "tailleBoisson"></ss-choix-boisson>

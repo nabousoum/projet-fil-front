@@ -60,22 +60,22 @@ export class DetailComponent implements OnInit {
   size:number = 1
   obj(event :any){
     this.size= event
-    // alert("1: "+this.size)
   }
 
   /* algorithme de controle des tailles du menu */
+  message = ""
+  textBool = false
   parentControl(event :any){
-    //  alert("2: "+this.size)
     if(this.tab.length==0)
     {
-        //this.tab.push(event);
         let object={
           idTaille:event.idTaille,
           qte:event.qte,
           boissons:[
             {
               idBoisson:event.boissonTaille.idBoisson,
-               size:this.size
+               size:this.size,
+               stock:event.boissonTaille.stock
             }
           ]
         }
@@ -97,7 +97,8 @@ export class DetailComponent implements OnInit {
           boissons:[
             {
               idBoisson:event.boissonTaille.idBoisson,
-               size:this.size
+               size:this.size,
+               stock:event.stock
             }
           ]
         }
@@ -111,7 +112,8 @@ export class DetailComponent implements OnInit {
               let boissonsTab =
               {
                 idBoisson:event.boissonTaille.idBoisson,
-                size:this.size
+                size:this.size,
+                stock:event.boissonTaille.stock
               }
               let tabBoisson:any[] = data.boissons
               let testBool = false
@@ -132,6 +134,27 @@ export class DetailComponent implements OnInit {
       }
     }
     console.log(this.tab)
+    this.textAlert(this.tab)
   }
- 
+
+  textAlert(tab :any[]):string{
+    let totalSize = 0
+      tab.forEach(element => {
+      let tabBoissons:any[] = element.boissons
+      tabBoissons.forEach(elem=>{
+        totalSize+=elem.size
+        if(totalSize > element.qte){
+          this.message = "vous avez depasser le nombre de boissons"
+        }
+        else if(elem.size > elem.stock){
+          this.message = "le stock est epuisé"
+        }
+        else{
+          this.message = ""
+        }
+      })
+    });
+    return ""
+  }
+
 }

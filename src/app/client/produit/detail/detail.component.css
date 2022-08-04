@@ -195,6 +195,7 @@ input{
  .nav-link{
   color: #b4a55c;
  }
+
   @keyframes lds-ripple {
     0% {
       top: 36px;

@@ -22,16 +22,16 @@ export class ChoixBoissonComponent implements OnInit {
   size = 0
   testBool :boolean = false;
   
-  test(idTaille:any,qte:number,idBoisson:any,value:number){
+  test(idTaille:any,qte:number,idBoisson:any,value:number,stock:any){
     this.size = value
     this.sizeChange.emit(this.size)
-    //alert("2:"+v)
     let obj={
       idTaille:idTaille,
       qte:qte,
       boissonTaille:{
         idBoisson:idBoisson,
         size:this.size,
+        stock:stock
       }
     }
     this.ObjectControl.emit(obj)

@@ -41,6 +41,6 @@ export interface TailleBoissonMenu{
 }
 export interface BoissonTailleBoisson{
     id?:number
-    stock?:string
+    stock?:number
     boisson?: Produit
 }

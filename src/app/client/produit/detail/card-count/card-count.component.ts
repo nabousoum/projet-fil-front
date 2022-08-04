@@ -47,21 +47,7 @@ export class CardCountComponent implements OnInit {
       this.disabled.emit(this.disabled_attr)
     }
   }
-
-  /*fonction de desactivation de bouton  pour la taille*/ 
-  // tailleDisabled(event: any){
-  //   const value  = event.target.value;
-  //   if(value >4 ){
-  //     this.disabled_attr = true
-  //     this.disabled.emit(this.disabled_attr)
-  //   }
-  //   else{
-  //     this.disabled_attr = false
-  //     this.disabled.emit(this.disabled_attr)
-  //   }
-  // }
-
-  
+ 
   /* fonction du controle de la quantite */
   number :number = 1 
   validateNumber() :string{
