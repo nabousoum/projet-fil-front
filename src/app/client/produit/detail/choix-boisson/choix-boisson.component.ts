@@ -20,15 +20,19 @@ export class ChoixBoissonComponent implements OnInit {
   tailleControle(value :number){
     this.size = value 
     this.sizeChange.emit(this.qteMenu);
+    this.sizeChange.emit(this.size);
   }
 
   testBool :boolean = false;
   
-  test(value :number,idTaille:any,qteClient:number,idBoisson:any){
+  test(idTaille:any,qteClient:number,idBoisson:any,size:any){
     let obj={
       idTaille:idTaille,
       qteClient:qteClient,
-      idBoisson:idBoisson
+      boissonTaille:{
+        idBoisson:idBoisson,
+        size:size,
+      }
     }
     this.ObjectControl.emit(obj)
   }
