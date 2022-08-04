@@ -4,7 +4,7 @@
     <small>{{textControl()}}</small>
     <div class="test">
         <ng-container *ngFor="let boissonTailleBoisson of tailleBoissons.tailleBoisson?.boissonTailleBoissons">
-            <ss-card-detail (sizeChange)="test(tailleBoissons.tailleBoisson?.id,tailleBoissons.quantite*qteMenu,boissonTailleBoisson?.boisson?.id,size)" (sizeChange)="tailleControle($event)" [boissonTailleBoisson]="boissonTailleBoisson"></ss-card-detail>
+            <ss-card-detail (sizeChange)="test(tailleBoissons.tailleBoisson?.id,tailleBoissons.quantite*qteMenu,boissonTailleBoisson?.boisson?.id,$event)" [boissonTailleBoisson]="boissonTailleBoisson"></ss-card-detail>
         </ng-container>
     </div>
 </div>
