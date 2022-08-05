@@ -21,7 +21,7 @@ import { PageNotFoundComponent } from './notFound/page.not.found/page.not.found.
     AppRoutingModule,
     RouterModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

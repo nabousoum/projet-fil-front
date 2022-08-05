@@ -19,7 +19,7 @@
             </ng-container>
             <ng-container *ngIf=" boisson || frites">
                 <button (click)="dec()" class="btn btn-count btn-primary px-3 me-2 size"><i class="fas fa-minus"></i></button>
-                <input id="form1" min="0" name="quantity" value="0" type="number" class="form-control" />
+                <input id="form1" min="0" name="quantity" value="{{size}}" type="number" class="form-control" />
                 <button  (click)="inc()" class="btn btn-count btn-primary px-3 ms-2 size"><i class="fas fa-plus"></i></button>  
             </ng-container>
         </div>

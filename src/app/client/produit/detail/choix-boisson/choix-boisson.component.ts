@@ -36,6 +36,15 @@ export class ChoixBoissonComponent implements OnInit {
     }
     this.ObjectControl.emit(obj)
   }
+  test2(idBoisson:any,event:any,stock:any){
+    this.size = event
+    let obj2={
+      idBoisson:idBoisson,
+      size:this.size,
+      stock:stock
+    }
+    this.ObjectControl.emit(obj2)
+  }
   textControl():string{
     if(this.testBool==true){
       return "vous avez depassé la quantite"

@@ -37,7 +37,11 @@ export class DetailComponent implements OnInit {
     this.activeTab = activeTab;
   }
 
-  constructor(private serv:CatalogueStoreService,private route: ActivatedRoute,private evtSvc: EventService) {
+  constructor(
+    private serv:CatalogueStoreService,
+    private route: ActivatedRoute,
+    private evtSvc: EventService,
+    ) {
     
    }
 
@@ -64,6 +68,7 @@ export class DetailComponent implements OnInit {
 
   /* algorithme de controle des tailles du menu */
   message = ""
+  message2 = ""
   textBool = false
   parentControl(event :any){
     if(this.tab.length==0)
@@ -98,7 +103,7 @@ export class DetailComponent implements OnInit {
             {
               idBoisson:event.boissonTaille.idBoisson,
                size:this.size,
-               stock:event.stock
+               stock:event.boissonTaille.stock
             }
           ]
         }
@@ -133,7 +138,7 @@ export class DetailComponent implements OnInit {
         )
       }
     }
-    console.log(this.tab)
+    //console.log(this.tab)
     this.textAlert(this.tab)
   }
 
@@ -145,16 +150,67 @@ export class DetailComponent implements OnInit {
         totalSize+=elem.size
         if(totalSize > element.qte){
           this.message = "vous avez depasser le nombre de boissons"
+          this.disabled_attr = true
         }
         else if(elem.size > elem.stock){
           this.message = "le stock est epuisé"
+          this.disabled_attr = true
         }
         else{
           this.message = ""
+          this.disabled_attr = false
         }
       })
     });
     return ""
   }
 
+  parentControl2(event : any){
+    if(this.tab.length==0){
+      let obj2={
+        idBoisson:event.idBoisson,
+        size:this.size,
+        stock:event.stock
+      }
+      this.tab.push(obj2)
+    }
+    else{
+      var trouve=false
+      this.tab.map(
+        data=>{
+          if(data.idBoisson==event.idBoisson){
+            trouve=true
+          }
+        }
+      )
+      if(trouve == false){
+        let obj2={
+          idBoisson:event.idBoisson,
+          size:this.size,
+          stock:event.stock
+        }
+        this.tab.push(obj2)
+      }
+      else{
+        this.tab.map(data=>{
+          data.size = event.size 
+        })
+      }
+    }
+    console.log(this.tab)
+    this.textAlert2(this.tab)
+  }
+
+  textAlert2(tab:any[]){
+    tab.forEach(element=>{
+      if(element.size > element.stock){
+          this.message2 = "stock epuisé"
+          this.disabled_attr = true
+      }
+      else{
+        this.message2=""
+        this.disabled_attr = false
+      }
+    })
+  }
 }

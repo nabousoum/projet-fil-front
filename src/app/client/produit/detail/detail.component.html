@@ -70,6 +70,7 @@
             </ng-container>
             <div class="bottom-2">
                 <h3>Choisissez des Accompagnements</h3>
+                <p style="color:red;margin-left:40%">{{message2}}</p>
                 <div class="bot-2">
                     <div id="tabs" #tabs>
                         <ul class="nav nav-pills">
@@ -89,7 +90,7 @@
                                     <div class="bot bottom-left">
                                             <div class="bottom-components">
                                                 <div class="ngclass2" *ngFor="let boisson of (produit$|async)?.tailleBoissons">
-                                                    <ss-choix-boisson [boissons]= "boisson"></ss-choix-boisson>
+                                                    <ss-choix-boisson (ObjectControl)="parentControl2($event)" [boissons]= "boisson"></ss-choix-boisson>
                                                 </div>
                                             </div>
                                     </div>
