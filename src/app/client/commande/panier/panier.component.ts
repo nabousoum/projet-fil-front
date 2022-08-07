@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Detail } from '../../produit/shared/models/detail';
 import { CartServiceService } from '../../produit/shared/services/cart-service.service';
-import { Panier } from '../shared/models/panier';
+import { BurgerCommande, Panier } from '../shared/models/panier';
 
 @Component({
   selector: 'ss-panier',
@@ -10,8 +10,9 @@ import { Panier } from '../shared/models/panier';
 })
 export class PanierComponent implements OnInit {
 
-  items:Detail[] = []
+  //items:Detail[] = []
   newItems:Panier={}
+  items:BurgerCommande[]|undefined = []
   constructor(private cartServ:CartServiceService) { }
 
   ngOnInit(): void {
@@ -20,12 +21,13 @@ export class PanierComponent implements OnInit {
     // })
     this.cartServ.newCart.subscribe(data=>{
       this.newItems = data
+      this.items = data.burgerCommandes
     })
   }
 
-  onDelete(i:number){
-    this.items.splice(i, 1)
-    this.cartServ.setCartData(this.items)
-  }
+  // onDelete(i:number){
+  //   this.items.splice(i, 1)
+  //   this.cartServ.setCartData(this.items)
+  // }
 
 }

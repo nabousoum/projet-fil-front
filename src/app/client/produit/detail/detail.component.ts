@@ -228,10 +228,10 @@ export class DetailComponent implements OnInit {
         this.cartServ.addBurger(burger)
         console.log(this.cartServ.newCart.value)
       }
-    if (detail.menu){ 
-      this.cartServ.addItems(detail)
-      console.log(this.cartServ.cartItems.value)
-    }
+    // if (detail.menu){ 
+    //   this.cartServ.addItems(detail)
+    //   console.log(this.cartServ.cartItems.value)
+    // }
   }
 
 }
