@@ -1,22 +1,21 @@
+
 <ss-header></ss-header>
 <p>panier works!</p>
 <section class="h-100 gradient-custom">
+     
     <div class="container py-5">
       <div class="row d-flex justify-content-center my-4">
-        <div class="col-md-8">
-          <div class="card mb-4">
-            <div class="card-header py-3">
-              <h5 class="mb-0">VOTRE PANIER</h5>
-            </div>
-            <div class="card-body">
-              <ss-ligne-panier></ss-ligne-panier> 
-              <ss-ligne-panier></ss-ligne-panier> 
-              <ss-ligne-panier></ss-ligne-panier> 
+          <div class="col-md-8">
+            <div class="card mb-4">
+              <div class="card-header py-3">
+                <h5 class="mb-0">VOTRE PANIER</h5>
+                {{newItems|json}}
+              </div>
+              <div class="card-body" *ngFor="let item of items">
+                <ss-ligne-panier [item]="item"></ss-ligne-panier> 
+              </div>
             </div>
           </div>
-          
-          
-        </div>
         <div class="col-md-4">
           <div class="card mb-4">
             <div class="card-header py-3">

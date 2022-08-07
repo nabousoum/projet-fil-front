@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Detail } from 'src/app/client/produit/shared/models/detail';
 
 @Component({
   selector: 'ss-ligne-panier',
@@ -7,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class LignePanierComponent implements OnInit {
   @Input() isPanier = true;
+  @Input('item') item : Detail |null = null;
   constructor() { }
 
   ngOnInit(): void {

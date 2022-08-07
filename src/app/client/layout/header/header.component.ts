@@ -7,12 +7,16 @@ import { CartServiceService } from '../../produit/shared/services/cart-service.s
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  itemIncCart:number =0
+  itemIncCart:number = 0
   constructor(private cartService:CartServiceService) { }
 
+  countPanier:number = 0
   ngOnInit(): void {
-    this.cartService.numOfItems.subscribe(d=>{
-      this.itemIncCart = d.length
+    this.cartService.newCart.subscribe(d=>{
+      if(d.menuCommandes && d.boissonCommandes && d.burgerCommandes && d.friteCommandes){
+        this.countPanier = d.boissonCommandes.length + d.burgerCommandes.length + d.friteCommandes.length + d.menuCommandes.length
+      }
+      this.itemIncCart = this.countPanier
     })
   }
 

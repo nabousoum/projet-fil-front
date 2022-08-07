@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { BurgerCommande } from '../../commande/shared/models/panier';
 import { Detail } from '../shared/models/detail';
 import { Produit } from '../shared/models/produit';
 import { CartServiceService } from '../shared/services/cart-service.service';
@@ -218,6 +219,19 @@ export class DetailComponent implements OnInit {
 
   /*add to cart function*/
   addToCart(detail:Detail){
-     this.cartServ.addItems(detail)
+    //console.log(detail.burger)
+      if(detail.burger){
+        let burger:BurgerCommande = {
+          quantite:1,
+          burger:detail.burger
+        }
+        this.cartServ.addBurger(burger)
+        console.log(this.cartServ.newCart.value)
+      }
+    if (detail.menu){ 
+      this.cartServ.addItems(detail)
+      console.log(this.cartServ.cartItems.value)
+    }
   }
+
 }
