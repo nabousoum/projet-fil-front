@@ -59,15 +59,34 @@ export class CartServiceService {
 
   /* add burger */
   addBurger(burger:BurgerCommande){
-    
-     const ls = JSON.parse(localStorage.getItem('cart') || 'null')
-    // console.log(ls)
-    let newData = {
-        ...this.newCart.value,
-        burgerCommandes: this.newCart.value.burgerCommandes?.concat(burger)
+    var trouve=false
+    this.newCart.value.burgerCommandes?.map(burgerCommande=>{
+      if(burgerCommande.burger?.id == burger.burger?.id){
+          trouve = true
+          Number(burgerCommande.quantite += burger.quantite)
+      }
+    })
+    if (!trouve){
+      const ls = JSON.parse(localStorage.getItem('cart') || 'null')
+      // console.log(ls)
+      let newData = {
+          ...this.newCart.value,
+          burgerCommandes: this.newCart.value.burgerCommandes?.concat(burger)
+      }
+        localStorage.setItem('cart', JSON.stringify(newData))
+        return this.newCart.next(newData)
     }
-      localStorage.setItem('cart', JSON.stringify(newData))
-      return this.newCart.next(newData)
+    else{
+      const ls = JSON.parse(localStorage.getItem('cart') || 'null')
+      // console.log(ls)
+      let newData = {
+          ...this.newCart.value,
+          burgerCommandes: this.newCart.value.burgerCommandes
+      }
+        localStorage.setItem('cart', JSON.stringify(newData))
+         this.newCart.next(newData)
+    }
+    
   }
 
 }

@@ -10,7 +10,7 @@ export interface Panier{
 
 /* BurgerCommande */
 export interface BurgerCommande{
-    quantite?: number
+    quantite: number
     burger?: Produit
 }
 

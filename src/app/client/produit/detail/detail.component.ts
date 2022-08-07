@@ -222,7 +222,7 @@ export class DetailComponent implements OnInit {
     //console.log(detail.burger)
       if(detail.burger){
         let burger:BurgerCommande = {
-          quantite:1,
+          quantite:this.size,
           burger:detail.burger
         }
         this.cartServ.addBurger(burger)
