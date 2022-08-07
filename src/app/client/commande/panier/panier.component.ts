@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Detail } from '../../produit/shared/models/detail';
+import { CartServiceService } from '../../produit/shared/services/cart-service.service';
+import { Panier } from '../shared/models/panier';
 
 @Component({
   selector: 'ss-panier',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PanierComponent implements OnInit {
 
-  constructor() { }
+  items:Detail[] = []
+  constructor(private cartServ:CartServiceService) { }
 
   ngOnInit(): void {
+    // this.cartServ.cartItems.subscribe(data=>{
+    //   this.items = data
+    // })
   }
 
 }

@@ -1,6 +1,10 @@
 .btn-count{
-    margin-top: -1%;
-    height: 40px;
-    border-radius: 5px;
+    background-color: #C2B364;
     border: none;
- }
+}
+input{
+    width: 50px;
+}
+p{
+    font-size: large;
+}

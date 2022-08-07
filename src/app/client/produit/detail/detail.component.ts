@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Detail } from '../shared/models/detail';
 import { Produit } from '../shared/models/produit';
+import { CartServiceService } from '../shared/services/cart-service.service';
 import { CatalogueStoreService } from '../shared/services/catalogue-store.service';
 import { EventService } from '../shared/services/event.service';
 
@@ -41,6 +42,7 @@ export class DetailComponent implements OnInit {
     private serv:CatalogueStoreService,
     private route: ActivatedRoute,
     private evtSvc: EventService,
+    private cartServ: CartServiceService,
     ) {
     
    }
@@ -212,5 +214,10 @@ export class DetailComponent implements OnInit {
         this.disabled_attr = false
       }
     })
+  }
+
+  /*add to cart function*/
+  addToCart(detail:Detail){
+     this.cartServ.addItems(detail)
   }
 }
