@@ -30,6 +30,10 @@ export class LignePanierComponent implements OnInit {
     let prix = data.menu.prix * data.quantite
     return prix
   }
+  delete(event:any){
+    //alert(event.nom)
+    this.index.emit(event)
+  }
   ngOnInit(): void {
   }
 

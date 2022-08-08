@@ -28,12 +28,16 @@ export class PanierComponent implements OnInit {
      
     })
   }
-  // i:number = 0
-  // onDelete(){
-  //  alert(this.i)
-  //   this.items.splice(this.i, 1)
-  //   this.cartServ.setCartData(this.items)
-  // }
+  delete(object: any){  
+    this.cartServ.removeCart(object)
+  }
 
+  newObject = {}
+  onDelete(event : any){
+    alert(event.nom)
+    this.newObject = event
+    this.cartServ.removeCart(event)
+
+  }
 
 }

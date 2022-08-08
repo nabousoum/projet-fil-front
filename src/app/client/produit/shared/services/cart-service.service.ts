@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { BurgerCommande, MenuCommande, Panier } from 'src/app/client/commande/shared/models/panier';
+import { BurgerCommande, Menu, MenuCommande, Panier } from 'src/app/client/commande/shared/models/panier';
 import { Detail } from '../models/detail';
 import { Produit } from '../models/produit';
 
@@ -134,9 +134,37 @@ export class CartServiceService {
     return grandTotal
   }
 
-  // removeCart(product:any){
-  //   this.newCart.value.map((a:any,index:any)=>{
+  removeCart(object:any){
+    if(object.type == 'menu'){
+      this.newCart.value.menuCommandes?.map((menuCom,index)=>{
+        if(menuCom.menu?.id == object.id){
+          this.newCart.value.menuCommandes?.splice(index,1)
+      }
+      })
+      const ls = JSON.parse(localStorage.getItem('cart') || 'null')
+      let newData = {
+        ...this.newCart.value,
+        menuCommandes: this.newCart.value.menuCommandes
+      }
+      localStorage.setItem('cart', JSON.stringify(newData))
+      return this.newCart.next(newData)
+    }
+    if(object.type == 'burger'){
+      this.newCart.value.burgerCommandes?.map((burgerCom,index)=>{
+        if(burgerCom.burger?.id == object.id){
+          this.newCart.value.burgerCommandes?.splice(index,1)
+      }
+      })
+      const ls = JSON.parse(localStorage.getItem('cart') || 'null')
 
-  //   })
-  // }
+      let newData = {
+          ...this.newCart.value,
+          burgerCommandes: this.newCart.value.burgerCommandes
+      }
+        localStorage.setItem('cart', JSON.stringify(newData))
+         this.newCart.next(newData)
+      
+    }
+    return this.newCart.next
+  }
 }
