@@ -53,7 +53,7 @@
         </button>
 
         <div class="form-outline">
-          <input id="form1" min="0" name="quantity" value="1" type="number" class="form-control" />
+          <input id="form1" min="0" name="quantity" value={{item?.quantite}} type="number" class="form-control" />
         </div>
 
         <button class="btn-count btn btn-primary px-3 ms-2 size"
@@ -62,12 +62,6 @@
         </button>
       </div>
      <div>
-      <ng-container *ngIf="item?.burger?.type == 'burger'">
-        <p>quantite : ({{item?.quantite}}) </p>
-      </ng-container>
-     <ng-container *ngIf="itemMenu?.menu?.type == 'menu'">
-      <p>quantite : ({{itemMenu?.quantite}})</p>
-     </ng-container>
      </div>
       <p class="text-start text-md-center">
         <ng-container *ngIf="item?.burger?.type == 'burger'">

@@ -7,7 +7,7 @@ import { Produit } from '../shared/models/produit';
 import { CartServiceService } from '../shared/services/cart-service.service';
 import { CatalogueStoreService } from '../shared/services/catalogue-store.service';
 import { EventService } from '../shared/services/event.service';
-
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'ss-detail',
   templateUrl: './detail.component.html',
@@ -44,6 +44,7 @@ export class DetailComponent implements OnInit {
     private route: ActivatedRoute,
     private evtSvc: EventService,
     private cartServ: CartServiceService,
+    private toast: NgToastService
     ) {
     
    }
@@ -152,11 +153,12 @@ export class DetailComponent implements OnInit {
       tabBoissons.forEach(elem=>{
         totalSize+=elem.size
         if(totalSize > element.qte){
-          this.message = "vous avez depasser le nombre de boissons"
+          this.toast.error({detail:"ERROR",summary:"vous avez depasser le nombre de boissons"})
+          //this.message = "vous avez depasser le nombre de boissons"
           this.disabled_attr = true
         }
         else if(elem.size > elem.stock){
-          this.message = "le stock est epuisé"
+          this.toast.error({detail:"ERROR",summary:"le stock est epuisé"})
           this.disabled_attr = true
         }
         else{
@@ -207,7 +209,7 @@ export class DetailComponent implements OnInit {
   textAlert2(tab:any[]){
     tab.forEach(element=>{
       if(element.size > element.stock){
-          this.message2 = "stock epuisé"
+        this.toast.error({detail:"ERROR",summary:"le stock est epuisé"})
           this.disabled_attr = true
       }
       else{

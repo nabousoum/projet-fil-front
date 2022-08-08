@@ -40,4 +40,11 @@ export class PanierComponent implements OnInit {
 
   }
 
+  validateInput(event : any,i:number){
+    const qty = event.target.value
+    this.QtyUpdated(qty,i)
+  }
+  private QtyUpdated(qty:number,i:number){
+    this.items[i].quantite = qty
+  }
 }
