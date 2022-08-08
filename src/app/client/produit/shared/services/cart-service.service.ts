@@ -98,21 +98,21 @@ export class CartServiceService {
       }
     })
     if(!trouve){
-      //const ls = JSON.parse(localStorage.getItem('cart') || 'null')
+      const ls = JSON.parse(localStorage.getItem('cart') || 'null')
       let newData = {
         ...this.newCart.value,
         menuCommandes: this.newCart.value.menuCommandes?.concat(menuCommande)
       }
-      //localStorage.setItem('cart', JSON.stringify(newData))
+      localStorage.setItem('cart', JSON.stringify(newData))
       return this.newCart.next(newData)
     }
     else{
-       //const ls = JSON.parse(localStorage.getItem('cart') || 'null')
+       const ls = JSON.parse(localStorage.getItem('cart') || 'null')
        let newData = {
         ...this.newCart.value,
         menuCommandes: this.newCart.value.menuCommandes
       }
-      //localStorage.setItem('cart', JSON.stringify(newData))
+      localStorage.setItem('cart', JSON.stringify(newData))
       return this.newCart.next(newData)
     }
     

@@ -11,7 +11,7 @@
                 <h5 class="mb-0">VOTRE PANIER</h5>
                 <!-- {{items|json}} -->
               </div>
-              <div class="card-body" *ngFor="let item of items">
+              <div class="card-body" *ngFor="let item of items ; let i=index">
                 <ss-ligne-panier [item]="item" [itemMenu]="item"></ss-ligne-panier> 
               </div>
             </div>

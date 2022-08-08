@@ -13,6 +13,7 @@ export class PanierComponent implements OnInit {
   //items:Detail[] = []
   newItems:Panier={}
   items:any = []
+  total:number =0
   constructor(private cartServ:CartServiceService) { }
 
   ngOnInit(): void {
@@ -23,12 +24,23 @@ export class PanierComponent implements OnInit {
       this.newItems = data
       if(data.burgerCommandes && data.menuCommandes)
       this.items = [...data.burgerCommandes,...data.menuCommandes]
+      if(this.items){
+        this.getTotal(this.items)
+      }
     })
   }
-
-  // onDelete(i:number){
-  //   this.items.splice(i, 1)
+  // i:number = 0
+  // onDelete(){
+  //  alert(this.i)
+  //   this.items.splice(this.i, 1)
   //   this.cartServ.setCartData(this.items)
   // }
+  getTotal(data:any){
+    let subs = 0
+    for(const item of data){
+      subs += 1000
+    }
+    this.total = subs
+  }
 
 }
