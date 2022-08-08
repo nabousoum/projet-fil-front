@@ -10,6 +10,7 @@ import { BurgerCommande, MenuCommande, Panier } from '../../shared/models/panier
 })
 export class LignePanierComponent implements OnInit {
   @Output() index: EventEmitter<any> = new EventEmitter();
+  @Output() MontantTotal: EventEmitter<any> = new EventEmitter();
   @Input() isPanier = true;
   @Input('item') item : BurgerCommande | null=null;
   @Input('itemMenu') itemMenu : MenuCommande | null=null;
@@ -21,6 +22,14 @@ export class LignePanierComponent implements OnInit {
   //   this.index.emit(i);
   // }
 
+  getPrixBurger(data:any){
+    let prix = data.burger.prix * data.quantite
+    return prix
+  }
+  getPrixMenu(data:any){
+    let prix = data.menu.prix * data.quantite
+    return prix
+  }
   ngOnInit(): void {
   }
 

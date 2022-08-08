@@ -73,6 +73,9 @@ export class CartServiceService {
           ...this.newCart.value,
           burgerCommandes: this.newCart.value.burgerCommandes?.concat(burger)
       }
+      // window.addEventListener('storage',()=>{
+
+      // })
         localStorage.setItem('cart', JSON.stringify(newData))
         return this.newCart.next(newData)
     }
@@ -118,4 +121,22 @@ export class CartServiceService {
     
   }
 
+  getTotalPrice(){
+    let grandTotal = 0
+    this.newCart.value.menuCommandes?.map(menuCom=>{
+      if(menuCom?.menu?.prix)
+      grandTotal += Number( menuCom?.menu?.prix * menuCom.quantite)
+    })
+    this.newCart.value.burgerCommandes?.map(burgerCommande=>{
+      if(burgerCommande.burger?.prix)
+      grandTotal += Number( burgerCommande?.burger?.prix)
+    })
+    return grandTotal
+  }
+
+  // removeCart(product:any){
+  //   this.newCart.value.map((a:any,index:any)=>{
+
+  //   })
+  // }
 }

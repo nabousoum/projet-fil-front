@@ -13,9 +13,9 @@ export class PanierComponent implements OnInit {
   //items:Detail[] = []
   newItems:Panier={}
   items:any = []
-  total:number =0
-  constructor(private cartServ:CartServiceService) { }
 
+  constructor(private cartServ:CartServiceService) { }
+    montant = 0
   ngOnInit(): void {
     // this.cartServ.cartItems.subscribe(data=>{
     //   this.items = data
@@ -24,9 +24,8 @@ export class PanierComponent implements OnInit {
       this.newItems = data
       if(data.burgerCommandes && data.menuCommandes)
       this.items = [...data.burgerCommandes,...data.menuCommandes]
-      if(this.items){
-        this.getTotal(this.items)
-      }
+       this.montant = this.cartServ.getTotalPrice() 
+     
     })
   }
   // i:number = 0
@@ -35,12 +34,6 @@ export class PanierComponent implements OnInit {
   //   this.items.splice(this.i, 1)
   //   this.cartServ.setCartData(this.items)
   // }
-  getTotal(data:any){
-    let subs = 0
-    for(const item of data){
-      subs += 1000
-    }
-    this.total = subs
-  }
+
 
 }

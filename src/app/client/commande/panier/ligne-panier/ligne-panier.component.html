@@ -57,18 +57,18 @@
       </div>
      <div>
       <ng-container *ngIf="item?.burger?.type == 'burger'">
-        <p>({{item?.quantite}})</p>
+        <p>quantite : ({{item?.quantite}}) </p>
       </ng-container>
      <ng-container *ngIf="itemMenu?.menu?.type == 'menu'">
-      <p>({{itemMenu?.quantite}})</p>
+      <p>quantite : ({{itemMenu?.quantite}})</p>
      </ng-container>
      </div>
       <p class="text-start text-md-center">
         <ng-container *ngIf="item?.burger?.type == 'burger'">
-          <strong>{{item?.burger?.prix}} FCFA</strong>
+          <strong >{{getPrixBurger(item)}} FCFA</strong>
         </ng-container>
        <ng-container *ngIf="itemMenu?.menu?.type == 'menu'">
-        <strong>{{itemMenu?.menu?.prix}} FCFA</strong>
+        <strong>{{getPrixMenu(item)}} FCFA</strong>
        </ng-container>
       </p>
       <!-- Price -->
