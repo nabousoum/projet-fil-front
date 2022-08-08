@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { BurgerCommande, Panier } from 'src/app/client/commande/shared/models/panier';
+import { BurgerCommande, MenuCommande, Panier } from 'src/app/client/commande/shared/models/panier';
 import { Detail } from '../models/detail';
 import { Produit } from '../models/produit';
 
@@ -85,6 +85,35 @@ export class CartServiceService {
       }
         localStorage.setItem('cart', JSON.stringify(newData))
          this.newCart.next(newData)
+    }
+    
+  }
+
+  addMenu(menuCommande:MenuCommande) {
+    var trouve=false
+    this.newCart.value.menuCommandes?.map(menuCom=>{
+      if(menuCom.menu?.id == menuCommande.menu?.id){
+          trouve = true
+          Number(menuCom.quantite += menuCommande.quantite)
+      }
+    })
+    if(!trouve){
+      //const ls = JSON.parse(localStorage.getItem('cart') || 'null')
+      let newData = {
+        ...this.newCart.value,
+        menuCommandes: this.newCart.value.menuCommandes?.concat(menuCommande)
+      }
+      //localStorage.setItem('cart', JSON.stringify(newData))
+      return this.newCart.next(newData)
+    }
+    else{
+       //const ls = JSON.parse(localStorage.getItem('cart') || 'null')
+       let newData = {
+        ...this.newCart.value,
+        menuCommandes: this.newCart.value.menuCommandes
+      }
+      //localStorage.setItem('cart', JSON.stringify(newData))
+      return this.newCart.next(newData)
     }
     
   }

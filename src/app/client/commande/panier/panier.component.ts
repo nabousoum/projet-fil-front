@@ -12,7 +12,7 @@ export class PanierComponent implements OnInit {
 
   //items:Detail[] = []
   newItems:Panier={}
-  items:BurgerCommande[]|undefined = []
+  items:any = []
   constructor(private cartServ:CartServiceService) { }
 
   ngOnInit(): void {
@@ -21,7 +21,8 @@ export class PanierComponent implements OnInit {
     // })
     this.cartServ.newCart.subscribe(data=>{
       this.newItems = data
-      this.items = data.burgerCommandes
+      if(data.burgerCommandes && data.menuCommandes)
+      this.items = [...data.burgerCommandes,...data.menuCommandes]
     })
   }
 

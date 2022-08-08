@@ -17,8 +17,8 @@ export interface BurgerCommande{
 /* MenuCommande */
 
 export interface MenuCommande{
-    quantite?: number
-    menu?:Menu
+    quantite: number
+    menu?:Produit
 }
 
 export interface Menu{

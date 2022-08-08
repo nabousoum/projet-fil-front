@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { BurgerCommande } from '../../commande/shared/models/panier';
+import { BurgerCommande, MenuCommande } from '../../commande/shared/models/panier';
 import { Detail } from '../shared/models/detail';
 import { Produit } from '../shared/models/produit';
 import { CartServiceService } from '../shared/services/cart-service.service';
@@ -228,10 +228,14 @@ export class DetailComponent implements OnInit {
         this.cartServ.addBurger(burger)
         console.log(this.cartServ.newCart.value)
       }
-    // if (detail.menu){ 
-    //   this.cartServ.addItems(detail)
-    //   console.log(this.cartServ.cartItems.value)
-    // }
+    if (detail.menu){ 
+      let menu:MenuCommande = {
+        quantite:this.size,
+        menu:detail.menu
+      }
+      this.cartServ.addMenu(menu)
+      console.log(this.cartServ.newCart.value)
+    }
   }
 
 }
