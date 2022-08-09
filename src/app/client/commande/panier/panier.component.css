@@ -1,4 +1,5 @@
 .gradient-custom{
+    display: flex;
     margin-top: 5%;
 }
 h5{
@@ -8,6 +9,19 @@ h5{
     height: 40px;
 }
 .btn-pers{
+    background-color: #C2B364;
+    color: white;
+}
+.panierVide{
+    margin-top: 10%;
+    margin-bottom: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.btn{
+    border: none;
     background-color: #C2B364;
     color: white;
 }

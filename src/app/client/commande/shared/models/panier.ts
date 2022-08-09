@@ -6,6 +6,13 @@ export interface Panier{
     menuCommandes?: MenuCommande[]
     boissonCommandes?: BoissonCommande[]
     friteCommandes?: FriteCommande[]
+    zone?:Zone
+}
+
+export interface Zone{
+    id?:number
+    libelle?:string
+    prix?:number
 }
 
 /* BurgerCommande */

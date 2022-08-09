@@ -22,4 +22,9 @@ export class TokenService {
     localStorage.removeItem('token')
     this.router.navigate(['/client/produits/catalogues'])
   }
+
+  getToken(){
+    const token = localStorage.getItem('token')
+    return token
+  }
 }

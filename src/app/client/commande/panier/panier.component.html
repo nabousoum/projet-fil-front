@@ -1,8 +1,15 @@
 
 <ss-header></ss-header>
 <p>panier works!</p>
-<section class="h-100 gradient-custom">
-     
+<ng-container *ngIf="items.length == 0">
+  <div class="panierVide">
+    <img src="assets/images/panierVide.png" alt="">
+    <h2>votre panier est vide</h2>
+    <a routerLink="/client/produits/catalogues"> <button class="btn btn-primary">revenir au catalogue</button></a>
+  </div>
+</ng-container>
+<ng-container *ngIf="items.length != 0">
+  <section class="h-100 gradient-custom">
     <div class="container py-5">
       <div class="row d-flex justify-content-center my-4">
           <div class="col-md-8">
@@ -39,7 +46,7 @@
                 </li>
               </ul>
               <a routerLink="/client/commande/livraison">
-                <button type="button" class="btn btn-pers btn-lg btn-block">
+                <button (click)="validerCommande()" type="button" class="btn btn-pers btn-lg btn-block">
                   COMMANDER
                 </button>
               </a>
@@ -50,4 +57,5 @@
       </div>
     </div>
   </section>
+</ng-container>
   <ss-footer ></ss-footer>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { BurgerCommande, Menu, MenuCommande, Panier } from 'src/app/client/commande/shared/models/panier';
+import { BoissonCommande, BurgerCommande, FriteCommande, Menu, MenuCommande, Panier } from 'src/app/client/commande/shared/models/panier';
 import { Detail } from '../models/detail';
 import { Produit } from '../models/produit';
 
@@ -57,7 +57,7 @@ export class CartServiceService {
   //   return JSON.parse(localStorage.getItem('cart') || 'null')
   // }
 
-  /* add burger */
+  /* burger commande */
   addBurger(burger:BurgerCommande){
     var trouve=false
     this.newCart.value.burgerCommandes?.map(burgerCommande=>{
@@ -91,7 +91,7 @@ export class CartServiceService {
     }
     
   }
-
+  /* menu commande */
   addMenu(menuCommande:MenuCommande) {
     var trouve=false
     this.newCart.value.menuCommandes?.map(menuCom=>{
@@ -120,7 +120,7 @@ export class CartServiceService {
     }
     
   }
-
+  /* montant total panier */
   getTotalPrice(){
     let grandTotal = 0
     this.newCart.value.menuCommandes?.map(menuCom=>{
@@ -134,6 +134,7 @@ export class CartServiceService {
     return grandTotal
   }
 
+  /* suppression d un element du panier */
   removeCart(object:any){
     if(object.type == 'menu'){
       this.newCart.value.menuCommandes?.map((menuCom,index)=>{
@@ -166,5 +167,27 @@ export class CartServiceService {
       
     }
     return this.newCart.next
+  }
+
+  /* boisson commande */
+  addBoisson(boissonCommande:BoissonCommande){
+    const ls = JSON.parse(localStorage.getItem('cart') || 'null')
+      let newData = {
+        ...this.newCart.value,
+        boissonCommandes: this.newCart.value.boissonCommandes?.concat(boissonCommande)
+      }
+      localStorage.setItem('cart', JSON.stringify(newData))
+      return this.newCart.next(newData)
+  }
+
+  /* frites commande */
+  addFrite(friteCommande:FriteCommande){
+    const ls = JSON.parse(localStorage.getItem('cart') || 'null')
+      let newData = {
+        ...this.newCart.value,
+        friteCommandes: this.newCart.value.friteCommandes?.concat(friteCommande)
+      }
+      localStorage.setItem('cart', JSON.stringify(newData))
+      return this.newCart.next(newData)
   }
 }

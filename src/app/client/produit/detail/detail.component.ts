@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { BurgerCommande, CommandeMenuBoissonTaille, MenuCommande } from '../../commande/shared/models/panier';
+import { BoissonCommande, BurgerCommande, CommandeMenuBoissonTaille, FriteCommande, MenuCommande } from '../../commande/shared/models/panier';
 import { BoissonTailleBoisson, Detail } from '../shared/models/detail';
 import { Produit } from '../shared/models/produit';
 import { CartServiceService } from '../shared/services/cart-service.service';
@@ -240,7 +240,7 @@ export class DetailComponent implements OnInit {
         })
       }
     }
-    console.log(this.tab)
+   // console.log(this.tab)
     this.textAlert2(this.tab)
   }
 
@@ -285,6 +285,24 @@ export class DetailComponent implements OnInit {
       this.toast.success({detail:"success",summary:"le menu bien a été enregistré dans le panier"})
       console.log(this.cartServ.newCart.value)
     }
+    // if(detail.tailleBoissons){
+    //   let boisson:BoissonCommande = {
+    //     quantite: 2,
+    //     boissonTailleBoisson: {}
+    //   }
+    //   this.cartServ.addBoisson(boisson)
+    //   //this.toast.success({detail:"success",summary:"le burger bien a été enregistré dans le panier"})
+    //   console.log(this.cartServ.newCart.value)
+    // }
+    // if(detail.portionFrites){
+    //   let frite:FriteCommande = {
+    //     quantite: 2,
+    //     portionFrite: detail
+    //   }
+    //   this.cartServ.addBoisson(frite)
+    //   //this.toast.success({detail:"success",summary:"le burger bien a été enregistré dans le panier"})
+    //   console.log(this.cartServ.newCart.value)
+    // }
   }
 
 }
