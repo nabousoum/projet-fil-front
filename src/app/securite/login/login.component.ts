@@ -1,5 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ICredential, IToken } from '../shared/models/Icredentials';
+import { AuthServService } from '../shared/services/auth-serv.service';
+import { TokenService } from '../shared/services/token.service';
 
 @Component({
   selector: 'ss-login',
@@ -7,20 +10,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  form:any={
-    login:null,
-    password:null
+
+  form:ICredential={
+    login:'',
+    password:''
   }
   
-  constructor(private http:HttpClient) { }
+  constructor(
+    private authServ : AuthServService,
+    private tokenService: TokenService
+    ) { }
 
   ngOnInit(): void {
   }
   onSubmit(){
     console.log(this.form);
-    this.http.post('http://127.0.0.1:8000/api/login_check',this.form).subscribe(
-        data =>console.log(data),
-        err=> console.log(err),
+    this.authServ.login(this.form).subscribe(
+      data=>{
+        console.log(data.token)
+        this.tokenService.saveToken(data.token)
+      },
+      err=>console.log(err),
     )
   }
 
