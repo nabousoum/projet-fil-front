@@ -13,6 +13,7 @@
             </ng-container>    
             <div class="top">
                 <div class="fix-1">
+                    {{commandeMenuBoissonTailles|json}}
                     <ng-container *ngIf="(produit$|async)?.menu?.type == 'menu'">
                         <img src="data:image/png;base64,{{(produit$|async)?.menu?.image}}" alt="...">
                     </ng-container>  

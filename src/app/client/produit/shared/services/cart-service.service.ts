@@ -129,7 +129,7 @@ export class CartServiceService {
     })
     this.newCart.value.burgerCommandes?.map(burgerCommande=>{
       if(burgerCommande.burger?.prix)
-      grandTotal += Number( burgerCommande?.burger?.prix)
+      grandTotal += Number( burgerCommande?.burger?.prix * burgerCommande.quantite)
     })
     return grandTotal
   }

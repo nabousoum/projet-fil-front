@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { BurgerCommande, MenuCommande } from '../../commande/shared/models/panier';
-import { Detail } from '../shared/models/detail';
+import { BurgerCommande, CommandeMenuBoissonTaille, MenuCommande } from '../../commande/shared/models/panier';
+import { BoissonTailleBoisson, Detail } from '../shared/models/detail';
 import { Produit } from '../shared/models/produit';
 import { CartServiceService } from '../shared/services/cart-service.service';
 import { CatalogueStoreService } from '../shared/services/catalogue-store.service';
@@ -24,6 +24,8 @@ export class DetailComponent implements OnInit {
   private type:any =""
   quantiteClient = 0
   produit$ : Observable<Detail> | null = null;
+  commandeMenuBoissonTailles : CommandeMenuBoissonTaille[] = []
+
 
   /* evenement de desactivation du bouton */
   disabledButton(event: any) {
@@ -74,6 +76,7 @@ export class DetailComponent implements OnInit {
   message = ""
   message2 = ""
   textBool = false
+  
   parentControl(event :any){
     if(this.tab.length==0)
     {
@@ -84,10 +87,18 @@ export class DetailComponent implements OnInit {
             {
               idBoisson:event.boissonTaille.idBoisson,
                size:this.size,
-               stock:event.boissonTaille.stock
+               stock:event.boissonTaille.stock,
+               idB:event.idB
             }
           ]
         }
+        let commande={
+          quantite: this.size,
+          boissonTailles: {
+            id:event.boissonTaille.idB
+          }
+        }
+        this.commandeMenuBoissonTailles.push(commande)
         this.tab.push(object);
     }
     else{
@@ -107,10 +118,18 @@ export class DetailComponent implements OnInit {
             {
               idBoisson:event.boissonTaille.idBoisson,
                size:this.size,
-               stock:event.boissonTaille.stock
+               stock:event.boissonTaille.stock,
+               idB:event.idB
             }
           ]
         }
+        let commande={
+          quantite: this.size,
+          boissonTailles: {
+            id:event.boissonTaille.idB
+          }
+        }
+        this.commandeMenuBoissonTailles.push(commande)
         this.tab.push(object);
       }
       else{
@@ -137,12 +156,31 @@ export class DetailComponent implements OnInit {
               if(testBool==false){
                 data.boissons.push(boissonsTab)
               }
+              let commande={
+                quantite: this.size,
+                boissonTailles: {
+                  id:event.boissonTaille.idB
+                }
+              }
+              let tabBois = this.commandeMenuBoissonTailles
+              let trouveCmd = false
+              tabBois.map(bois=>{
+                trouveCmd = true
+                if(bois.boissonTailles?.id  == event.boissonTaille.idBoisson){
+                  bois.quantite = event.quantite
+                }
+              })
+              if(trouveCmd == false){
+                this.commandeMenuBoissonTailles.push(commande)
+              }
+              
             }
           }
         )
       }
     }
-    //console.log(this.tab)
+   // console.log(this.tab)
+    console.log(this.commandeMenuBoissonTailles)
     this.textAlert(this.tab)
   }
 
@@ -228,14 +266,23 @@ export class DetailComponent implements OnInit {
           burger:detail.burger
         }
         this.cartServ.addBurger(burger)
+        this.toast.success({detail:"success",summary:"le burger bien a été enregistré dans le panier"})
         console.log(this.cartServ.newCart.value)
       }
     if (detail.menu){ 
       let menu:MenuCommande = {
         quantite:this.size,
-        menu:detail.menu
+        menu:{
+          id:Number(detail.menu.id),
+          nom: detail.menu.nom,
+          image:detail.menu.image,
+          type:detail.menu.type,
+          prix:detail.menu.prix,
+          commandeMenuBoissonTailles: this.commandeMenuBoissonTailles
+        }
       }
       this.cartServ.addMenu(menu)
+      this.toast.success({detail:"success",summary:"le menu bien a été enregistré dans le panier"})
       console.log(this.cartServ.newCart.value)
     }
   }

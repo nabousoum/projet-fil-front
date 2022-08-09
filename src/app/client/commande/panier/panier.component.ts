@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Detail } from '../../produit/shared/models/detail';
 import { CartServiceService } from '../../produit/shared/services/cart-service.service';
 import { BurgerCommande, Panier } from '../shared/models/panier';
-
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'ss-panier',
   templateUrl: './panier.component.html',
@@ -14,13 +14,15 @@ export class PanierComponent implements OnInit {
   newItems:Panier={}
   items:any = []
 
-  constructor(private cartServ:CartServiceService) { }
+  constructor(private cartServ:CartServiceService,
+    private toast: NgToastService
+    ) { }
     montant = 0
   ngOnInit(): void {
     // this.cartServ.cartItems.subscribe(data=>{
     //   this.items = data
     // })
-    this.cartServ.newCart.subscribe(data=>{
+    this.cartServ.newCart.subscribe(data=>{  
       this.newItems = data
       if(data.burgerCommandes && data.menuCommandes)
       this.items = [...data.burgerCommandes,...data.menuCommandes]
@@ -34,17 +36,12 @@ export class PanierComponent implements OnInit {
 
   newObject = {}
   onDelete(event : any){
-    alert(event.nom)
+    //alert(event.nom)
     this.newObject = event
     this.cartServ.removeCart(event)
+    this.toast.info({detail:"info",summary:"l' element a bien été supprimé"})
 
   }
 
-  validateInput(event : any,i:number){
-    const qty = event.target.value
-    this.QtyUpdated(qty,i)
-  }
-  private QtyUpdated(qty:number,i:number){
-    this.items[i].quantite = qty
-  }
+ 
 }

@@ -21,18 +21,30 @@ export class LignePanierComponent implements OnInit {
   //     //alert(i)
   //   this.index.emit(i);
   // }
+  dec() { this.resize(-1); }
+  inc() { this.resize(+1); }
 
+  size:number = 0
+  resize(delta: number) {
+    this.size = Math.min(40, Math.max(1, +this.size + delta));
+    
+  }
   getPrixBurger(data:any){
-    let prix = data.burger.prix * data.quantite
+    let prix = data.burger.prix * (data.quantite+this.size)
     return prix
   }
   getPrixMenu(data:any){
-    let prix = data.menu.prix * data.quantite
+    let prix = data.menu.prix * (data.quantite+this.size)
     return prix
   }
   delete(event:any){
     //alert(event.nom)
     this.index.emit(event)
+  }
+   qte:number = 0
+  value(event :any){
+    //alert(event.target.value)
+    this.qte = event.target.value
   }
   ngOnInit(): void {
   }

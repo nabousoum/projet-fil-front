@@ -18,12 +18,16 @@ export interface BurgerCommande{
 
 export interface MenuCommande{
     quantite: number
-    menu?:Produit
+    menu?:Menu
 }
 
 export interface Menu{
-    id?: number
-    commandeMenuBoissonTailles?: CommandeMenuBoissonTaille[]
+    id: number
+    nom?: string
+    image?:Blob
+    type?:string
+    prix?:number
+    commandeMenuBoissonTailles: CommandeMenuBoissonTaille[]
 }
 
 export interface CommandeMenuBoissonTaille{
