@@ -6,6 +6,7 @@ import { SecuriteComponent } from './securite.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     SecuriteRoutingModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
   ]
 })
 export class SecuriteModule { }

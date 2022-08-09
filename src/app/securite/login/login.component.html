@@ -8,20 +8,26 @@
             <div class="card-body p-5 text-center">
   
               <h3 class="mb-5">Formulaire de connexion</h3>
-  
-              <div class="form-outline mb-4">
-                <input type="email" id="typeEmailX-2" class="form-control form-control-lg" />
-                <label class="form-label" for="typeEmailX-2">Login</label>
-              </div>
-  
-              <div class="form-outline mb-4">
-                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" />
-                <label class="form-label" for="typePasswordX-2">Password</label>
-              </div>
-  
-              <button class="btn btn-primary btn-lg btn-block btn1" type="submit">Login</button>
-              <bR> OR<bR>
-              <button class="btn  btn-lg  btn2" type="submit">Register</button>
+              <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()">
+                <div class="form-outline mb-4">
+                  <input type="email" name="login" [(ngModel)]="form.login" id="typeEmailX-2" #login="ngModel" class="form-control form-control-lg" required/>
+                  <label class="form-label" for="typeEmailX-2">Login</label>
+                  <div class="form_error" *ngIf="login.errors && f.submitted">
+                    Email is required !
+                  </div>
+                </div>
+                <div class="form-outline mb-4">
+                  <input type="password" name="password" [(ngModel)]="form.password" id="typePasswordX-2" #password="ngModel" class="form-control form-control-lg" required />
+                  <label class="form-label" for="typePasswordX-2">Password</label>
+                  <div class="form_error" *ngIf="password.errors && f.submitted">
+                    Password is required !
+                  </div>
+                </div>
+                <button class="btn btn-primary btn-lg btn-block btn1" type="submit">Login</button>
+                <bR> OR<bR>
+                <button class="btn  btn-lg  btn2" type="submit">Register</button>
+              </form>
+              
   
             </div>
           </div>
