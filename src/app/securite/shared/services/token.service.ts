@@ -17,4 +17,9 @@ export class TokenService {
     console.log(token)
     return !! token
   }
+
+  clearToken():void{
+    localStorage.removeItem('token')
+    this.router.navigate(['/client/produits/catalogues'])
+  }
 }

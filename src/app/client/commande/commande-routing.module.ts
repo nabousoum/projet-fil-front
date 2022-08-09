@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from 'src/app/_helpers/auth.guard';
 import { CommandeComponent } from './commande.component';
 import { DetailComponent } from './detail/detail.component';
 import { LivraisonComponent } from './livraison/livraison.component';
@@ -14,7 +15,8 @@ const routes: Routes = [
   },
   {
     path:"livraison",
-    component: LivraisonComponent
+    component: LivraisonComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:"suivi",

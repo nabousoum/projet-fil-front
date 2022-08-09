@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenService } from 'src/app/securite/shared/services/token.service';
 import { CartServiceService } from '../../produit/shared/services/cart-service.service';
 
 @Component({
@@ -8,7 +9,10 @@ import { CartServiceService } from '../../produit/shared/services/cart-service.s
 })
 export class HeaderComponent implements OnInit {
   itemIncCart:number = 0
-  constructor(private cartService:CartServiceService) { }
+  constructor(
+    private cartService:CartServiceService,
+    private tokenService:TokenService
+    ) { }
   
   countPanier:number = 0
   ngOnInit(): void {
@@ -22,4 +26,7 @@ export class HeaderComponent implements OnInit {
     })
   }
 
+  logout():void{
+    this.tokenService.clearToken()
+  }
 }
