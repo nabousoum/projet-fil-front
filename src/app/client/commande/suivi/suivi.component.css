@@ -17,3 +17,11 @@ h3{
 .btn{
     margin-left: 10%;
 }
+input{
+    height: 40px;
+    margin-top: 10%;
+    margin-bottom: 2%;
+    width: 30%;
+    border-radius: 5px;
+    border: 2px solid #C2B364;
+}

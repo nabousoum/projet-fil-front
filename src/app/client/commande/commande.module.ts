@@ -13,6 +13,8 @@ import { LignePanierComponent } from './panier/ligne-panier/ligne-panier.compone
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SuiviLigneComponent } from './suivi/suivi-ligne/suivi-ligne.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FormsModule } from '@angular/forms';
+import { CommandeFilter } from './shared/services/commande-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -23,14 +25,16 @@ import { NgxPaginationModule } from 'ngx-pagination';
     DetailComponent,
     LigneCommandeComponent,
     LignePanierComponent,
-    SuiviLigneComponent
+    SuiviLigneComponent,
+    CommandeFilter
   ],
   imports: [
     CommonModule,
     CommandeRoutingModule,
     LayoutModule,
     NgbModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    FormsModule
     
   ],
   exports: [

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators,ValidationErrors, ValidatorFn } from '@angular/forms';
 import { RegisterService } from '../shared/services/register.service';
 import { NgToastService } from 'ng-angular-popup';
 import { Router } from '@angular/router';
@@ -28,8 +28,8 @@ export class RegisterComponent implements OnInit {
       "login":new FormControl(null,[Validators.required,Validators.email]),
       "password":new FormControl(null,[Validators.required]),
       "confirmPass":new FormControl(null,[Validators.required])
-
-    })
+    }
+    )
   }
 
   submitData(){
@@ -62,5 +62,7 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.get('confirmPass')
   }
   
- 
+  MustMatch(controlName:string,matchingControlName:string){
+
+  }
 }

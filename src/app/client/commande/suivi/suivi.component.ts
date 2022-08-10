@@ -13,8 +13,11 @@ export class SuiviComponent implements OnInit {
 
   totalLenght:number = 0
   p: number = 1
+
   commandes$ : Observable<CommandeList> | any = null
   commandes:any[] = []
+
+  searchTerm:any
   constructor(
     private comServ:CommandeServService
   ) { }
