@@ -9,7 +9,7 @@ export class TokenService {
   constructor(private router : Router) { }
   saveToken(token: string):void {
     localStorage.setItem('token', token)
-    this.router.navigate(['/client/commande/livraison'])
+    this.router.navigate(['/client/commande/panier'])
   }
 
   isLogged():boolean{

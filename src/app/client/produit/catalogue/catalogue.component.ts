@@ -25,7 +25,6 @@ export class CatalogueComponent implements OnInit {
     })
   }
   filterProduct(type:string){
-  
       this.serv.all().subscribe(data => {
         if(type!=""){
         this.catas = data.produits?.filter(product => product.type === type)

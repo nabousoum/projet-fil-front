@@ -29,4 +29,7 @@ export class HeaderComponent implements OnInit {
   logout():void{
     this.tokenService.clearToken()
   }
+
+  isLogged:boolean = this.tokenService.isLogged()
+  
 }

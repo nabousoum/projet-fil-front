@@ -11,6 +11,7 @@ import { LayoutModule } from 'src/app/client/layout/layout.module';
 import { LigneCommandeComponent } from './ligne-commande/ligne-commande.component';
 import { LignePanierComponent } from './panier/ligne-panier/ligne-panier.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SuiviLigneComponent } from './suivi/suivi-ligne/suivi-ligne.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SuiviComponent,
     DetailComponent,
     LigneCommandeComponent,
-    LignePanierComponent
+    LignePanierComponent,
+    SuiviLigneComponent
   ],
   imports: [
     CommonModule,
