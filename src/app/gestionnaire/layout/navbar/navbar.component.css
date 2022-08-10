@@ -32,7 +32,15 @@ nav .vertical-menu-logo .open-menu-btn hr{
     margin: 5px 0
 }
 nav li{
+    border: 1px solid black;
     list-style: none; padding: 20px 20px; cursor: pointer;
+}
+a{
+    color: white;
+    text-decoration: none;
+}
+a:hover{
+    color: #C2B364;
 }
 nav li:hover{ 
     color: #C2B364;
@@ -54,14 +62,7 @@ nav li#user-info > span:after{
   margin: auto;
   border-radius: 50%;
 }
-.content-wrapper{
-  width: calc(100% - 300px);
-  height: 100%;
-  position: fixed;
-  background: #fff;
-  left: 300px;
-  padding: 20px;
-}
+
 .closed-menu .content-wrapper{
   width: 100%;
   left: 50px;
@@ -92,26 +93,11 @@ nav li#user-info > span:after{
 .content-wrapper{
     background: #ebebeb;
 }
-.content{
-    margin-top: 2%;
-    margin-left: 5%;
-  width: 90%;
-  min-height: 90%;
-  background: #fff;
-  border-radius: 10px;
-  padding: 30px;
-}
+
 .logo{
     margin: 0%;
     height: 150px;
     width: 310px;
     margin-left: -10%;
     margin-top: -10%;
-}
-.btn{
-    border-radius: 10px;
-    border: none;
-    background-color: #C2B364;
-    color: white;
-    margin-left: 85%;
 }

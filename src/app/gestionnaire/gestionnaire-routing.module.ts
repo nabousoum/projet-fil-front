@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { GestionnaireComponent } from './gestionnaire.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './layout/navbar/navbar.component';
 
 const routes: Routes = [
   { 
@@ -11,7 +11,8 @@ const routes: Routes = [
    { 
     path: 'dashboard',
    component: NavbarComponent
-   }
+   },
+  { path: 'produit', loadChildren: () => import('./produit/produit.module').then(m => m.ProduitModule) }
 ];
 
 @NgModule({
