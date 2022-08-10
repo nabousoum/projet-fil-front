@@ -61,6 +61,7 @@ export class PanierComponent implements OnInit {
         this.commandeServ.saveCommande(this.cartServ.newCart.value).subscribe(
           err=> console.log(err),
         )
+        this.cartServ.removeAllCart()
         this.toast.success({detail:"success",summary:"votre commande a bien été enregistré"})
     }
     else{

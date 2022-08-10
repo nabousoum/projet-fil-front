@@ -26,7 +26,7 @@ export class CommandeServService {
         'Authorization': `Bearer ${this.token.getToken()}`
       })
     };
-    console.log(httpOptions)
+    //console.log(httpOptions)
     return this.http.post(this.urlCommandePost,JSON.stringify(object),httpOptions)
   }
 

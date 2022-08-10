@@ -120,6 +120,7 @@ export class CartServiceService {
     }
     
   }
+
   /* montant total panier */
   getTotalPrice(){
     let grandTotal = 0
@@ -168,7 +169,10 @@ export class CartServiceService {
     }
     return this.newCart.next
   }
-
+  removeAllCart(){
+    localStorage.removeItem('cart');
+    window.location.reload()
+  }
   /* boisson commande */
   addBoisson(boissonCommande:BoissonCommande){
     const ls = JSON.parse(localStorage.getItem('cart') || 'null')

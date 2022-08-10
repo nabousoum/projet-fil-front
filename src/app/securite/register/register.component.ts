@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { RegisterService } from '../shared/services/register.service';
+import { NgToastService } from 'ng-angular-popup';
+import { Router } from '@angular/router';
 @Component({
   selector: 'ss-register',
   templateUrl: './register.component.html',
@@ -11,7 +13,11 @@ export class RegisterComponent implements OnInit {
   registerForm:any
 
 
-  constructor() { }
+  constructor(
+    private register: RegisterService,
+    private toast: NgToastService,
+    private router : Router
+  ) { }
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
@@ -28,6 +34,11 @@ export class RegisterComponent implements OnInit {
 
   submitData(){
     console.log(this.registerForm.value)
+    this.register.saveUser(this.registerForm.value).subscribe(
+      err=> console.log(err),
+    )
+    this.toast.success({detail:"success",summary:"votre inscription a été validée"})
+    this.router.navigate(['/securite/login'])
   }
   get nom(){
     return this.registerForm.get('nom')
@@ -50,8 +61,6 @@ export class RegisterComponent implements OnInit {
   get confirmPass(){
     return this.registerForm.get('confirmPass')
   }
-  passwordConfirming(c: AbstractControl): boolean  {
-    
-   return false
-  }
+  
+ 
 }

@@ -11,14 +11,15 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                 <li class="nav-item"><a class="nav-link" routerLink="/client/produits/catalogues">CATALOGUE </a></li>
-                <li class="nav-item"><a class="nav-link" routerLink="/securite/register">S INSCRIRE </a></li>
+                <ng-container *ngIf="isLogged == false">
+                    <li class="nav-item"><a class="nav-link" routerLink="/securite/register">S INSCRIRE </a></li>
+                </ng-container>
                 <ng-container *ngIf="isLogged == false">
                     <li class="nav-item"><a class="nav-link" routerLink="/securite/login">LOGIN</a></li>
                 </ng-container>
                 <ng-container *ngIf="isLogged == true">
                     <li class="nav-item"><a (click)="logout()" class="nav-link" routerLink="">LOGOUT</a></li>
                 </ng-container>
-                <li class="nav-item"><a class="nav-link" routerLink="/client/commande/suivi">SUIVI</a></li>
                 <ng-container *ngIf="isLogged == true">
                     <li class="nav-item"><a class="nav-link" routerLink="/client/commande/suivi">MES COMMANDES</a></li>
                 </ng-container>
