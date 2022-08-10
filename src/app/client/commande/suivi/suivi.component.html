@@ -13,7 +13,8 @@
               </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let commande of (commandes$|async) ">
+             
+                <tr *ngFor="let commande of commandes | paginate:{itemsPerPage:5,currentPage:p,totalItems:totalLenght}">
                   <td>
                     <p class="fw-normal mb-1">{{commande.numeroCommande}}</p>
                   </td>
@@ -30,24 +31,10 @@
                       </a>
                     
                   </td>
-                </tr>  
+                </tr> 
             </tbody>
           </table>
-          <nav aria-label="...">
-            <ul class="pagination">
-              <li class="page-item disabled">
-                <a class="page-link">Previous</a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item active" aria-current="page">
-                <a class="page-link" href="#">2 <span class="visually-hidden">(current)</span></a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-              </li>
-            </ul>
-          </nav>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
 </div>
 <ss-footer></ss-footer>

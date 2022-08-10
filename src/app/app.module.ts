@@ -11,6 +11,7 @@ import { LayoutModule } from './client/layout/layout.module';
 import { PageNotFoundComponent } from './notFound/page.not.found/page.not.found.component';
 import { NgToastModule } from 'ng-angular-popup' 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,7 @@ import { NgToastModule } from 'ng-angular-popup'
     RouterModule,
     NgbModule,
     HttpClientModule,
-    NgToastModule
+    NgToastModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -31,7 +31,7 @@ export class CommandeServService {
   }
 
   /* commande d un client */
-  commandeClient():Observable<CommandeList>{
+  commandeClient(){
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',

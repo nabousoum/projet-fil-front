@@ -12,7 +12,7 @@ import { LigneCommandeComponent } from './ligne-commande/ligne-commande.componen
 import { LignePanierComponent } from './panier/ligne-panier/ligne-panier.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SuiviLigneComponent } from './suivi/suivi-ligne/suivi-ligne.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,9 @@ import { SuiviLigneComponent } from './suivi/suivi-ligne/suivi-ligne.component';
     CommonModule,
     CommandeRoutingModule,
     LayoutModule,
-    NgbModule
+    NgbModule,
+    NgxPaginationModule
+    
   ],
   exports: [
     LigneCommandeComponent,

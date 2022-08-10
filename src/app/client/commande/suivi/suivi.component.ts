@@ -10,7 +10,11 @@ import { catchError, tap, filter,map } from 'rxjs/operators';
   styleUrls: ['./suivi.component.css']
 })
 export class SuiviComponent implements OnInit {
-  commandes$ : Observable<CommandeList> | any = null;
+
+  totalLenght:number = 0
+  p: number = 1
+  commandes$ : Observable<CommandeList> | any = null
+  commandes:any[] = []
   constructor(
     private comServ:CommandeServService
   ) { }
@@ -19,6 +23,8 @@ export class SuiviComponent implements OnInit {
     this.comServ.commandeClient().subscribe(data => {
       console.log(data);
       this.commandes$ = this.comServ.commandeClient()
+      this.commandes = data
+      this.totalLenght = this.commandes.length
       return data
     })
   }
