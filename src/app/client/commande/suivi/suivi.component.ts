@@ -22,7 +22,6 @@ export class SuiviComponent implements OnInit {
   ngOnInit(): void {
     this.comServ.commandeClient().subscribe(data => {
       console.log(data);
-      this.commandes$ = this.comServ.commandeClient()
       this.commandes = data
       this.totalLenght = this.commandes.length
       return data

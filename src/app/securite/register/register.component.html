@@ -7,28 +7,93 @@
             <div class="card-body p-5 text-center">
   
               <h3 class="mb-5">Formulaire d inscription</h3>
+              <form [formGroup]="registerForm" (ngSubmit)="submitData()">
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+
+                    <div class="form-outline mb-4">
+                      <input type="text" formControlName="nom" id="nom" class="form-control form-control-lg" />
+                      <label class="form-label" for="nom">Nom</label>
+                      <div *ngIf="nom.invalid && nom.touched || nom.dirty">
+                        <span *ngIf="nom.errors?.required">Le nom est obligatoire</span>
+                        <span *ngIf="nom.errors?.pattern">Le nom est doit contenir que des lettres</span>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="col-md-6 mb-4">
+
+                    <div class="form-outline mb-4">
+                      <input type="text" formControlName="prenom" id="prenom" class="form-control form-control-lg" />
+                      <label class="form-label" for="prenom">Prenom</label>
+                      <div *ngIf="prenom.invalid && prenom.touched || prenom.dirty">
+                        <span *ngIf="prenom.errors?.required">Le prenom est obligatoire</span>
+                        <span *ngIf="prenom.errors?.pattern">Le prenom est doit contenir que des lettres</span>
+                      </div>
+                    </div>
+
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline mb-4">
+                    <input type="text" formControlName="adresse"  id="adresse" class="form-control form-control-lg" />
+                    <label class="form-label" for="adresse">Adresse</label>
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline mb-4">
+                    <input type="text" formControlName="telephone" id="telephone" class="form-control form-control-lg" />
+                    <label class="form-label" for="telephone">Numero de telephone</label>
+                    <div *ngIf="telephone.invalid && telephone.touched || telephone.dirty">
+                      <span *ngIf="telephone.errors?.required">Le numero de telephone est obligatoire</span>
+                      <span *ngIf="telephone.errors?.pattern">Le numero est doit contenir que des chiffres</span>
+                    </div>
+                  </div>
+
+                </div>
+            </div>
+               
+                <div class="form-outline mb-4">
+                  <input type="email" formControlName="login" id="login" class="form-control form-control-lg" />
+                  <label class="form-label" for="login">Login</label>
+                  <div *ngIf="login.invalid && login.touched || login.dirty">
+                    <span *ngIf="login.errors?.required">Le login est obligatoire</span>
+                    <span *ngIf="login.errors?.email">Le login doit etre un email</span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mb-4">
   
-              <div class="form-outline mb-4">
-                <input type="email" id="typeEmailX-2" class="form-control form-control-lg" />
-                <label class="form-label" for="typeEmailX-2">Nom</label>
-              </div>
+                    <div class="form-outline mb-4">
+                      <input type="password" formControlName="password" id="password" class="form-control form-control-lg" />
+                      <label class="form-label" for="password">Mot de passe</label>
+                      <div *ngIf="password.invalid && password.touched || password.dirty">
+                        <span *ngIf="password.errors?.required">Le mot de passe est obligatoire</span>
+                      </div>
+                    </div>
   
-              <div class="form-outline mb-4">
-                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" />
-                <label class="form-label" for="typePasswordX-2">Prenom</label>
-              </div>
-              <div class="form-outline mb-4">
-                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" />
-                <label class="form-label" for="typePasswordX-2">Adresse</label>
-              </div>
-              <div class="form-outline mb-4">
-                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" />
-                <label class="form-label" for="typePasswordX-2">Numero de telephone</label>
-              </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
   
-              <button class="btn btn-primary btn-lg btn-block btn1" type="submit">Creer</button>
+                    <div class="form-outline mb-4">
+                      <input type="password" formControlName="confirmPass" id="confirmPass" class="form-control form-control-lg" />
+                      <label class="form-label" for="confirmPass">Confirm Mot de passe</label>
+                      <div *ngIf="confirmPass.invalid && confirmPass.touched || confirmPass.dirty">
+                        <span *ngIf="confirmPass.errors?.required">veuillez confirmer le mot de passe</span>
+                      </div>
+                    </div>
+  
+                  </div>
+              </div>
+                 
+                  
+                <button class="btn btn-primary btn-lg btn-block btn1" type="submit">Creer</button>
+              </form>
               
-  
             </div>
           </div>
         </div>

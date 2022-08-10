@@ -14,7 +14,7 @@
             </thead>
             <tbody>
              
-                <tr *ngFor="let commande of commandes | paginate:{itemsPerPage:5,currentPage:p,totalItems:totalLenght}">
+                <tr *ngFor="let commande of commandes | paginate:{itemsPerPage:3,currentPage:p,totalItems:totalLenght}">
                   <td>
                     <p class="fw-normal mb-1">{{commande.numeroCommande}}</p>
                   </td>
