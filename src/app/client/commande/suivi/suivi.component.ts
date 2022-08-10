@@ -18,6 +18,7 @@ export class SuiviComponent implements OnInit {
   commandes:any[] = []
 
   searchTerm:any
+  searchTermDate:any
   constructor(
     private comServ:CommandeServService
   ) { }

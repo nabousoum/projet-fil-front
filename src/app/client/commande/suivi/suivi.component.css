@@ -25,3 +25,7 @@ input{
     border-radius: 5px;
     border: 2px solid #C2B364;
 }
+.filterSearchs{
+    display: flex;
+    justify-content: space-between;
+}

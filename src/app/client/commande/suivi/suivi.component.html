@@ -1,7 +1,12 @@
 <ss-header></ss-header>
 <div class="container">
     <h3>LISTE DE MES COMMANDES</h3>
-    <input type="text" name="" placeholder="filtrer par etat" id="filtreByEtat"  [(ngModel)]="searchTerm" />
+    <div class="filterSearchs">
+      <input type="text" name="" placeholder="filtrer par etat" id="filtreByEtat"  [(ngModel)]="searchTerm" />
+      <input type="text" name="" placeholder="filtrer par date" id="filtreByEtat" [(ngModel)]="searchTermDate"  />
+
+    </div>
+    
     <div class="table">
       <!-- {{commandes$|async|json}} -->
         <table class="table align-middle mb-0 bg-white">
@@ -15,12 +20,12 @@
             </thead>
             <tbody>
              
-                <tr *ngFor="let commande of commandes | paginate:{itemsPerPage:3,currentPage:p,totalItems:totalLenght} | commandeFilter:searchTerm">
+                <tr *ngFor="let commande of commandes | paginate:{itemsPerPage:3,currentPage:p,totalItems:totalLenght} | commandeFilter:searchTerm | commandeFilter:searchTermDate">
                   <td>
                     <p class="fw-normal mb-1">{{commande.numeroCommande}}</p>
                   </td>
                   <td>
-                    {{commande.dateCommande}}
+                    {{commande.dateCommande | date:'YYYY-MM-dd'}}
                   </td>
                   <td>
                     {{commande.etat}}
