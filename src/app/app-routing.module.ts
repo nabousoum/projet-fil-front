@@ -12,6 +12,10 @@ const routes: Routes = [
   { 
     path: 'securite', loadChildren: () => import('./securite/securite.module').then(m => m.SecuriteModule) 
   },
+  { 
+    path: 'gestionnaire',
+     loadChildren: () => import('./gestionnaire/gestionnaire.module').then(m => m.GestionnaireModule) 
+  },
   {
     path: '**',
     redirectTo: "notFound"
