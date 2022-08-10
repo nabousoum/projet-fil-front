@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Produit } from 'src/app/client/produit/shared/models/produit';
+import { CatalogueStoreService } from 'src/app/client/produit/shared/services/catalogue-store.service';
 
 @Component({
   selector: 'ss-menu',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  catas: Produit[]| undefined = undefined;
+  constructor(private serv:CatalogueStoreService) { }
 
   ngOnInit(): void {
+    this.serv.all().subscribe(data => {
+      console.log(data.produits);
+      this.catas = data.produits
+    })
   }
 
 }

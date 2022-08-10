@@ -3,6 +3,31 @@
 <div class="content-wrapper">
     <a href=""><button class="btn btn-danger">DECONNEXION</button></a>
     <div class="content">
-            lorem
+            <h2>GESTION DES MENUS</h2>
+            {{catas|json}}
+            <a routerLink=""><button class="btn-add">AJOUTER</button></a>
+            <div class="liste">
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">NOM</th>
+                        <th scope="col">PRIX</th>
+                        <th scope="col">ACTION</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr >
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>
+                            <button><i class="bi bi-pencil"></i>editer</button>
+                            <button class="btn-bi"><i class="bi bi-archive"></i>archiver</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
     </div>
 </div>
