@@ -23,7 +23,7 @@ export class ChoixComponent implements OnInit {
     this.remove.emit(lessonIndex)
   }
   deleteFrite(lessonIndex: number) {
-    
+    this.remove.emit(lessonIndex)
   }
   constructor() { }
 

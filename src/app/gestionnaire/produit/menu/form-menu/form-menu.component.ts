@@ -3,6 +3,7 @@ import { AbstractControl, FormControl, FormGroup, Validators,ValidationErrors, V
 import { Produit } from 'src/app/client/produit/shared/models/produit';
 import { CatalogueStoreService } from 'src/app/client/produit/shared/services/catalogue-store.service';
 import { ProduitService } from 'src/app/gestionnaire/shared/services/produit.service';
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'ss-form-menu',
   templateUrl: './form-menu.component.html',
@@ -23,9 +24,12 @@ export class FormMenuComponent implements OnInit {
   frites: Produit[]| any = undefined;
   tailles: any[] = [];
 
-  constructor(private serv:CatalogueStoreService,
+  constructor(
+    private serv:CatalogueStoreService,
      private produitServ:ProduitService,
-     private fb:FormBuilder) { }
+     private fb:FormBuilder,
+     private toast: NgToastService,
+     ) { }
 
   ngOnInit(): void {
 
@@ -46,9 +50,24 @@ export class FormMenuComponent implements OnInit {
       "nom":[null,[Validators.required]],
       "image":[null,[Validators.required]],
       "description":[null,[Validators.required]],
-      menuBurgers: this.fb.array([]),
-      menuTailleBoissons:this.fb.array([]),
-      menuPortionFrites:this.fb.array([]),
+      menuBurgers: this.fb.array([
+        this.fb.group({
+          "burger":[null,[Validators.required]],
+          "quantite":[null,[Validators.required]],
+        })
+      ]),
+      menuTailleBoissons:this.fb.array([
+        this.fb.group({
+          "tailleBoisson":[null],
+          "quantite":[null],
+        })
+      ]),
+      menuPortionFrites:this.fb.array([
+        this.fb.group({
+          "portionFrite":[null],
+          "quantite":[null],
+        })
+      ]),
     }
     )
   }
@@ -56,7 +75,23 @@ export class FormMenuComponent implements OnInit {
   /*form*/
 
   submitData(){
+
+    this.registerForm.value.menuBurgers.map((data:any)=>{
+        data.burger = {id:Number(data.burger)}
+    })
+    this.registerForm.value.menuTailleBoissons.map((data:any)=>{
+        data.tailleBoisson = {id:Number(data.tailleBoisson)}
+    })
+    this.registerForm.value.menuPortionFrites.map((data:any)=>{
+      data.portionFrite = {id:Number(data.portionFrite)}
+    })
+    this.registerForm.value.prix=0
+    this.produitServ.addMenu(this.registerForm.value).subscribe(
+      err=>console.log(err),
+    )
+    this.toast.success({detail:"success",summary:"le menu a bien été enregistré"})
     console.log(this.registerForm.value)
+
   }
 
   get nom(){
@@ -90,15 +125,15 @@ export class FormMenuComponent implements OnInit {
   }
   addTaille(){
     const TailleForm = this.fb.group({
-      "tailleBoisson":[null,[Validators.required]],
-      "quantite":[null,[Validators.required]],
+      "tailleBoisson":[null],
+      "quantite":[null],
     })
     this.menuTailleBoissons.push(TailleForm);
   };
   addFrites(){
     const FriteForm = this.fb.group({
-      "portionFrite":[null,[Validators.required]],
-      "quantite":[null,[Validators.required]],
+      "portionFrite":[null],
+      "quantite":[null],
     })
     this.menuPortionFrites.push(FriteForm);
   };
@@ -107,5 +142,11 @@ export class FormMenuComponent implements OnInit {
 
   deleteBurger(lessonIndex: number) {
     this.menuBurgers.removeAt(lessonIndex);
+  }
+  deleteTaille(lessonIndex: number) {
+    this.menuTailleBoissons.removeAt(lessonIndex)
+  }
+  deleteFrite(lessonIndex: number) {
+    this.menuPortionFrites.removeAt(lessonIndex)
   }
 }

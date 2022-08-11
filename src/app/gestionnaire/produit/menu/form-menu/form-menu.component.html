@@ -71,7 +71,7 @@
                                       <div class="accordion-body">
                                         <ng-container formArrayName="menuTailleBoissons">
                                           <ng-container *ngFor="let TailleForm of menuTailleBoissons.controls; let i = index">
-                                            <ss-choix [i]="i" [form]="TailleForm" [tailles]="tailles" ></ss-choix>
+                                            <ss-choix [i]="i" (remove)="deleteTaille(i)" [form]="TailleForm" [tailles]="tailles" ></ss-choix>
                                           </ng-container>
                                         </ng-container>
                                               
@@ -94,7 +94,7 @@
                                         <div class="accordion-body">
                                           <ng-container formArrayName="menuPortionFrites">
                                             <ng-container *ngFor="let FriteForm of menuPortionFrites.controls; let i = index" >
-                                              <ss-choix [i]="i" [form]="FriteForm" [frites]="frites"></ss-choix>
+                                              <ss-choix (remove)="deleteFrite(i)" [i]="i" [form]="FriteForm" [frites]="frites"></ss-choix>
                                             </ng-container>
                                           </ng-container>
                                         </div>
@@ -108,7 +108,7 @@
                           </div>
                         </div>
                         <div class="mt-4 pt-2">
-                            <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                            <input class="btn btn-primary btn-lg" type="submit"  value="Submit" />
                         </div>
             
                         </form>
