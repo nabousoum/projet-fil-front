@@ -9,11 +9,11 @@
                     <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                       <div class="card-body p-4 p-md-5">
 
-                        <form>
+                        <form [formGroup]="registerForm" (ngSubmit)="submitData()">
             
                           <div class="row">
                                 <div class="form-outline">
-                                    <input type="text" id="firstName" class="form-control form-control-lg" />
+                                    <input formControlName="nom" type="text" id="firstName" class="form-control form-control-lg" />
                                     <label class="form-label" for="firstName">Nom</label>
                                 </div>
                           </div>
@@ -22,7 +22,7 @@
                             <div class="col-md-6 mb-4 d-flex align-items-center">
             
                               <div class="form-outline datepicker w-100">
-                                <input type="text" class="form-control form-control-lg" id="birthdayDate" />
+                                <input type="text" formControlName="prix" class="form-control form-control-lg" id="birthdayDate" />
                                 <label for="birthdayDate" class="form-label">Prix</label>
                               </div>
             
@@ -30,7 +30,7 @@
                             <div class="col-md-6 mb-4">
             
                                 <div class="form-outline datepicker w-100">
-                                    <input type="file" class="form-control form-control-lg" id="birthdayDate" />
+                                    <input formControlName="image" type="file" class="form-control form-control-lg" id="birthdayDate" />
                                     <label for="birthdayDate" class="form-label">Image</label>
                                   </div>
             
@@ -39,12 +39,13 @@
             
                           <div class="row">
                               <div class="form-outline">
-                                    <textarea id="emailAddress" class="form-control form-control-lg" ></textarea>
+                                    <textarea formControlName="description" id="emailAddress" class="form-control form-control-lg" ></textarea>
                                     <label class="form-label" for="emailAddress">Description</label>
                               </div>
                           </div>
             
                         <div class="row">
+                            <p>composants:</p>
                           <div class="accordion" id="chapters">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="heading-1">
@@ -55,12 +56,12 @@
                                     <div *ngIf="panleExpanded" id="chapter-1" class="accordion-collapse collapse show" aria-labelledby="heading-1" data-bs-parent="#chapters">
                                         <div class="accordion-body">
                                             <div class="choix">
-                                                <input class="inputText" type="text" name="nomBurger" placeholder="nom du burger">
-                                                <input class ="inputNumber" type="number" name="qteBurger" id="" placeholder="qte">
+                                                <input formControlName="nomBurger" class="inputText" type="text" name="nomBurger" placeholder="nom du burger">
+                                                <input class ="inputNumber" formControlName="qteBurger" type="number" name="qteBurger" id="" placeholder="qte">
                                             </div>
                                             <div class="choix">
-                                                <input class="inputText" type="text" name="nomBurger" placeholder="nom du burger">
-                                                <input class ="inputNumber" type="number" name="qteBurger" id="" placeholder="qte">
+                                                <input class="inputText" formControlName="nomBurger" type="text" name="nomBurger" placeholder="nom du burger">
+                                                <input class ="inputNumber" formControlName="qteBurger" type="number" name="qteBurger" id="" placeholder="qte">
                                             </div>
                                         </div>
                                     </div>
@@ -74,12 +75,12 @@
                                     <div *ngIf="!panleExpanded2" id="chapter-2" class="accordion-collapse collapse show" aria-labelledby="heading-2" data-bs-parent="#chapters">
                                         <div class="accordion-body">
                                             <div class="choix">
-                                                <input class="inputText" type="text" name="nomBurger" placeholder="nom de la boisson">
-                                                <input class ="inputNumber" type="number" name="qteBurger" id="" placeholder="qte">
+                                                <input class="inputText" formControlName="nomBoisson" type="text" name="nomBurger" placeholder="nom de la boisson">
+                                                <input class ="inputNumber" type="number" name="qteBoisson" id="" placeholder="qte">
                                             </div>
                                             <div class="choix">
-                                                <input class="inputText" type="text" name="nomBurger" placeholder="nom de la boisson">
-                                                <input class ="inputNumber" type="number" name="qteBurger" id="" placeholder="qte">
+                                                <input class="inputText" formControlName="nomBoisson" type="text" name="nomBurger" placeholder="nom de la boisson">
+                                                <input class ="inputNumber" type="number" name="qteBoisson" id="" placeholder="qte">
                                             </div>
                                         </div>
                                     </div>
@@ -93,12 +94,12 @@
                                     <div *ngIf="panleExpanded3" id="chapter-3" class="accordion-collapse collapse show" aria-labelledby="heading-3" data-bs-parent="#chapters">
                                         <div class="accordion-body">
                                             <div class="choix">
-                                                <input class="inputText" type="text" name="nomBurger" placeholder="nom des frites">
-                                                <input class ="inputNumber" type="number" name="qteBurger" id="" placeholder="qte">
+                                                <input formControlName="nomFrites" class="inputText" type="text" name="nomBurger" placeholder="nom des frites">
+                                                <input formControlName="qteFrites" class ="inputNumber" type="number" name="qteBurger" id="" placeholder="qte">
                                             </div>
                                             <div class="choix">
-                                                <input class="inputText" type="text" name="nomBurger" placeholder="nom des frites">
-                                                <input class ="inputNumber" type="number" name="qteBurger" id="" placeholder="qte">
+                                                <input formControlName="nomFrites" class="inputText" type="text" name="nomBurger" placeholder="nom des frites">
+                                                <input formControlName="qteFrites" class ="inputNumber" type="number" name="qteBurger" id="" placeholder="qte">
                                             </div>
                                         </div>
                                     </div>

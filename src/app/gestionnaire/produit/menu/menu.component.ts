@@ -9,13 +9,16 @@ import { CatalogueStoreService } from 'src/app/client/produit/shared/services/ca
 })
 export class MenuComponent implements OnInit {
 
-  catas: Produit[]| undefined = undefined;
+  totalLenght:number = 0
+  p: number = 1
+  catas: Produit[]| any = undefined;
   constructor(private serv:CatalogueStoreService) { }
 
   ngOnInit(): void {
     this.serv.all().subscribe(data => {
       console.log(data.produits);
       this.catas = data.produits?.filter(product => product.type === 'menu')
+      this.totalLenght = this.catas.length
     })
   }
 

@@ -16,7 +16,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let cata of catas">
+                      <tr *ngFor="let cata of catas | paginate:{itemsPerPage:5,currentPage:p,totalItems:totalLenght} ">
                         <td>{{cata.id}}</td>
                         <td>{{cata.nom}}</td>
                         <td>{{cata.prix}}</td>
@@ -27,6 +27,7 @@
                       </tr>
                     </tbody>
                   </table>
+                  <pagination-controls (pageChange)="p = $event"></pagination-controls>
             </div>
     </div>
 </div>
