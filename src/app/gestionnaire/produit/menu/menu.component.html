@@ -4,8 +4,7 @@
     <a href=""><button class="btn btn-danger">DECONNEXION</button></a>
     <div class="content">
             <h2>GESTION DES MENUS</h2>
-            {{catas|json}}
-            <a routerLink=""><button class="btn-add">AJOUTER</button></a>
+            <a routerLink="/gestionnaire/produit/addMenu"><button class="btn-add">AJOUTER</button></a>
             <div class="liste">
                 <table class="table table-striped">
                     <thead>
@@ -17,10 +16,10 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr >
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
+                      <tr *ngFor="let cata of catas">
+                        <td>{{cata.id}}</td>
+                        <td>{{cata.nom}}</td>
+                        <td>{{cata.prix}}</td>
                         <td>
                             <button><i class="bi bi-pencil"></i>editer</button>
                             <button class="btn-bi"><i class="bi bi-archive"></i>archiver</button>

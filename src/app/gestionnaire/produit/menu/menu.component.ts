@@ -15,7 +15,7 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
     this.serv.all().subscribe(data => {
       console.log(data.produits);
-      this.catas = data.produits
+      this.catas = data.produits?.filter(product => product.type === 'menu')
     })
   }
 
