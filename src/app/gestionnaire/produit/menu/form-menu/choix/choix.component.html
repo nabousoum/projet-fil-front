@@ -1,0 +1,37 @@
+<ng-container *ngIf="catas">
+    <div  [formGroup]="form" class="choix">
+        <select formControlName ="burger" name="nomBurger" id="nomBurger">
+            <option value="">--choisissez un burger--</option>
+            <ng-container *ngFor="let cata of catas">
+              <option value={{cata.id}}>{{cata.nom}}</option>
+            </ng-container>
+        </select>
+          <input  class ="inputNumber" formControlName="quantite" type="number" name="quantite" id="" placeholder="qte">
+          <button  (click)="deleteBurger(i)" class="champ delete"><i class="bi bi-trash"></i></button>
+    </div>
+</ng-container>
+<ng-container *ngIf="tailles">
+    <div [formGroup]="form" class="choix">
+        <select formControlName ="tailleBoisson" name="nomBoisson" id="nomBoisson">
+          <option value="">--choisissez des boissons--</option>
+          <ng-container *ngFor="let taille of tailles">
+            <option value={{taille.id}}>{{taille.libelle}}</option>
+          </ng-container>
+        </select>
+          <input formControlName ="quantite" class ="inputNumber" type="number" name="qteBoisson" id="" placeholder="qte">
+          <button  (click)="deleteTaille(i)" class="champ delete"><i class="bi bi-trash"></i></button>
+      </div>
+</ng-container>
+
+<ng-container *ngIf="frites">
+  <div [formGroup]="form" class="choix">
+    <select formControlName ="portionFrite" name="nomFrites" id="nomFrites">
+      <option value="">--choisissez des frites--</option>
+      <ng-container *ngFor="let frite of frites">
+        <option value={{frite.id}}>{{frite.nom}}</option>
+      </ng-container>
+    </select>
+      <input formControlName ="quantite" class ="inputNumber" type="number" name="qteBurger" id="" placeholder="qte">
+      <button  (click)="deleteFrite(i)" class="champ delete"><i class="bi bi-trash"></i></button>
+  </div>  
+</ng-container>

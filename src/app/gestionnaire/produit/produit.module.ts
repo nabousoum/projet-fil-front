@@ -8,12 +8,14 @@ import { LayoutModule } from 'src/app/gestionnaire/layout/layout.module';
 import { FormMenuComponent } from './menu/form-menu/form-menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ChoixComponent } from './menu/form-menu/choix/choix.component';
 
 @NgModule({
   declarations: [
     ProduitComponent,
     MenuComponent,
-    FormMenuComponent
+    FormMenuComponent,
+    ChoixComponent
   ],
   imports: [
     CommonModule,

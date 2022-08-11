@@ -1,0 +1,16 @@
+.champ{
+    border: none;
+    color: white;
+    background-color: #C2B364;
+    margin-left: 5%;
+}
+.champ.delete{
+    background-color: red;
+}
+.choix{
+    margin: 2%;
+}
+.inputNumber{
+    width: 50px;
+    margin-left: 10%;
+}

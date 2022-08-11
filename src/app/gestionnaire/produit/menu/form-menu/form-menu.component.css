@@ -31,10 +31,26 @@ h2{
     text-decoration: underline;
     color: #C2B364;
 }
-.inputNumber{
-    width: 50px;
-    margin-left: 10%;
+
+
+span{
+    color: red;
 }
-.choix{
-    margin: 2%;
+.card-body{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.accordion-item{
+   width: 80%;
+}
+.test{
+    display: flex;
+}
+.champ{
+    border-radius: 5px;
+    height: 45px;
+    width: 40px;
+    border: none;
+    color: white;
+    background-color: #C2B364;
+    margin-left: 40%;
 }

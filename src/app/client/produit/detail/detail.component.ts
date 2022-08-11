@@ -262,7 +262,7 @@ export class DetailComponent implements OnInit {
     //console.log(detail.burger)
       if(detail.burger){
         let burger:BurgerCommande = {
-          quantite:this.size,
+          quantite:this.qteMenu,
           burger:detail.burger
         }
         this.cartServ.addBurger(burger)
@@ -271,7 +271,7 @@ export class DetailComponent implements OnInit {
       }
     if (detail.menu){ 
       let menu:MenuCommande = {
-        quantite:this.size,
+        quantite:this.qteMenu,
         menu:{
           id:Number(detail.menu.id),
           nom: detail.menu.nom,

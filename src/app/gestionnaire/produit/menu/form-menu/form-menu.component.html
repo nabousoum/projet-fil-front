@@ -8,84 +8,83 @@
                   <div class="col-12 col-lg-9 col-xl-7">
                     <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                       <div class="card-body p-4 p-md-5">
-
-                        <form [formGroup]="registerForm" (ngSubmit)="submitData()">
-            
+                        <form [formGroup]="registerForm"  enctype="multipart/form-data" (ngSubmit)="submitData()">
                           <div class="row">
                                 <div class="form-outline">
                                     <input formControlName="nom" type="text" id="firstName" class="form-control form-control-lg" />
                                     <label class="form-label" for="firstName">Nom</label>
+                                    <div *ngIf="nom.invalid && nom.touched || nom.dirty">
+                                      <span *ngIf="nom.errors?.required">Le nom est obligatoire</span>
+                                    </div>
                                 </div>
                           </div>
-            
                           <div class="row">
-                            <div class="col-md-6 mb-4 d-flex align-items-center">
-            
-                              <div class="form-outline datepicker w-100">
-                                <input type="text" formControlName="prix" class="form-control form-control-lg" id="birthdayDate" />
-                                <label for="birthdayDate" class="form-label">Prix</label>
-                              </div>
-            
-                            </div>
-                            <div class="col-md-6 mb-4">
-            
                                 <div class="form-outline datepicker w-100">
                                     <input formControlName="image" type="file" class="form-control form-control-lg" id="birthdayDate" />
                                     <label for="birthdayDate" class="form-label">Image</label>
-                                  </div>
-            
+                                    <div *ngIf="image.invalid && image.touched || image.dirty">
+                                      <span *ngIf="image.errors?.required">L'image est obligatoire</span>
+                                    </div>
+                                </div>
                             </div>
-                          </div>
-            
                           <div class="row">
                               <div class="form-outline">
                                     <textarea formControlName="description" id="emailAddress" class="form-control form-control-lg" ></textarea>
                                     <label class="form-label" for="emailAddress">Description</label>
-                              </div>
+                                    <div *ngIf="description.invalid && description.touched || description.dirty">
+                                      <span *ngIf="description.errors?.required">La description est obligatoire</span>
+                                    </div>
+                                  </div>
                           </div>
-            
                         <div class="row">
                             <p>composants:</p>
                           <div class="accordion" id="chapters">
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="heading-1">
-                                        <button (click)="panleExpanded = !panleExpanded" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#chapter-1" aria-expanded="true" aria-controls="chapter-1">
-                                          Choisissez des burgers
-                                          </button>
-                                    </h2>
-                                    <div *ngIf="panleExpanded" id="chapter-1" class="accordion-collapse collapse show" aria-labelledby="heading-1" data-bs-parent="#chapters">
-                                        <div class="accordion-body">
-                                            <div class="choix">
-                                                <input formControlName="nomBurger" class="inputText" type="text" name="nomBurger" placeholder="nom du burger">
-                                                <input class ="inputNumber" formControlName="qteBurger" type="number" name="qteBurger" id="" placeholder="qte">
-                                            </div>
-                                            <div class="choix">
-                                                <input class="inputText" formControlName="nomBurger" type="text" name="nomBurger" placeholder="nom du burger">
-                                                <input class ="inputNumber" formControlName="qteBurger" type="number" name="qteBurger" id="" placeholder="qte">
-                                            </div>
-                                        </div>
+                            <div class="test">
+                              <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading-1">
+                                    <button (click)="panleExpanded = !panleExpanded" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#chapter-1" aria-expanded="true" aria-controls="chapter-1">
+                                      Choisissez des burgers
+                                      </button>
+                                </h2>
+                                <div *ngIf="panleExpanded" id="chapter-1" class="accordion-collapse collapse show" aria-labelledby="heading-1" data-bs-parent="#chapters">
+                                    <div class="accordion-body">
+                                      <ng-container formArrayName="menuBurgers">
+                                        <ng-container *ngFor="let burgerForm of menuBurgers.controls; let i = index">
+                                          <ss-choix [i]="i" (remove)="deleteBurger(i)" [form]="burgerForm" [catas]="catas" ></ss-choix>
+                                        </ng-container>
+                                      </ng-container>
                                     </div>
                                 </div>
-                                <div class="accordion-item">
+                            </div>
+                              <div class="btnplus">
+                              <button (click)="addBurger()"  class="champ"><i class="bi bi-plus-lg"></i></button>
+                              </div>
+                            </div>
+                                <div class="test">
+                                  <div class="accordion-item">
                                     <h2 class="accordion-header" id="heading-2">
                                         <button (click)="panleExpanded2 = !panleExpanded2" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#chapter-2" aria-expanded="true" aria-controls="chapter-2">
                                           Choisissez des boissons
                                           </button>
                                     </h2>
                                     <div *ngIf="!panleExpanded2" id="chapter-2" class="accordion-collapse collapse show" aria-labelledby="heading-2" data-bs-parent="#chapters">
-                                        <div class="accordion-body">
-                                            <div class="choix">
-                                                <input class="inputText" formControlName="nomBoisson" type="text" name="nomBurger" placeholder="nom de la boisson">
-                                                <input class ="inputNumber" type="number" name="qteBoisson" id="" placeholder="qte">
-                                            </div>
-                                            <div class="choix">
-                                                <input class="inputText" formControlName="nomBoisson" type="text" name="nomBurger" placeholder="nom de la boisson">
-                                                <input class ="inputNumber" type="number" name="qteBoisson" id="" placeholder="qte">
-                                            </div>
-                                        </div>
+                                      <div class="accordion-body">
+                                        <ng-container formArrayName="menuTailleBoissons">
+                                          <ng-container *ngFor="let TailleForm of menuTailleBoissons.controls; let i = index">
+                                            <ss-choix [i]="i" [form]="TailleForm" [tailles]="tailles" ></ss-choix>
+                                          </ng-container>
+                                        </ng-container>
+                                              
+                                      </div>
                                     </div>
+                                    
                                 </div>
-                                <div class="accordion-item">
+                                <div class="btnplus">
+                                  <button (click)="addTaille()" class="champ"><i class="bi bi-plus-lg"></i></button>
+                                </div>
+                                </div>
+                                <div class="test">
+                                  <div class="accordion-item">
                                     <h2 class="accordion-header" id="heading-3">
                                         <button (click)="panleExpanded3 = !panleExpanded3" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#chapter-3" aria-expanded="true" aria-controls="chapter-3">
                                           Choisissez des frites
@@ -93,21 +92,21 @@
                                     </h2>
                                     <div *ngIf="panleExpanded3" id="chapter-3" class="accordion-collapse collapse show" aria-labelledby="heading-3" data-bs-parent="#chapters">
                                         <div class="accordion-body">
-                                            <div class="choix">
-                                                <input formControlName="nomFrites" class="inputText" type="text" name="nomBurger" placeholder="nom des frites">
-                                                <input formControlName="qteFrites" class ="inputNumber" type="number" name="qteBurger" id="" placeholder="qte">
-                                            </div>
-                                            <div class="choix">
-                                                <input formControlName="nomFrites" class="inputText" type="text" name="nomBurger" placeholder="nom des frites">
-                                                <input formControlName="qteFrites" class ="inputNumber" type="number" name="qteBurger" id="" placeholder="qte">
-                                            </div>
+                                          <ng-container formArrayName="menuPortionFrites">
+                                            <ng-container *ngFor="let FriteForm of menuPortionFrites.controls; let i = index" >
+                                              <ss-choix [i]="i" [form]="FriteForm" [frites]="frites"></ss-choix>
+                                            </ng-container>
+                                          </ng-container>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="btnplus">
+                                  <button (click)="addFrites()" class="champ"><i class="bi bi-plus-lg"></i></button>
+                                </div>
+                                </div>
+                                
                           </div>
                         </div>
-                        
-            
                         <div class="mt-4 pt-2">
                             <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
                         </div>
