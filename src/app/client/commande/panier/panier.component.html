@@ -29,6 +29,22 @@
               <h5 class="mb-0">RESUME DU PANIER</h5>
             </div>
             <div class="card-body">
+              <div>
+                <form [formGroup]="registerForm" (ngSubmit)="submitData()">
+                  <label class="form-label" for="form2Example1">Choisissez une zone</label>
+                  <select formControlName="zone" class="form-select" aria-label="Default select example">
+                    <option selected>selectionnez une zone</option>
+                    <ng-container *ngFor="let zone of zones">
+                      <option value={{zone.id}}>
+                        {{zone.libelle}} : 
+                        <ng-container *ngFor="let quartier of zone.quartiers">
+                            {{quartier.libelle}} - 
+                        </ng-container>
+                      </option>
+                    </ng-container>
+                  </select>
+                </form>
+              </div>
               <ul class="list-group list-group-flush">
                 
                 <li class="list-group-item d-flex justify-content-between align-items-center px-0">
@@ -41,8 +57,8 @@
                   <span><strong>{{montant}} X0F</strong></span>
                 </li>
               </ul>
-              <a routerLink="/client/commande/livraison">
-                <button (click)="validerCommande()" type="button" class="btn btn-pers btn-lg btn-block">
+              <a>
+                <button type="submit" (click)="validerCommande()" type="button" class="btn btn-pers btn-lg btn-block">
                   COMMANDER
                 </button>
               </a>

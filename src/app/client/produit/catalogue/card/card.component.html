@@ -7,8 +7,8 @@
             <span class="card__price">{{catalogue?.prix}} FCFA</span>
         </div>
        <div class="btns">
-            <a routerLink="/client/commande/panier" >
-                 <button class="btn btn1">ADD </button>
+            <a >
+                 <button (click)="addToCart()" class="btn btn1">ADD </button>
              </a>
             <a routerLink="/client/produits/detail/{{catalogue?.type}}/{{catalogue?.id}}" >
                 <button class="btn btn2">DETAIL</button>

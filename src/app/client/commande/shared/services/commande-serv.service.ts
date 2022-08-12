@@ -13,6 +13,8 @@ export class CommandeServService {
 
   private urlCommandePost = 'http://127.0.0.1:8000/api/commandes'
   private urlCommandeGet = 'http://127.0.0.1:8000/api/clients/11/commandes'
+  private urlZone = 'http://127.0.0.1:8000/api/zones'
+  
   constructor(
     private http: HttpClient,
     private token : TokenService
@@ -47,6 +49,17 @@ export class CommandeServService {
       }
       )
     )
+  }
+    /* all zones */
+  allZones(){
+    return this.http.get<any>(this.urlZone)
+    .pipe(
+      map(data=>{
+        let test = data['hydra:member']
+        data = test
+        return data
+      }
+      ))
   }
 
 }

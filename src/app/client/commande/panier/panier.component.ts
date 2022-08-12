@@ -6,6 +6,7 @@ import { NgToastService } from 'ng-angular-popup';
 import { TokenService } from 'src/app/securite/shared/services/token.service';
 import { CommandeServService } from '../shared/services/commande-serv.service';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'ss-panier',
   templateUrl: './panier.component.html',
@@ -16,6 +17,8 @@ export class PanierComponent implements OnInit {
   //items:Detail[] = []
   newItems:Panier={}
   items:any = []
+  zones:any = []
+  registerForm:any
 
   constructor(
     private cartServ:CartServiceService,
@@ -26,15 +29,20 @@ export class PanierComponent implements OnInit {
     ) { }
     montant = 0
   ngOnInit(): void {
-    // this.cartServ.cartItems.subscribe(data=>{
-    //   this.items = data
-    // })
+    
+    this.commandeServ.allZones().subscribe(data=>{
+      console.log(data)
+        this.zones = data
+    })
     this.cartServ.newCart.subscribe(data=>{  
       this.newItems = data
       if(data.burgerCommandes && data.menuCommandes)
       this.items = [...data.burgerCommandes,...data.menuCommandes]
        this.montant = this.cartServ.getTotalPrice() 
      
+    })
+    this.registerForm = new FormGroup({
+      "zone":new FormControl(null),
     })
   }
   delete(object: any){  
@@ -54,7 +62,7 @@ export class PanierComponent implements OnInit {
   validerCommande(){
     if (this.tokenService.isLogged()){
         let zone={
-          id:1
+          id:this.registerForm.get('zone').value
         }
         this.cartServ.newCart.value.zone = zone
         console.log( this.cartServ.newCart.value)
@@ -67,5 +75,13 @@ export class PanierComponent implements OnInit {
     else{
       this.router.navigate(['/securite/login'])
     }
+  }
+
+  /* form select */ 
+  submitData(){
+    console.log(this.registerForm.zone.value)
+  }
+  get zone(){
+    return this.registerForm.get('zone')
   }
 }
