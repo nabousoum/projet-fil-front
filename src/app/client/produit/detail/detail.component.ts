@@ -56,7 +56,15 @@ export class DetailComponent implements OnInit {
   countEmit(value :number){
     this.qteMenu = value
   }
-
+ 
+  getPrixMenu(data:any){
+    let prix = data.menu.prix * (this.qteMenu)
+    return prix
+  }
+  getPrixBurger(data:any){
+    let prix = data.burger.prix * (this.qteMenu)
+    return prix
+  }
 
   ngOnInit(): void {
     this.evtSvc.childEventListner().subscribe(qte =>{

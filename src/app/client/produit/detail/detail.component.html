@@ -16,9 +16,11 @@
                     <!-- {{commandeMenuBoissonTailles|json}} -->
                     <ng-container *ngIf="(produit$|async)?.menu?.type == 'menu'">
                         <img src="data:image/png;base64,{{(produit$|async)?.menu?.image}}" alt="...">
+                        <p class="prix">{{getPrixMenu(produit$|async)}} FCFA</p>
                     </ng-container>  
                     <ng-container *ngIf="(produit$|async)?.burger?.type == 'burger'">
                         <img src="data:image/png;base64,{{(produit$|async)?.burger?.image}}" alt="...">
+                        <p class="prix">{{getPrixBurger(produit$|async)}} FCFA</p>
                     </ng-container> 
                 </div>
                 <div class="fix-2">

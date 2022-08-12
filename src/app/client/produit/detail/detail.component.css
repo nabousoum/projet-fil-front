@@ -108,6 +108,7 @@ input{
 .fix-1{
   border-radius: 20px;
     display: flex;
+    flex-direction: column;
     flex: 1;
 }
 .fix-2{
@@ -194,6 +195,10 @@ input{
  }
  .nav-link{
   color: #b4a55c;
+ }
+ .prix{
+  margin-top: 5%;
+  margin-left: 30%;
  }
 .alert{
   margin-left: 20%;
