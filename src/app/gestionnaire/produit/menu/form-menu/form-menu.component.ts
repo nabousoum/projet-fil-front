@@ -48,7 +48,7 @@ export class FormMenuComponent implements OnInit {
     } )
     this.registerForm = this.fb.group({
       "nom":[null,[Validators.required]],
-      "image":[null,[Validators.required]],
+      "imageBlob":[null],
       "description":[null,[Validators.required]],
       menuBurgers: this.fb.array([
         this.fb.group({
@@ -85,11 +85,11 @@ export class FormMenuComponent implements OnInit {
     this.registerForm.value.menuPortionFrites.map((data:any)=>{
       data.portionFrite = {id:Number(data.portionFrite)}
     })
-    this.registerForm.value.prix=0
+    //this.registerForm.value.prix=0
     this.produitServ.addMenu(this.registerForm.value).subscribe(
       err=>console.log(err),
     )
-    this.toast.success({detail:"success",summary:"le menu a bien été enregistré"})
+    //this.toast.success({detail:"success",summary:"le menu a bien été enregistré"})
     console.log(this.registerForm.value)
 
   }
@@ -97,8 +97,8 @@ export class FormMenuComponent implements OnInit {
   get nom(){
     return this.registerForm.get('nom')
   }
-  get image(){
-    return this.registerForm.get('image')
+  get imageBlob(){
+    return this.registerForm.get('imageBlob')
   }
   get description(){
     return this.registerForm.get('description')

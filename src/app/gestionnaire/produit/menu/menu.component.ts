@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Produit } from 'src/app/client/produit/shared/models/produit';
 import { CatalogueStoreService } from 'src/app/client/produit/shared/services/catalogue-store.service';
-
+import { ProduitService } from '../../shared/services/produit.service';
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'ss-menu',
   templateUrl: './menu.component.html',
@@ -12,7 +13,11 @@ export class MenuComponent implements OnInit {
   totalLenght:number = 0
   p: number = 1
   catas: Produit[]| any = undefined;
-  constructor(private serv:CatalogueStoreService) { }
+  constructor(
+    private serv:CatalogueStoreService,
+    private produitService:ProduitService,
+    private toast: NgToastService, 
+    ) { }
 
   ngOnInit(): void {
     this.serv.all().subscribe(data => {
@@ -20,6 +25,21 @@ export class MenuComponent implements OnInit {
       this.catas = data.produits?.filter(product => product.type === 'menu')
       this.totalLenght = this.catas.length
     })
+  }
+
+//   BookDelete(bookid:string){
+//     this.bookservice.BookDelete(bookid)
+//     .subscribe(book=>{
+//       this.getsoftBooks();
+//     })
+//   }
+//  }
+  /* edit menu */
+  MenutoEdit(id:string){
+      this.produitService.menuDelete(id) .subscribe(
+        
+      );
+        this.toast.info({detail:"info",summary:"le menu a bien été supprimé"})
   }
 
 }

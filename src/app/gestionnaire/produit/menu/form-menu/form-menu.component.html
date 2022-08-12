@@ -20,11 +20,11 @@
                           </div>
                           <div class="row">
                                 <div class="form-outline datepicker w-100">
-                                    <input formControlName="image" type="file" class="form-control form-control-lg" id="birthdayDate" />
+                                    <input formControlName="imageBlob" type="file" class="form-control form-control-lg" id="birthdayDate" />
                                     <label for="birthdayDate" class="form-label">Image</label>
-                                    <div *ngIf="image.invalid && image.touched || image.dirty">
-                                      <span *ngIf="image.errors?.required">L'image est obligatoire</span>
-                                    </div>
+                                    <!-- <div *ngIf="imageBlob.invalid && imageBlob.touched || imageBlob.dirty">
+                                      <span *ngIf="imageBlob.errors?.required">L'image est obligatoire</span>
+                                    </div> -->
                                 </div>
                             </div>
                           <div class="row">

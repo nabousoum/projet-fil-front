@@ -12,6 +12,8 @@ export class ProduitService {
   private urlFrites:string = 'http://127.0.0.1:8000/api/portion_frites'
   private urlTaille:string = 'http://127.0.0.1:8000/api/taille_boissons'
   private urlPostMenu:string = 'http://127.0.0.1:8000/api/menus'
+  private urlDeleteMenu:string = 'http://127.0.0.1:8000/api/menus'
+  
   constructor(
     private http:HttpClient,
     private token : TokenService
@@ -49,6 +51,24 @@ export class ProduitService {
     };
     //console.log(httpOptions)
     return this.http.post(this.urlPostMenu,JSON.stringify(object),httpOptions)
+  }
+
+  /* archiver menu*/
+  // produit$(id:number):Observable<Detail> {
+  //   return this.http.get<any>(`${this.urlDetail}/${id}`).pipe(
+  //     map(data=>{
+  //       return data
+  //     }),
+  //   )
+  // }
+  menuDelete (id:String):Observable<number>{
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': `Bearer ${this.token.getToken()}`
+      })
+    };
+    return this.http.delete<number>(this.urlDeleteMenu+"/"+id,httpOptions);
   }
 
 }

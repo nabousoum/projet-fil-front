@@ -21,8 +21,8 @@
                         <td>{{cata.nom}}</td>
                         <td>{{cata.prix}}</td>
                         <td>
-                            <button><i class="bi bi-pencil"></i>editer</button>
-                            <button class="btn-bi"><i class="bi bi-archive"></i>archiver</button>
+                            <button ><i class="bi bi-pencil"></i>editer</button>
+                            <button (click)='MenutoEdit(cata.id)' class="btn-bi"><i class="bi bi-archive"></i>archiver</button>
                         </td>
                       </tr>
                     </tbody>
