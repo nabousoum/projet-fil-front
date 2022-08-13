@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ICredential, IToken } from '../shared/models/Icredentials';
 import { AuthServService } from '../shared/services/auth-serv.service';
 import { TokenService } from '../shared/services/token.service';
-
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'ss-login',
   templateUrl: './login.component.html',
@@ -18,7 +18,8 @@ export class LoginComponent implements OnInit {
   
   constructor(
     private authServ : AuthServService,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private toast: NgToastService,
     ) { }
 
   ngOnInit(): void {
@@ -29,8 +30,12 @@ export class LoginComponent implements OnInit {
       data=>{
         console.log(data.token)
         this.tokenService.saveToken(data.token)
+        this.toast.success({detail:"success",summary:"connexion reussie"})
       },
-      err=>console.log(err),
+      err=>{
+        console.log(err)
+        this.toast.error({detail:"ERROR",summary:"login ou mot de passe incorrect"})
+      },
     )
   }
 

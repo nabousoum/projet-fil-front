@@ -84,7 +84,7 @@
                       <label class="form-label" for="confirmPass">Confirm Mot de passe</label>
                       <div *ngIf="confirmPass.invalid && confirmPass.touched || confirmPass.dirty">
                         <span *ngIf="confirmPass.errors?.required">veuillez confirmer le mot de passe</span>
-                        <span *ngIf="confirmPass.errors?.MustMatch">les deux mots de passe ne sont pas les meme</span>
+                        <span *ngIf="confirmPass.errors?.matchPassword">les deux mots de passe ne sont pas les meme</span>
                       </div>
                     </div>
   

@@ -5,4 +5,11 @@ export interface Register{
     prenom:string
     adresse:string
     telephone : string
+    token?:string
+    role?:ROLE
+}
+
+export enum ROLE{
+    user = 'ROLE_CLIENT',
+    admin = 'ROLE_GESTIONNAIRE'
 }

@@ -169,16 +169,26 @@ export class CartServiceService {
     }
     return this.newCart.next
   }
+
+  /* supprimer ts les elements du panier */
   removeAllCart(){
     localStorage.removeItem('cart');
     window.location.reload()
   }
+
   /* boisson commande */
-  addBoisson(boissonCommande:BoissonCommande){
-    const ls = JSON.parse(localStorage.getItem('cart') || 'null')
+  addBoisson(boissonCommande:BoissonCommande[]){
+    // var trouve=false
+    // this.newCart.value.boissonCommandes?.map(boissonCom=>{
+    //   if(boissonCommande.boissonTailleBoisson.boisson.id == boissonCom.boissonTailleBoisson?.boisson.id){
+    //       trouve = true
+    //       Number(boissonCommande.quantite += boissonCom.quantite)
+    //   }
+    // })
+      const ls = JSON.parse(localStorage.getItem('cart') || 'null')
       let newData = {
         ...this.newCart.value,
-        boissonCommandes: this.newCart.value.boissonCommandes?.concat(boissonCommande)
+        boissonCommandes: this.newCart.value.boissonCommandes = [...boissonCommande]
       }
       localStorage.setItem('cart', JSON.stringify(newData))
       return this.newCart.next(newData)

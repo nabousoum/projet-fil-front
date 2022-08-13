@@ -7,19 +7,19 @@
     <h2>votre panier est vide</h2>
     <a routerLink="/client/produits/catalogues"> <button class="btn btn-primary">revenir au catalogue</button></a>
   </div>
-</ng-container>
-<ng-container *ngIf="items.length != 0">
+</ng-container><ng-container *ngIf="items.length != 0">
+       
   <section class="h-100 gradient-custom">
+
     <div class="container py-5">
       <div class="row d-flex justify-content-center my-4">
           <div class="col-md-8">
             <div class="card mb-4">
               <div class="card-header py-3">
-                <h5 class="mb-0">VOTRE PANIER</h5>
-                <!-- {{items|json}} -->
+                <h5 class="mb-0">VOTRE PANIER</h5> 
               </div>
               <div class="card-body" *ngFor="let item of items ; let i=index">
-                <ss-ligne-panier (index)="onDelete($event)" [item]="item" [itemMenu]="item"></ss-ligne-panier> 
+                <ss-ligne-panier (index)="onDelete($event)" [item]="item" ></ss-ligne-panier> 
               </div>
             </div>
           </div>
@@ -43,6 +43,9 @@
                       </option>
                     </ng-container>
                   </select>
+                  <div *ngIf="zone.invalid && zone.touched || zone.dirty">
+                    <span style="color: red" *ngIf="zone.errors?.required">La zone est obligatoire</span>
+                  </div>
                 </form>
               </div>
               <ul class="list-group list-group-flush">

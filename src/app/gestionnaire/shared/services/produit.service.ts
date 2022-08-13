@@ -50,17 +50,11 @@ export class ProduitService {
       })
     };
     //console.log(httpOptions)
-    return this.http.post(this.urlPostMenu,JSON.stringify(object),httpOptions)
+    return this.http.post(this.urlPostMenu,object,httpOptions)
   }
 
   /* archiver menu*/
-  // produit$(id:number):Observable<Detail> {
-  //   return this.http.get<any>(`${this.urlDetail}/${id}`).pipe(
-  //     map(data=>{
-  //       return data
-  //     }),
-  //   )
-  // }
+
   menuDelete (id:String):Observable<number>{
     const httpOptions = {
       headers: new HttpHeaders({

@@ -25,7 +25,7 @@ export class DetailComponent implements OnInit {
   quantiteClient = 0
   produit$ : Observable<Detail> | null = null;
   commandeMenuBoissonTailles : CommandeMenuBoissonTaille[] = []
-
+  tailleBoissons : BoissonTailleBoisson[] = []
 
   /* evenement de desactivation du bouton */
   disabledButton(event: any) {
@@ -187,14 +187,16 @@ export class DetailComponent implements OnInit {
         )
       }
     }
-   // console.log(this.tab)
-    console.log(this.commandeMenuBoissonTailles)
+    console.log(this.tab)
+    //console.log(this.commandeMenuBoissonTailles)
     this.textAlert(this.tab)
   }
 
   textAlert(tab :any[]):string{
     let totalSize = 0
-      tab.forEach(element => {
+    let qte = 0
+    tab.forEach(element => {
+         qte += element.qte
       let tabBoissons:any[] = element.boissons
       tabBoissons.forEach(elem=>{
         totalSize+=elem.size
@@ -207,11 +209,16 @@ export class DetailComponent implements OnInit {
           this.toast.error({detail:"ERROR",summary:"le stock est epuisé"})
           this.disabled_attr = true
         }
-        else{
+         if(totalSize == this.qte){
           this.message = ""
           this.disabled_attr = false
         }
+        else if (totalSize != this.qte){
+          this.message = ""
+          this.disabled_attr = true
+        }
       })
+      console.log(this.qte)
     });
     return ""
   }
@@ -219,27 +226,35 @@ export class DetailComponent implements OnInit {
   parentControl2(event : any){
     if(this.tab.length==0){
       let obj2={
-        idBoisson:event.idBoisson,
-        size:this.size,
-        stock:event.stock
+        boissonTailleBoisson:{
+          id:event.boissonTailleBoisson
+        },
+        quantite:this.size,
+        nom:event.nom,
+        idBoisson:event.idBoisson
       }
+    //this.tailleBoissons.push(obj2)
       this.tab.push(obj2)
     }
     else{
       var trouve=false
       this.tab.map(
         data=>{
-          if(data.idBoisson==event.idBoisson){
+          if(data.boissonTailleBoisson==event.boissonTailleBoisson){
             trouve=true
           }
         }
       )
       if(trouve == false){
         let obj2={
-          idBoisson:event.idBoisson,
-          size:this.size,
-          stock:event.stock
+          boissonTailleBoisson:{
+            id:event.boissonTailleBoisson
+          },
+          quantite:this.size,
+          nom:event.nom,
+          idBoisson:event.idBoisson
         }
+        //this.tailleBoissons.push(obj2)
         this.tab.push(obj2)
       }
       else{
@@ -252,6 +267,7 @@ export class DetailComponent implements OnInit {
     this.textAlert2(this.tab)
   }
 
+  
   textAlert2(tab:any[]){
     tab.forEach(element=>{
       if(element.size > element.stock){
@@ -293,15 +309,11 @@ export class DetailComponent implements OnInit {
       this.toast.success({detail:"success",summary:"le menu bien a été enregistré dans le panier"})
       console.log(this.cartServ.newCart.value)
     }
-    // if(detail.tailleBoissons){
-    //   let boisson:BoissonCommande = {
-    //     quantite: 2,
-    //     boissonTailleBoisson: {}
-    //   }
-    //   this.cartServ.addBoisson(boisson)
-    //   //this.toast.success({detail:"success",summary:"le burger bien a été enregistré dans le panier"})
-    //   console.log(this.cartServ.newCart.value)
-    // }
+    
+      this.cartServ.addBoisson(this.tab)
+      this.toast.success({detail:"success",summary:"la/les boisson(s) bien a(ont) été enregistré dans le panier"})
+      console.log(this.cartServ.newCart.value)
+    
     // if(detail.portionFrites){
     //   let frite:FriteCommande = {
     //     quantite: 2,

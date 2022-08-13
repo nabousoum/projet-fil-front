@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators,ValidationErrors, ValidatorFn } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators,ValidationErrors, ValidatorFn, FormBuilder } from '@angular/forms';
 import { RegisterService } from '../shared/services/register.service';
 import { NgToastService } from 'ng-angular-popup';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'ss-register',
   templateUrl: './register.component.html',
@@ -16,11 +17,14 @@ export class RegisterComponent implements OnInit {
   constructor(
     private register: RegisterService,
     private toast: NgToastService,
-    private router : Router
-  ) { }
+    private router : Router,
+    private formBuilder: FormBuilder
+  ) { 
+
+  }
 
   ngOnInit(): void {
-    this.registerForm = new FormGroup({
+    this.registerForm = this.formBuilder.group({
       "nom":new FormControl(null,[Validators.required,Validators.pattern('[a-zA-Z]*')]),
       "prenom":new FormControl(null,[Validators.required,Validators.pattern('[a-zA-Z]*')]),
       "adresse":new FormControl(null,[Validators.required]),
@@ -29,16 +33,25 @@ export class RegisterComponent implements OnInit {
       "password":new FormControl(null,[Validators.required]),
       "confirmPass":new FormControl(null,[Validators.required])
     }
+    ,{
+      validators:this.matchPassword('password','confirmPass')
+    }
     )
   }
 
   submitData(){
     console.log(this.registerForm.value)
     this.register.saveUser(this.registerForm.value).subscribe(
-      err=> console.log(err),
+      data=>{
+        this.toast.success({detail:"success",summary:"votre inscription a été validée"})
+        this.router.navigate(['/securite/login'])
+      },
+      err=> {
+        console.log(err)
+        this.toast.error({detail:"ERROR",summary:"votre inscription n a pas pu etre fait"})
+      },
     )
-    this.toast.success({detail:"success",summary:"votre inscription a été validée"})
-    this.router.navigate(['/securite/login'])
+   
   }
   get nom(){
     return this.registerForm.get('nom')
@@ -62,7 +75,22 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.get('confirmPass')
   }
   
-  MustMatch(controlName:string,matchingControlName:string){
-
+ 
+  /* function password match */
+   matchPassword(password:any,confirmPass:any) {
+    return (formGroup:FormGroup)=>{
+      const passwordcontrol = formGroup.controls[password]
+      const confirmPasscontrol = formGroup.controls[confirmPass]
+      if(confirmPasscontrol.errors && !confirmPasscontrol.errors['matchPassword']){
+        return ;
+      }
+      if(confirmPasscontrol.value!==passwordcontrol.value){
+        confirmPasscontrol.setErrors({matchPassword:true})
+      }
+      else{
+        confirmPasscontrol.setErrors(null)
+      }
+    }
   }
+
 }

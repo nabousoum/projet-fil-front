@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TokenService } from 'src/app/securite/shared/services/token.service';
 import { CartServiceService } from '../../produit/shared/services/cart-service.service';
 
@@ -10,6 +11,7 @@ import { CartServiceService } from '../../produit/shared/services/cart-service.s
 export class HeaderComponent implements OnInit {
   itemIncCart:number = 0
   constructor(
+    private router: Router,
     private cartService:CartServiceService,
     private tokenService:TokenService
     ) { }
@@ -28,6 +30,7 @@ export class HeaderComponent implements OnInit {
 
   logout():void{
     this.tokenService.clearToken()
+    this.router.navigate(['/client/produits/catalogues'])
   }
 
   isLogged:boolean = this.tokenService.isLogged()

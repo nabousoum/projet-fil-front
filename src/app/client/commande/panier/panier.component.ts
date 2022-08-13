@@ -6,7 +6,7 @@ import { NgToastService } from 'ng-angular-popup';
 import { TokenService } from 'src/app/securite/shared/services/token.service';
 import { CommandeServService } from '../shared/services/commande-serv.service';
 import { Router } from '@angular/router';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'ss-panier',
   templateUrl: './panier.component.html',
@@ -36,13 +36,13 @@ export class PanierComponent implements OnInit {
     })
     this.cartServ.newCart.subscribe(data=>{  
       this.newItems = data
-      if(data.burgerCommandes && data.menuCommandes)
-      this.items = [...data.burgerCommandes,...data.menuCommandes]
+      if(data.burgerCommandes && data.menuCommandes && data.boissonCommandes)
+      this.items = [...data.burgerCommandes,...data.menuCommandes,...data.boissonCommandes]
        this.montant = this.cartServ.getTotalPrice() 
      
     })
     this.registerForm = new FormGroup({
-      "zone":new FormControl(null),
+      "zone":new FormControl(null,[Validators.required]),
     })
   }
   delete(object: any){  

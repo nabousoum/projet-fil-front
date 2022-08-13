@@ -4,6 +4,7 @@ import { Produit } from 'src/app/client/produit/shared/models/produit';
 import { CatalogueStoreService } from 'src/app/client/produit/shared/services/catalogue-store.service';
 import { ProduitService } from 'src/app/gestionnaire/shared/services/produit.service';
 import { NgToastService } from 'ng-angular-popup';
+import { compileDeclarePipeFromMetadata } from '@angular/compiler';
 @Component({
   selector: 'ss-form-menu',
   templateUrl: './form-menu.component.html',
@@ -75,6 +76,15 @@ export class FormMenuComponent implements OnInit {
   /*form*/
 
   submitData(){
+    var formData: any = new FormData();
+
+    formData.append('nom', this.registerForm.get('nom').value);
+    formData.append('description', this.registerForm.get('description').value);
+    formData.append('menuBurgers',this.registerForm.get('menuBurgers').value);
+    formData.append('menuTailleBoissons',this.registerForm.get('menuBurgers').value);
+    formData.append('menuPortionFrites',this.registerForm.get('menuBurgers').value);
+    formData.append('imageBlob',this.registerForm.get('menuBurgers').value);
+
 
     this.registerForm.value.menuBurgers.map((data:any)=>{
         data.burger = {id:Number(data.burger)}
@@ -86,11 +96,11 @@ export class FormMenuComponent implements OnInit {
       data.portionFrite = {id:Number(data.portionFrite)}
     })
     //this.registerForm.value.prix=0
-    this.produitServ.addMenu(this.registerForm.value).subscribe(
+    this.produitServ.addMenu(formData).subscribe(
       err=>console.log(err),
     )
     //this.toast.success({detail:"success",summary:"le menu a bien été enregistré"})
-    console.log(this.registerForm.value)
+    console.log(formData)
 
   }
 
