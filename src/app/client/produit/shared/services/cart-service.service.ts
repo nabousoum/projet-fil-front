@@ -178,13 +178,7 @@ export class CartServiceService {
 
   /* boisson commande */
   addBoisson(boissonCommande:BoissonCommande[]){
-    // var trouve=false
-    // this.newCart.value.boissonCommandes?.map(boissonCom=>{
-    //   if(boissonCommande.boissonTailleBoisson.boisson.id == boissonCom.boissonTailleBoisson?.boisson.id){
-    //       trouve = true
-    //       Number(boissonCommande.quantite += boissonCom.quantite)
-    //   }
-    // })
+   
       const ls = JSON.parse(localStorage.getItem('cart') || 'null')
       let newData = {
         ...this.newCart.value,

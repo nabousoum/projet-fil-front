@@ -240,7 +240,7 @@ export class DetailComponent implements OnInit {
       var trouve=false
       this.tab.map(
         data=>{
-          if(data.boissonTailleBoisson==event.boissonTailleBoisson){
+          if(data.idBoisson==event.idBoisson){
             trouve=true
           }
         }
@@ -259,7 +259,7 @@ export class DetailComponent implements OnInit {
       }
       else{
         this.tab.map(data=>{
-          data.size = event.size 
+          data.quantite = event.quantite 
         })
       }
     }
