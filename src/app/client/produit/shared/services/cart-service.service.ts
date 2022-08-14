@@ -136,6 +136,10 @@ export class CartServiceService {
       if(boissonCommande.boissonTailleBoisson?.boisson?.prix && boissonCommande.quantite)
       grandTotal += Number( boissonCommande.boissonTailleBoisson?.boisson?.prix * boissonCommande.quantite)
     })
+    this.newCart.value.friteCommandes?.map(friteCommande=>{
+      if(friteCommande?.portionFrite?.prix && friteCommande.quantite)
+      grandTotal += Number( friteCommande?.portionFrite?.prix * friteCommande.quantite)
+    })
     return grandTotal
   }
 

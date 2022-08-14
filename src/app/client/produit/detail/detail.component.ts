@@ -288,7 +288,7 @@ export class DetailComponent implements OnInit {
         var trouve=false
         this.tabFrites.map(
           data=>{
-            if(data.idFrite==event.idFrite){
+            if(data.portionFrite==event.portionFrite){
               trouve=true
             }
           }
@@ -296,13 +296,12 @@ export class DetailComponent implements OnInit {
         if(trouve == false){
           let obj2={
             portionFrite:{
-              id:event.idFrite
+              id:event.portionFrite
             },
             quantite:this.size,
             nom:event.nom,
             prix:event.prix
           }
-          
           this.tabFrites.push(obj2)
         }
         else{
