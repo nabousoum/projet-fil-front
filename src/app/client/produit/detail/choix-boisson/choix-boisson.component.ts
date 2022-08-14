@@ -37,15 +37,27 @@ export class ChoixBoissonComponent implements OnInit {
     }
     this.ObjectControl.emit(obj)
   }
-  objectAutreBoisson(boissonTailleBoisson:any,event:any,nom:any,idBoisson:any){
+  objectAutreBoisson(boissonTailleBoisson:any,event:any,nom:any,idBoisson:any,prix:any){
     this.size = event
     let obj2={
       boissonTailleBoisson:boissonTailleBoisson,
       quantite:this.size,
       nom:nom,
-      idBoisson:idBoisson
+      idBoisson:idBoisson,
+      prix:prix
     }
     this.ObjectControl.emit(obj2)
+  }
+  objectAutreFrite(event:any,idFrite:any,nom:any,prix:any){
+    this.size = event
+    let object={
+      portionFrite:idFrite,
+      quantite:this.size,
+      nom:nom,
+      prix:prix
+    }
+
+    this.ObjectControl.emit(object)
   }
   // test2(idBoisson:any,event:any,stock:any){
   //   this.size = event

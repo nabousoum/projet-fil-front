@@ -76,16 +76,8 @@ export class FormMenuComponent implements OnInit {
   /*form*/
 
   submitData(){
-    var formData: any = new FormData();
 
-    formData.append('nom', this.registerForm.get('nom').value);
-    formData.append('description', this.registerForm.get('description').value);
-    formData.append('menuBurgers',this.registerForm.get('menuBurgers').value);
-    formData.append('menuTailleBoissons',this.registerForm.get('menuBurgers').value);
-    formData.append('menuPortionFrites',this.registerForm.get('menuBurgers').value);
-    formData.append('imageBlob',this.registerForm.get('menuBurgers').value);
-
-
+    
     this.registerForm.value.menuBurgers.map((data:any)=>{
         data.burger = {id:Number(data.burger)}
     })
@@ -95,13 +87,21 @@ export class FormMenuComponent implements OnInit {
     this.registerForm.value.menuPortionFrites.map((data:any)=>{
       data.portionFrite = {id:Number(data.portionFrite)}
     })
-    //this.registerForm.value.prix=0
+    var formData: any = new FormData();
+
+    formData.append('nom', this.registerForm.get('nom').value);
+    formData.append('imageBlob',this.registerForm.get('imageBlob').value);
+    formData.append('description', this.registerForm.get('description').value);
+    formData.append('menuBurgers',JSON.stringify(this.registerForm.get('menuBurgers').value));
+    formData.append('menuTailleBoissons',JSON.stringify(this.registerForm.get('menuBurgers').value));
+    formData.append('menuPortionFrites',JSON.stringify(this.registerForm.get('menuBurgers').value));
+    formData.append('prix',0)
+    console.log(this.registerForm.value)
+
     this.produitServ.addMenu(formData).subscribe(
       err=>console.log(err),
     )
     //this.toast.success({detail:"success",summary:"le menu a bien été enregistré"})
-    console.log(formData)
-
   }
 
   get nom(){
@@ -158,5 +158,15 @@ export class FormMenuComponent implements OnInit {
   }
   deleteFrite(lessonIndex: number) {
     this.menuPortionFrites.removeAt(lessonIndex)
+  }
+
+   // on file select event
+   onFileChange(event:any) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.registerForm.patchValue({
+          imageBlob: file
+      });
+    }
   }
 }

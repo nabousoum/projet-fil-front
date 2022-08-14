@@ -36,8 +36,8 @@ export class PanierComponent implements OnInit {
     })
     this.cartServ.newCart.subscribe(data=>{  
       this.newItems = data
-      if(data.burgerCommandes && data.menuCommandes && data.boissonCommandes)
-      this.items = [...data.burgerCommandes,...data.menuCommandes,...data.boissonCommandes]
+      if(data.burgerCommandes && data.menuCommandes && data.boissonCommandes && data.friteCommandes)
+      this.items = [...data.burgerCommandes,...data.menuCommandes,...data.boissonCommandes,...data.friteCommandes]
        this.montant = this.cartServ.getTotalPrice() 
      
     })

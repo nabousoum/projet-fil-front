@@ -10,11 +10,11 @@
     <h5>{{boissons.libelle}}</h5>
     <div class="test">
         <ng-container *ngFor="let boisson of boissons?.boissonTailleBoissons">
-            <ss-card-detail (sizeChange)="objectAutreBoisson(boisson?.id,$event,boisson?.boisson?.nom,boisson?.boisson?.id)" [boisson]="boisson"></ss-card-detail>
+            <ss-card-detail (sizeChange)="objectAutreBoisson(boisson?.id,$event,boisson?.boisson?.nom,boisson?.boisson?.id,boisson?.boisson?.prix)" [boisson]="boisson"></ss-card-detail>
         </ng-container>
     </div>
 </div>
 <div *ngIf="frites" class="component-bottom">
-    <ss-card-detail [frites]="frites"></ss-card-detail>
+    <ss-card-detail (sizeChange)="objectAutreFrite($event,frites.id,frites.nom,frites.prix)" [frites]="frites"></ss-card-detail>
 </div>
 

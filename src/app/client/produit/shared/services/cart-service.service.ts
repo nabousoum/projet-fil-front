@@ -132,6 +132,10 @@ export class CartServiceService {
       if(burgerCommande.burger?.prix)
       grandTotal += Number( burgerCommande?.burger?.prix * burgerCommande.quantite)
     })
+    this.newCart.value.boissonCommandes?.map(boissonCommande=>{
+      if(boissonCommande.boissonTailleBoisson?.boisson?.prix && boissonCommande.quantite)
+      grandTotal += Number( boissonCommande.boissonTailleBoisson?.boisson?.prix * boissonCommande.quantite)
+    })
     return grandTotal
   }
 
@@ -178,7 +182,6 @@ export class CartServiceService {
 
   /* boisson commande */
   addBoisson(boissonCommande:BoissonCommande[]){
-   
       const ls = JSON.parse(localStorage.getItem('cart') || 'null')
       let newData = {
         ...this.newCart.value,
@@ -189,11 +192,11 @@ export class CartServiceService {
   }
 
   /* frites commande */
-  addFrite(friteCommande:FriteCommande){
+  addFrite(friteCommande:FriteCommande[]){
     const ls = JSON.parse(localStorage.getItem('cart') || 'null')
       let newData = {
         ...this.newCart.value,
-        friteCommandes: this.newCart.value.friteCommandes?.concat(friteCommande)
+        friteCommandes: this.newCart.value.friteCommandes = [...friteCommande]
       }
       localStorage.setItem('cart', JSON.stringify(newData))
       return this.newCart.next(newData)

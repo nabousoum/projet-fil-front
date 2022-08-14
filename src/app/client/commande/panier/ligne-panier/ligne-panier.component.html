@@ -79,6 +79,9 @@
        <ng-container *ngIf="item?.menu?.type == 'menu'">
         <strong>{{getPrixMenu(item)}} FCFA</strong>
        </ng-container>
+       <ng-container *ngIf="item.boissonTailleBoisson">
+        <strong>{{item.prix * item.quantite}} FCFA</strong>
+       </ng-container>
       </p>
       <!-- Price -->
     </div>
