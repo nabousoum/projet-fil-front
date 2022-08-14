@@ -18,7 +18,8 @@ const routes: Routes = [
     //   expectedRoles:['ROLE_GESTIONNAIRE']
     // }
    },
-  { path: 'produit', loadChildren: () => import('./produit/produit.module').then(m => m.ProduitModule) }
+  { path: 'produit', loadChildren: () => import('./produit/produit.module').then(m => m.ProduitModule) },
+  { path: 'gestionnaire', loadChildren: () => import('./commande/commande.module').then(m => m.CommandeModule) }
 ];
 
 @NgModule({

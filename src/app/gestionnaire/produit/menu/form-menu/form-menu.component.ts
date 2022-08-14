@@ -100,12 +100,10 @@ export class FormMenuComponent implements OnInit {
 
     this.produitServ.addMenu(formData).subscribe(
       err=>{
-        this.toast.error({detail:"error",summary:"le menu n a pas pu etre enregistré"})
+        console.log(err)
       },
-      data=>{
-        this.toast.success({detail:"success",summary:"le menu a bien été enregistré"})
-      }
     )
+    this.toast.success({detail:"success",summary:"le menu a bien été enregistré"})
   
   }
 

@@ -10,6 +10,7 @@
                     <thead>
                       <tr>
                         <th scope="col">ID</th>
+                        <th scope="col">IMAGE</th>
                         <th scope="col">NOM</th>
                         <th scope="col">PRIX</th>
                         <th scope="col">ACTION</th>
@@ -18,10 +19,11 @@
                     <tbody>
                       <tr *ngFor="let cata of catas | paginate:{itemsPerPage:5,currentPage:p,totalItems:totalLenght} ">
                         <td>{{cata.id}}</td>
+                        <td><img width="100px" src="data:image/png;base64,{{cata.image}}" alt=""></td>
                         <td>{{cata.nom}}</td>
                         <td>{{cata.prix}}</td>
                         <td>
-                            <button ><i class="bi bi-pencil"></i>editer</button>
+                            
                             <button (click)='MenutoEdit(cata.id)' class="btn-bi"><i class="bi bi-archive"></i>archiver</button>
                         </td>
                       </tr>

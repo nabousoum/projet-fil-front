@@ -270,47 +270,48 @@ export class DetailComponent implements OnInit {
     this.textAlert2(this.tab)
   }
 
-  // objectFrite(event: any) {
-  //     if(this.tabFrites.length==0){
-  //       let obj2={
-  //         portionFrite:{
-  //           id:event.idFrite
-  //         },
-  //         quantite:this.size,
-  //         nom:event.nom,
-  //         prix:event.prix
-  //       }
-  //     //this.tailleBoissons.push(obj2)
-  //       this.tabFrites.push(obj2)
-  //     }
-  //     else{
-  //       var trouve=false
-  //       this.tabFrites.map(
-  //         data=>{
-  //           if(data.idFrite==event.idFrite){
-  //             trouve=true
-  //           }
-  //         }
-  //       )
-  //       if(trouve == false){
-  //         let obj2={
-  //           portionFrite:{
-  //             id:event.idFrite
-  //           },
-  //           quantite:this.size,
-  //           nom:event.nom,
-  //           prix:event.prix
-  //         }
+  objectFrite(event: any) {
+    
+      if(this.tabFrites.length==0){
+        let obj2={
+          portionFrite:{
+            id:event.portionFrite
+          },
+          quantite:this.size,
+          nom:event.nom,
+          prix:event.prix
+        }
+      //this.tailleBoissons.push(obj2)
+        this.tabFrites.push(obj2)
+      }
+      else{
+        var trouve=false
+        this.tabFrites.map(
+          data=>{
+            if(data.idFrite==event.idFrite){
+              trouve=true
+            }
+          }
+        )
+        if(trouve == false){
+          let obj2={
+            portionFrite:{
+              id:event.idFrite
+            },
+            quantite:this.size,
+            nom:event.nom,
+            prix:event.prix
+          }
           
-  //         this.tabFrites.push(obj2)
-  //       }
-  //       else{
-  //         this.tabFrites.map(data=>{
-  //           data.quantite = event.quantite 
-  //         })
-  //       }
-  //     }
-  // }
+          this.tabFrites.push(obj2)
+        }
+        else{
+          this.tabFrites.map(data=>{
+            data.quantite = event.quantite 
+          })
+        }
+      }
+  }
   
   textAlert2(tab:any[]){
     tab.forEach(element=>{
@@ -351,16 +352,16 @@ export class DetailComponent implements OnInit {
       }
       this.cartServ.addMenu(menu)
       this.toast.success({detail:"success",summary:"le menu bien a été enregistré dans le panier"})
-      console.log(this.cartServ.newCart.value)
+
     }
     /* ajout boisson*/
       this.cartServ.addBoisson(this.tab)
       this.toast.success({detail:"success",summary:"la/les boisson(s) bien a(ont) été enregistré dans le panier"})
-      console.log(this.cartServ.newCart.value)
+
     /* ajout frites */
-      // this.cartServ.addBoisson(this.tabFrites)
-      // this.toast.success({detail:"success",summary:"la/les frites(s) bien a(ont) été enregistré dans le panier"})
-      // console.log(this.cartServ.newCart.value)
+      this.cartServ.addFrite(this.tabFrites)
+      this.toast.success({detail:"success",summary:"la/les frites(s) bien a(ont) été enregistré dans le panier"})
+      console.log(this.cartServ.newCart.value)
 
   }
 

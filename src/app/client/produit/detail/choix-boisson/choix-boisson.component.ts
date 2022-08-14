@@ -56,7 +56,6 @@ export class ChoixBoissonComponent implements OnInit {
       nom:nom,
       prix:prix
     }
-
     this.ObjectControl.emit(object)
   }
   // test2(idBoisson:any,event:any,stock:any){

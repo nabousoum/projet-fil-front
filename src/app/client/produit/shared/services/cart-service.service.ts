@@ -182,23 +182,72 @@ export class CartServiceService {
 
   /* boisson commande */
   addBoisson(boissonCommande:BoissonCommande[]){
+    var trouve=false
+    this.newCart.value.boissonCommandes?.map(boissonCom=>{
+      boissonCommande.map(bc=>{
+        if(boissonCom?.boissonTailleBoisson?.id == bc.boissonTailleBoisson?.id){
+          trouve = true
+          if(boissonCom.quantite && bc.quantite)
+          Number(boissonCom.quantite += bc.quantite)
+      } 
+      })
+    })
+    if(!trouve){
+      const ls = JSON.parse(localStorage.getItem('cart') || 'null')
+      boissonCommande.map(element=>{
+        let newData = {
+          ...this.newCart.value,
+          boissonCommandes: this.newCart.value.boissonCommandes?.concat(element)
+        }
+        localStorage.setItem('cart', JSON.stringify(newData))
+         this.newCart.next(newData)
+      })
+     
+    }
+    else{
       const ls = JSON.parse(localStorage.getItem('cart') || 'null')
       let newData = {
         ...this.newCart.value,
-        boissonCommandes: this.newCart.value.boissonCommandes = [...boissonCommande]
+        boissonCommandes: this.newCart.value.boissonCommandes 
       }
       localStorage.setItem('cart', JSON.stringify(newData))
       return this.newCart.next(newData)
+    }
+      
   }
 
   /* frites commande */
   addFrite(friteCommande:FriteCommande[]){
-    const ls = JSON.parse(localStorage.getItem('cart') || 'null')
+    var trouve=false
+    this.newCart.value.friteCommandes?.map(friteCom=>{
+      friteCommande.map(fc=>{
+        if(friteCom.portionFrite?.id == fc.portionFrite?.id){
+          trouve = true
+          if(friteCom.quantite && fc.quantite)
+          Number(friteCom.quantite += fc.quantite)
+      } 
+      })
+    })
+    if(!trouve){
+      const ls = JSON.parse(localStorage.getItem('cart') || 'null')
+      friteCommande.map(element=>{
+        let newData = {
+          ...this.newCart.value,
+          friteCommandes: this.newCart.value.friteCommandes?.concat(element)
+        }
+        localStorage.setItem('cart', JSON.stringify(newData))
+        this.newCart.next(newData)
+      })
+    }
+    else{
+      const ls = JSON.parse(localStorage.getItem('cart') || 'null')
       let newData = {
         ...this.newCart.value,
-        friteCommandes: this.newCart.value.friteCommandes = [...friteCommande]
+        friteCommandes: this.newCart.value.friteCommandes
       }
       localStorage.setItem('cart', JSON.stringify(newData))
       return this.newCart.next(newData)
+    }
+    
   }
 }

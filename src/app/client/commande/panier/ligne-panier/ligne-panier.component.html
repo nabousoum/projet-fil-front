@@ -13,6 +13,9 @@
         <ng-container *ngIf="item.boissonTailleBoisson" >
          <img src="/assets/images/boissons/{{item.idBoisson}}.png" class="w-100" alt="Blue Jeans Jacket" />
         </ng-container>
+        <ng-container *ngIf="item.portionFrite" >
+          <img src="/assets/images/frites/{{item.portionFrite.id}}.jpg" class="w-100" alt="Blue Jeans Jacket" />
+         </ng-container>
         <a href="#!">
           <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
         </a>
@@ -30,6 +33,9 @@
       <ng-container *ngIf="item.boissonTailleBoisson">
         <p><strong>{{item.nom}}</strong></p>
       </ng-container>
+      <ng-container *ngIf="item.portionFrite">
+        <p><strong>{{item.nom}}</strong></p>
+      </ng-container>
       <ng-container *ngIf="item?.menu?.type == 'menu'">
         <button (click)="delete(item?.menu)" type="button" class="btn btn-danger btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
         title="Remove item">
@@ -43,6 +49,12 @@
       </button>
       </ng-container>
       <ng-container *ngIf="item.boissonTailleBoisson">
+        <button (click)="delete(item?.boissonTailleBoisson)" type="button" class="btn btn-danger btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
+        title="Remove item">
+        <i class="fas fa-trash"></i>supprimer
+      </button>
+      </ng-container>
+      <ng-container *ngIf="item.portionFrite">
         <button (click)="delete(item?.boissonTailleBoisson)" type="button" class="btn btn-danger btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
         title="Remove item">
         <i class="fas fa-trash"></i>supprimer
@@ -80,6 +92,9 @@
         <strong>{{getPrixMenu(item)}} FCFA</strong>
        </ng-container>
        <ng-container *ngIf="item.boissonTailleBoisson">
+        <strong>{{item.prix * item.quantite}} FCFA</strong>
+       </ng-container>
+       <ng-container *ngIf="item.portionFrite">
         <strong>{{item.prix * item.quantite}} FCFA</strong>
        </ng-container>
       </p>

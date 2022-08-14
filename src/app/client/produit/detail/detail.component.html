@@ -117,7 +117,7 @@
                                 <div class="bot bottom-right">
                                         <div class="bottom-components">
                                             <div class="ngclass1" *ngFor="let frite of (produit$|async)?.portionFrites">
-                                                <ss-choix-boisson  [frites]= "frite"></ss-choix-boisson>
+                                                <ss-choix-boisson (ObjectControl)="objectFrite($event)" [frites]= "frite"></ss-choix-boisson>
                                             </div>
                                         </div>
                                 </div>
