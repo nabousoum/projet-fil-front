@@ -3,7 +3,7 @@
 <div class="content-wrapper">
     <div class="content">
             <h2>GESTION DES MENUS</h2>
-            <a routerLink="/gestionnaire/produit/addMenu"><button class="btn-add">AJOUTER</button></a>
+            <a routerLink="/gestionnaire/produit/addBurger"><button class="btn-add">AJOUTER</button></a>
             <div class="liste">
                 <table class="table table-striped">
                     <thead>
@@ -23,7 +23,7 @@
                         <td>{{cata.prix}}</td>
                         <td>
                             
-                            <button (click)='MenutoEdit(cata.id)' class="btn-bi"><i class="bi bi-archive"></i>archiver</button>
+                            <button  class="btn-bi"><i class="bi bi-archive"></i>archiver</button>
                         </td>
                       </tr>
                     </tbody>

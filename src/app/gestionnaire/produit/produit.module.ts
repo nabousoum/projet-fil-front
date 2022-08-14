@@ -9,13 +9,17 @@ import { FormMenuComponent } from './menu/form-menu/form-menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ChoixComponent } from './menu/form-menu/choix/choix.component';
+import { BurgerComponent } from './burger/burger.component';
+import { FormBurgerComponent } from './burger/form-burger/form-burger.component';
 
 @NgModule({
   declarations: [
     ProduitComponent,
     MenuComponent,
     FormMenuComponent,
-    ChoixComponent
+    ChoixComponent,
+    BurgerComponent,
+    FormBurgerComponent
   ],
   imports: [
     CommonModule,

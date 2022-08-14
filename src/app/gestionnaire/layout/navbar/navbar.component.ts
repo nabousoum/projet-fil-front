@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { TokenService } from 'src/app/securite/shared/services/token.service';
 
 @Component({
   selector: 'ss-navbar',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private tokenService:TokenService
+  ) { 
+    
+  }
 
   ngOnInit(): void {
+  }
+
+  /* logout */
+  logout():void{
+    this.tokenService.clearToken()
+    this.router.navigate(['/securite/login'])
   }
 
 }

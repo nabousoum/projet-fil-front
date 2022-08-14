@@ -6,10 +6,10 @@ export interface Register{
     adresse:string
     telephone : string
     token?:string
-    role?:ROLE
+    roles?: ROLE[];
 }
 
-export enum ROLE{
+export const enum ROLE{
     user = 'ROLE_CLIENT',
     admin = 'ROLE_GESTIONNAIRE'
 }

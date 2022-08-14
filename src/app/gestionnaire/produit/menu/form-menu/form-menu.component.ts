@@ -5,6 +5,7 @@ import { CatalogueStoreService } from 'src/app/client/produit/shared/services/ca
 import { ProduitService } from 'src/app/gestionnaire/shared/services/produit.service';
 import { NgToastService } from 'ng-angular-popup';
 import { compileDeclarePipeFromMetadata } from '@angular/compiler';
+
 @Component({
   selector: 'ss-form-menu',
   templateUrl: './form-menu.component.html',
@@ -172,4 +173,5 @@ export class FormMenuComponent implements OnInit {
       });
     }
   }
+
 }

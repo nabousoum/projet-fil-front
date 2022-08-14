@@ -7,7 +7,7 @@
             <span class="card__price">{{catalogue?.prix}} FCFA</span>
         </div>
        <div class="btns">
-            <a >
+            <a routerLink="/client/produits/detail/{{catalogue?.type}}/{{catalogue?.id}}">
                  <button (click)="addToCart()" class="btn btn1">ADD </button>
              </a>
             <a routerLink="/client/produits/detail/{{catalogue?.type}}/{{catalogue?.id}}" >

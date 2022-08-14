@@ -12,6 +12,7 @@ export class ProduitService {
   private urlFrites:string = 'http://127.0.0.1:8000/api/portion_frites'
   private urlTaille:string = 'http://127.0.0.1:8000/api/taille_boissons'
   private urlPostMenu:string = 'http://127.0.0.1:8000/api/menus'
+  private urlPostBurger:string = 'http://127.0.0.1:8000/api/burgers'
   private urlDeleteMenu:string = 'http://127.0.0.1:8000/api/menus'
   
   constructor(
@@ -51,6 +52,17 @@ export class ProduitService {
     //console.log(httpOptions)
     return this.http.post(this.urlPostMenu,object,httpOptions)
   }
+
+    /*  ajouter burger */
+    addBurger(object:any){
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Authorization': `Bearer ${this.token.getToken()}`
+        })
+      };
+      //console.log(httpOptions)
+      return this.http.post(this.urlPostBurger,object,httpOptions)
+    }
 
   /* archiver menu*/
 

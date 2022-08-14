@@ -101,3 +101,12 @@ nav li#user-info > span:after{
     margin-left: -10%;
     margin-top: -10%;
 }
+.logout{
+    color: red;
+}
+.logout:hover{
+    color: white;
+}
+span{
+    margin-left: 10%;
+}

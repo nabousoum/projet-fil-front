@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ROLE } from '../securite/shared/models/register';
 import { AuthGuard } from '../_helpers/auth.guard';
 import { RoleGuardGuard } from '../_helpers/role-guard.guard';
 import { GestionnaireComponent } from './gestionnaire.component';
@@ -13,13 +14,16 @@ const routes: Routes = [
    { 
     path: 'dashboard',
     component: NavbarComponent,
-    // canActivate: [AuthGuard,RoleGuardGuard],
-    // data:{
-    //   expectedRoles:['ROLE_GESTIONNAIRE']
-    // }
+
    },
-  { path: 'produit', loadChildren: () => import('./produit/produit.module').then(m => m.ProduitModule) },
-  { path: 'gestionnaire', loadChildren: () => import('./commande/commande.module').then(m => m.CommandeModule) }
+  { path: 'produit',
+   loadChildren: () => import('./produit/produit.module').then(m => m.ProduitModule) },
+
+  { path: 'gestionnaire', 
+    loadChildren: () => import('./commande/commande.module').then(m => m.CommandeModule),
+    // canActivate: [AuthGuard],
+    // data: { roles: [ROLE.admin] } 
+ }
 ];
 
 @NgModule({

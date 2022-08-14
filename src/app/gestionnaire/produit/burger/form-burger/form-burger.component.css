@@ -1,0 +1,56 @@
+.content-wrapper{
+    width: calc(100% - 300px);
+    height: 100%;
+    position: fixed;
+    background: #fff;
+    left: 300px;
+    padding: 20px;
+    border: 1px solid #C2B364;
+    overflow-y: scroll;
+  }
+  .content{
+    margin-top: 2%;
+    margin-left: 5%;
+    width: 90%;
+    min-height: 90%;
+    background: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    border:1px solid #C2B364;
+
+}
+.btn{
+    border-radius: 10px;
+    border: none;
+    background-color: #C2B364;
+    color: white;
+    margin-left: 85%;
+}
+h2{
+    text-align: center;
+    text-decoration: underline;
+    color: #C2B364;
+}
+
+
+span{
+    color: red;
+}
+.card-body{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.accordion-item{
+   width: 80%;
+}
+.test{
+    display: flex;
+}
+.champ{
+    border-radius: 5px;
+    height: 45px;
+    width: 40px;
+    border: none;
+    color: white;
+    background-color: #C2B364;
+    margin-left: 40%;
+}

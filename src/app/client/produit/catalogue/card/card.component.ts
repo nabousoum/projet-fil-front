@@ -20,6 +20,6 @@ export class CardComponent implements OnInit {
 
   /* add to cart */
   addToCart(){
-    alert('ok')
+
   }
 }

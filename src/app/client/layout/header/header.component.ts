@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
 
   logout():void{
     this.tokenService.clearToken()
-    this.router.navigate(['/client/produits/catalogues'])
+    this.router.navigate(['/securite/login'])
   }
 
   isLogged:boolean = this.tokenService.isLogged()

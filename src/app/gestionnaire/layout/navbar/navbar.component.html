@@ -7,28 +7,31 @@
     </div>
     <ul class="vertical-menu">
         <li>
-            <a routerLink="/gestionnaire"><i class="fa-solid fa-gauge"></i>DASHBOARD</a>
+            <a routerLink="/gestionnaire"><i class="fa-solid fa-gauge"></i><span>DASHBOARD</span></a>
         </li>
        
         <li>
-            <i class="fa-solid fa-burger"></i>GESTION DES BURGERS
+            <a routerLink="/gestionnaire/produit/burger"> <i class="fa-solid fa-burger"></i><span>GESTION DES BURGERS</span></a>
         </li>
         <li>
-            <a routerLink="/gestionnaire/produit/menu"><i class="fa-solid fa-utensils"></i>GESTION DES MENUS</a>
+            <a routerLink="/gestionnaire/produit/menu"><i class="fa-solid fa-utensils"></i><span>GESTION DES MENUS</span></a>
         <li>
-           <a ><i class="bi bi-spotify"></i>GESTION DES FRITES</a> 
+           <a ><i class="bi bi-spotify"></i><span> GESTION DES FRITES</span> </a> 
         </li>
         <li>
-            <i class="fa-solid fa-bottle-water"></i>GESTION DES BOISSONS
+            <i class="fa-solid fa-bottle-water"></i> <span> GESTION DES BOISSONS</span>
         </li>
         <li>
-            <i class="bi bi-cart-fill"></i>GESTION DES COMMANDES
+            <i class="bi bi-cart-fill"></i><span>COMMANDES</span>  
         </li>
         <li>
-            <i class="bi bi-truck"></i>GESTION DES LIVREURS
+            <i class="bi bi-truck"></i><span> GESTION DES LIVREURS</span>
         </li>
         <li>
-            <i class="fa-solid fa-arrow-down-a-z"></i>GESTION DES ZONES
+            <i class="fa-solid fa-arrow-down-a-z"></i><span>GESTION DES ZONES</span>
+        </li>
+        <li (click)="logout()" class="logout">
+            <i  class="fa-solid fa-arrow-right-from-bracket"></i><span>DECONNEXION</span>
         </li>
     </ul><i class="bi bi-spotify"></i>
   </nav>
