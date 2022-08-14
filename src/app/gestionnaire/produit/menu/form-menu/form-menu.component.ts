@@ -93,15 +93,20 @@ export class FormMenuComponent implements OnInit {
     formData.append('imageBlob',this.registerForm.get('imageBlob').value);
     formData.append('description', this.registerForm.get('description').value);
     formData.append('menuBurgers',JSON.stringify(this.registerForm.get('menuBurgers').value));
-    formData.append('menuTailleBoissons',JSON.stringify(this.registerForm.get('menuBurgers').value));
-    formData.append('menuPortionFrites',JSON.stringify(this.registerForm.get('menuBurgers').value));
+    formData.append('menuTailleBoissons',JSON.stringify(this.registerForm.get('menuTailleBoissons').value));
+    formData.append('menuPortionFrites',JSON.stringify(this.registerForm.get('menuPortionFrites').value));
     formData.append('prix',0)
     console.log(this.registerForm.value)
 
     this.produitServ.addMenu(formData).subscribe(
-      err=>console.log(err),
+      err=>{
+        this.toast.error({detail:"error",summary:"le menu n a pas pu etre enregistré"})
+      },
+      data=>{
+        this.toast.success({detail:"success",summary:"le menu a bien été enregistré"})
+      }
     )
-    //this.toast.success({detail:"success",summary:"le menu a bien été enregistré"})
+  
   }
 
   get nom(){
