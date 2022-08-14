@@ -14,6 +14,8 @@ export class ProduitService {
   private urlPostMenu:string = 'http://127.0.0.1:8000/api/menus'
   private urlPostBurger:string = 'http://127.0.0.1:8000/api/burgers'
   private urlDeleteMenu:string = 'http://127.0.0.1:8000/api/menus'
+  private urlDeleteBurger:string = 'http://127.0.0.1:8000/api/burgers'
+
   
   constructor(
     private http:HttpClient,
@@ -75,5 +77,15 @@ export class ProduitService {
     };
     return this.http.delete<number>(this.urlDeleteMenu+"/"+id,httpOptions);
   }
+   /* archiver burger*/
 
+   burgerDelete (id:String):Observable<number>{
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': `Bearer ${this.token.getToken()}`
+      })
+    };
+    return this.http.delete<number>(this.urlDeleteBurger+"/"+id,httpOptions);
+  }
 }

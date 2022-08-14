@@ -25,5 +25,11 @@ export class BurgerComponent implements OnInit {
       this.totalLenght = this.catas.length
     })
   }
-
+  /* edit menu */
+  BurgertoEdit(id:string){
+    this.produitService.burgerDelete(id) .subscribe(
+      
+    );
+      this.toast.info({detail:"info",summary:"le menu a bien été supprimé"})
+}
 }

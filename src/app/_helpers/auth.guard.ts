@@ -3,6 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { Observable } from 'rxjs';
 import { AuthServService } from '../securite/shared/services/auth-serv.service';
 import { TokenService } from '../securite/shared/services/token.service';
+import jwt_decode from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
@@ -15,32 +16,21 @@ export class AuthGuard implements CanActivate {
     ){
 
   }
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    
-   
-    // if(this.tokenService.isLogged()){
-    //   return true
-    // }
-    // return this.router.navigate(['/securite/login']);
-
-    const user = this.authenticationService.userValue;
-        if (user) {
-            // check if route is restricted by role
-            if (route.data['roles'].includes(user.roles)) {
-                // role not authorised so redirect to home page
-                this.router.navigate(['/client/produits/catalogues']);
-                return false;
-            }
-
-            // authorised so return true
-            return true;
+      var token = this.tokenService.getToken();
+      var decoded: any= jwt_decode(token);
+        if (this.tokenService.isLogged() && route.data['roles'] === decoded.roles[0]) {
+          
+          return false;
         }
+        else{
+          this.router.navigate(['/securite/login']);
+        }
+      return true;
 
-        // not logged in so redirect to login page with the return url
-        this.router.navigate(['/securite/login'], { queryParams: { returnUrl: state.url } });
-        return false;
   }
   
 }

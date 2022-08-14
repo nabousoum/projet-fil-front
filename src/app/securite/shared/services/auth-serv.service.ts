@@ -17,6 +17,7 @@ export class AuthServService {
   constructor(private http:HttpClient,private token :TokenService) {
     this.userSubject = new BehaviorSubject<Register>(JSON.parse(localStorage.getItem('token') || 'null'));
     this.user = this.userSubject.asObservable();
+
    }
 
    public get userValue(): Register {
@@ -26,7 +27,7 @@ export class AuthServService {
 
   login(credentials:ICredential):Observable<IToken>{
     return this.http.post<any>(this.url, credentials).pipe(map(user => {
-      // store user details and jwt token in local storage to keep user logged in between page refreshes
+
       localStorage.setItem('token', JSON.stringify(user));
       this.userSubject.next(user);
       return user;
@@ -35,8 +36,8 @@ export class AuthServService {
   }
 
   /*fonction user*/
-  // private getUser(token:any):Register{
-  //   return JSON.parse(atob(token.split('.')[1])) as Register;
-  // }
+  private getUser(token:any):Register{
+    return JSON.parse(atob(token.split('.')[1])) as Register;
+  }
 
 }

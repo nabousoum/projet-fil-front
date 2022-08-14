@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { LayoutModule } from './client/layout/layout.module';
 import { PageNotFoundComponent } from './notFound/page.not.found/page.not.found.component';
 import { NgToastModule } from 'ng-angular-popup' 
+import { AuthGuard } from './_helpers/auth.guard';
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import { NgToastModule } from 'ng-angular-popup'
     HttpClientModule,
     NgToastModule,
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
