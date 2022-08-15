@@ -12,7 +12,7 @@ import { catchError, tap, map } from 'rxjs/operators';
 export class CommandeServService {
 
   private urlCommandePost = 'http://127.0.0.1:8000/api/commandes'
-  private urlCommandeGet = 'http://127.0.0.1:8000/api/clients/11/commandes'
+  private urlCommandeGet = 'http://127.0.0.1:8000/api/clients'
   private urlZone = 'http://127.0.0.1:8000/api/zones'
   
   constructor(
@@ -40,7 +40,7 @@ export class CommandeServService {
         'Authorization': `Bearer ${this.token.getToken()}`
       })
     };
-    return this.http.get<any>(this.urlCommandeGet,httpOptions)
+    return this.http.get<any>((`${this.urlCommandeGet}/${this.token.getId()}/commandes`),httpOptions)
     .pipe(
       map(data=>{
         let test = data['hydra:member']

@@ -5,4 +5,5 @@ export interface ICredential{
 
 export interface IToken{
     token:string
+    id:string
 }

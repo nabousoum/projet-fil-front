@@ -28,8 +28,8 @@ export class LoginComponent implements OnInit {
     //console.log(this.form);
     this.authServ.login(this.form).subscribe(
       data=>{
-        console.log(data.token)
-        this.tokenService.saveToken(data.token)
+        //console.log("soneu"+data)
+        this.tokenService.saveToken(data.token,data.id)
         this.toast.success({detail:"success",summary:"connexion reussie"})
       },
       err=>{

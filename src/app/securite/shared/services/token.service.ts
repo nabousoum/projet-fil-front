@@ -8,10 +8,12 @@ export class TokenService {
 
   
   constructor(private router : Router) { }
-  saveToken(token: string):void {
-    var token:string = this.getToken();
-    var decoded: any= jwt_decode(token);
+  
+  saveToken(token: string,id:string):void {
+    var tokenI:string = this.getToken();
+    var decoded: any = jwt_decode(tokenI);
     localStorage.setItem('token', token)
+    localStorage.setItem('id',id)
     if(decoded.roles[0] == ["ROLE_GESTIONNAIRE"] ){
       this.router.navigate(['/gestionnaire'])
     }
@@ -23,7 +25,7 @@ export class TokenService {
 
   isLogged():boolean{
     const token = localStorage.getItem('token')
-    console.log(token)
+    console.log("help"+token)
     return !! token
   }
 
@@ -35,5 +37,9 @@ export class TokenService {
   getToken():any{
     const token = localStorage.getItem('token')
     return token
+  }
+  getId():any{
+    const id = localStorage.getItem('id')
+    return Number(id)
   }
 }

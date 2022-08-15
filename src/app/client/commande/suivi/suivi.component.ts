@@ -3,6 +3,7 @@ import { CommandeList } from '../shared/models/commandeList';
 import { CommandeServService } from '../shared/services/commande-serv.service';
 import { Observable } from 'rxjs';
 import { catchError, tap, filter,map } from 'rxjs/operators';
+import { TokenService } from 'src/app/securite/shared/services/token.service';
 
 @Component({
   selector: 'ss-suivi',
@@ -20,12 +21,12 @@ export class SuiviComponent implements OnInit {
   searchTerm:any
   searchTermDate:any
   constructor(
+    private token: TokenService,
     private comServ:CommandeServService
   ) { }
 
   ngOnInit(): void {
     this.comServ.commandeClient().subscribe(data => {
-      console.log(data);
       this.commandes = data
       this.totalLenght = this.commandes.length
       return data
