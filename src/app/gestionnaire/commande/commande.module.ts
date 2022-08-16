@@ -8,7 +8,7 @@ import { LayoutModule } from '../layout/layout.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CommandeFilter } from '../shared/services/commande-filter.pipe';
+import { CommandeDateFilter, CommandeFilter } from '../shared/services/commande-filter.pipe';
 import { LivraisonComponent } from './livraison/livraison.component';
 
 
@@ -18,7 +18,8 @@ import { LivraisonComponent } from './livraison/livraison.component';
     CommandeComponent,
     SuiviComponent,
     CommandeFilter,
-    LivraisonComponent
+    LivraisonComponent,
+    CommandeDateFilter
   ],
   imports: [
     CommonModule,

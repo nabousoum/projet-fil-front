@@ -3,7 +3,7 @@
     <h3>LISTE DE MES COMMANDES</h3>
     <div class="filterSearchs">
       <input type="text" name="" placeholder="filtrer par etat" id="filtreByEtat"  [(ngModel)]="searchTerm" />
-      <input type="text" name="" placeholder="filtrer par date" id="filtreByEtat" [(ngModel)]="searchTermDate"  />
+      <input type="text" name="" placeholder="filtrer par date" id="filtreByEtat" />
 
     </div>
     
@@ -20,7 +20,7 @@
             </thead>
             <tbody>
              
-                <tr *ngFor="let commande of commandes | paginate:{itemsPerPage:3,currentPage:p,totalItems:totalLenght} | commandeFilter:searchTerm | commandeFilter:searchTermDate">
+                <tr *ngFor="let commande of commandes | paginate:{itemsPerPage:3,currentPage:p,totalItems:totalLenght} | commandeFilter:searchTerm">
                   <td>
                     <p class="fw-normal mb-1">{{commande.numeroCommande}}</p>
                   </td>

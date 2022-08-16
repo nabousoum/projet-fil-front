@@ -24,6 +24,7 @@ export class SuiviComponent implements OnInit {
     this.comServ.allCommande().subscribe(data=>{
       console.log(Date.now());
       this.commandes = data
+      //.filter((commande:any) => commande.date="")
       this.totalLenght = this.commandes.length
     })
   }

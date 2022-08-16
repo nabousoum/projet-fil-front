@@ -4,7 +4,7 @@
         <h2>LISTE DES COMMANDES</h2>
         <div class="filterSearchs">
             <input type="text" name="" placeholder="filtrer par etat" id="filtreByEtat" [(ngModel)]="searchTerm"  />
-            <input type="text" name="" placeholder="filtrer par date" id="filtreByEtat" />
+            <input type="date" name="" placeholder="filtrer par date" id="filtreByEtat" [(ngModel)]="searchTermDate" />
           </div>
         <div class="liste">
             <table class="table table-striped">
@@ -18,7 +18,10 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let commande of commandes | paginate:{itemsPerPage:5,currentPage:p,totalItems:totalLenght} | commandeFilter:searchTerm">
+                  <tr *ngFor="let commande of commandes
+                    | paginate:{itemsPerPage:5,currentPage:p,totalItems:totalLenght}
+                    | commandeFilter:searchTerm
+                    | CommandeDateFilter:searchTermDate">
                     <td>{{commande.id}}</td>
                     <td>{{commande.numeroCommande}}</td>
                     <td>{{commande.montantCommande}}</td>
