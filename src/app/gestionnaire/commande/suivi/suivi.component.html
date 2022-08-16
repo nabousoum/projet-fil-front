@@ -29,11 +29,11 @@
                     <td>{{commande.numeroCommande}}</td>
                     <td>{{commande.client?.prenom}} {{commande.client?.nom}}</td>
                     <td>{{commande.montantCommande}}</td>
-                    <td>{{commande.dateCommande |date}}</td>
+                    <td>{{commande.etat}}</td>
                     <td>
-                        <button  class="btn-va"><i class="fa-solid fa-check"></i>valider</button>
-                        <button  class="btn-ter"><i class="bi bi-bookmark-check-fill"></i>terminer</button>
-                        <button  class="btn-an"><i class="bi bi-slash-circle"></i>annuler</button>
+                        <button (click)='CommandetoEdit(commande.id,"valide")'  class="btn-va"><i class="fa-solid fa-check"></i>valider</button>
+                        <button (click)='CommandetoEdit(commande.id,"termine")' class="btn-ter"><i class="bi bi-bookmark-check-fill"></i>terminer</button>
+                        <button (click)='CommandetoEdit(commande.id,"annule")' class="btn-an"><i class="bi bi-slash-circle"></i>annuler</button>
                     </td>
                   </tr>
                 </tbody>
