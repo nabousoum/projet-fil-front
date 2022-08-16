@@ -27,3 +27,26 @@ export class CommandeDateFilter implements PipeTransform{
         });
     }
 }
+@Pipe({
+    name:'CommandeZoneFilter'
+})
+export class CommandeZoneFilter implements PipeTransform{
+    transform(commandes: CommandeList[], searchTermZone: string) {
+        if(!commandes || !searchTermZone){
+            return commandes
+        }
+        return commandes.filter(commande => commande.zone?.libelle?.toLowerCase().indexOf(searchTermZone.toLowerCase()) !== -1);
+    }
+}
+
+@Pipe({
+    name:'CommandeCLientFilter'
+})
+export class CommandeCLientFilter implements PipeTransform{
+    transform(commandes: CommandeList[], searchTermClient: string) {
+        if(!commandes || !searchTermClient){
+            return commandes
+        }
+        return commandes.filter(commande => commande.client?.prenom?.toLowerCase().indexOf(searchTermClient.toLowerCase()) !== -1);
+    }
+}

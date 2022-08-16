@@ -1,7 +1,7 @@
 <ss-navbar></ss-navbar>
 <div class="content-wrapper">
     <div class="content">
-        <h2>LISTE DES COMMANDES TERMINÉES PAR ZONE</h2>
+        <h2>LISTE DES COMMANDES TERMINÉES</h2>
         <div class="panel panel-primary"  class="choice">
             <div class="panel-heading" (click)="panleExpanded = !panleExpanded" class="header">
                 <p>ZONE 1</p>
@@ -65,6 +65,7 @@
                         <option value={{livreur.id}}>{{livreur.prenom}} {{livreur.nom}} - {{livreur.matriculeMoto}}</option>
                     </ng-container>
                 </select>
+                <button class="btn">Valider</button>
             </div>
         </div>
         <div class="panel panel-primary" class="choice">
@@ -97,6 +98,7 @@
                         <option value={{livreur.id}}>{{livreur.prenom}} {{livreur.nom}} - {{livreur.matriculeMoto}}</option>
                     </ng-container>
                 </select>
+                <button class="btn">Valider</button>
             </div>
         </div>
     </div>

@@ -4,7 +4,9 @@
         <h2>LISTE DES COMMANDES</h2>
         <div class="filterSearchs">
             <input type="text" name="" placeholder="filtrer par etat" id="filtreByEtat" [(ngModel)]="searchTerm"  />
-            <input type="date" name="" placeholder="filtrer par date" id="filtreByEtat" [(ngModel)]="searchTermDate" />
+            <input type="text" name="" placeholder="filtrer par zone" id="filtreByZone" [(ngModel)]="searchTermZone" />
+            <input type="text" name="" placeholder="filtrer par client" id="filtreByZone" [(ngModel)]="searchTermClient" />
+            <input type="date" name="" placeholder="" id="filtreByDate" [(ngModel)]="searchTermDate" />
           </div>
         <div class="liste">
             <table class="table table-striped">
@@ -14,6 +16,7 @@
                     <th scope="col">Numero commande</th>
                     <th scope="col">Montant commande</th>
                     <th scope="col">Date commande</th>
+                    <th scope="col">Etat commande</th>
                     <th scope="col">ACTION</th>
                   </tr>
                 </thead>
@@ -21,11 +24,14 @@
                   <tr *ngFor="let commande of commandes
                     | paginate:{itemsPerPage:5,currentPage:p,totalItems:totalLenght}
                     | commandeFilter:searchTerm
-                    | CommandeDateFilter:searchTermDate">
+                    | CommandeDateFilter:searchTermDate
+                    | CommandeZoneFilter:searchTermZone
+                    |CommandeCLientFilter:searchTermClient">
                     <td>{{commande.id}}</td>
                     <td>{{commande.numeroCommande}}</td>
                     <td>{{commande.montantCommande}}</td>
                     <td>{{commande.dateCommande |date}}</td>
+                    <td>{{commande.etat}}</td>
                     <td>
                         <button  class="btn-va"><i class="fa-solid fa-check"></i>valider</button>
                         <button  class="btn-ter"><i class="bi bi-bookmark-check-fill"></i>terminer</button>

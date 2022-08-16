@@ -15,6 +15,8 @@ export class SuiviComponent implements OnInit {
 
   searchTerm:any
   searchTermDate:any
+  searchTermZone:any
+  searchTermClient:any
 
   constructor(
     private comServ:CommandeService
@@ -23,8 +25,7 @@ export class SuiviComponent implements OnInit {
   ngOnInit(): void {
     this.comServ.allCommande().subscribe(data=>{
       console.log(Date.now());
-      this.commandes = data
-      //.filter((commande:any) => commande.date="")
+      this.commandes = data.filter((commande:any) => commande.etat="en cours")
       this.totalLenght = this.commandes.length
     })
   }

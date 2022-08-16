@@ -33,7 +33,7 @@ export class LivraisonComponent implements OnInit {
       this.commandesZones3 = data.filter((commande:any) => commande.etat=="termine")
     })
     this.comServ.allLivreurs().subscribe(data=>{
-      this.livreurs = data
+      this.livreurs = data.filter((livreur:any)=> livreur.etat=="disponible")
     })
   }
 

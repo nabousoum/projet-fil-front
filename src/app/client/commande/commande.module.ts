@@ -14,7 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SuiviLigneComponent } from './suivi/suivi-ligne/suivi-ligne.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-import { CommandeFilter } from './shared/services/commande-filter.pipe';
+import { CommandeDateFilter, CommandeFilter } from './shared/services/commande-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,8 @@ import { CommandeFilter } from './shared/services/commande-filter.pipe';
     LigneCommandeComponent,
     LignePanierComponent,
     SuiviLigneComponent,
-    CommandeFilter
+    CommandeFilter,
+    CommandeDateFilter
   ],
   imports: [
     CommonModule,
