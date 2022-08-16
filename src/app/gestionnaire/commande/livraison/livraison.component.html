@@ -1,7 +1,7 @@
 <ss-navbar></ss-navbar>
 <div class="content-wrapper">
     <div class="content">
-        <h2>LISTE DES COMMANDES TERMINÉES</h2>
+        <h2>LISTE DES COMMANDES TERMINÉES PAR ZONE</h2>
         <div class="panel panel-primary"  class="choice">
             <div class="panel-heading" (click)="panleExpanded = !panleExpanded" class="header">
                 <p>ZONE 1</p>
@@ -32,11 +32,12 @@
                             <option value={{livreur.id}}>{{livreur.prenom}} {{livreur.nom}} - {{livreur.matriculeMoto}}</option>
                         </ng-container>
                     </select>
+                    <button class="btn">Valider</button>
             </div>
         </div>
-        <div class="panel panel-primary" (click)="panleExpanded2 = !panleExpanded2" class="choice">
-            <div class="panel-heading" class="header">
-                <p>ZONE 1</p>
+        <div class="panel panel-primary"class="choice">
+            <div class="panel-heading"  (click)="panleExpanded2 = !panleExpanded2"  class="header">
+                <p>ZONE 2</p>
             </div>
             <div *ngIf="panleExpanded2"  class="panel-body" class="body">
                 <table class="table table-striped">
@@ -49,7 +50,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let com of commandesZones  ">
+                      <tr *ngFor="let com of commandesZones2  ">
                         <td>{{com.numeroCommande}}</td>
                         <td>{{com.montantCommande}}</td>
                         <td>{{com.dateCommande}}</td>
@@ -58,15 +59,17 @@
                       </tr>
                     </tbody>
                   </table>
-                    <select  name="livreur" id="livreur">
-                        <option value="">--choisissez un livreur--</option>
-                        <option value="">wesh</option>
-                    </select>
+                  <select  name="livreur" id="livreur">
+                    <option value="">--choisissez un livreur--</option>
+                    <ng-container *ngFor="let livreur of  livreurs">
+                        <option value={{livreur.id}}>{{livreur.prenom}} {{livreur.nom}} - {{livreur.matriculeMoto}}</option>
+                    </ng-container>
+                </select>
             </div>
         </div>
-        <div class="panel panel-primary" (click)="panleExpanded3 = !panleExpanded3" class="choice">
-            <div class="panel-heading" class="header">
-                <p>ZONE 1</p>
+        <div class="panel panel-primary" class="choice">
+            <div class="panel-heading"  (click)="panleExpanded3 = !panleExpanded3" class="header">
+                <p>ZONE 3</p>
             </div>
             <div *ngIf="panleExpanded3"  class="panel-body" class="body">
                 <table class="table table-striped">
@@ -79,7 +82,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let com of commandesZones  ">
+                      <tr *ngFor="let com of commandesZones3  ">
                         <td>{{com.numeroCommande}}</td>
                         <td>{{com.montantCommande}}</td>
                         <td>{{com.dateCommande}}</td>
@@ -88,10 +91,12 @@
                       </tr>
                     </tbody>
                   </table>
-                    <select  name="livreur" id="livreur">
-                        <option value="">--choisissez un livreur--</option>
-                        <option value="">wesh</option>
-                    </select>
+                  <select  name="livreur" id="livreur">
+                    <option value="">--choisissez un livreur--</option>
+                    <ng-container *ngFor="let livreur of  livreurs">
+                        <option value={{livreur.id}}>{{livreur.prenom}} {{livreur.nom}} - {{livreur.matriculeMoto}}</option>
+                    </ng-container>
+                </select>
             </div>
         </div>
     </div>

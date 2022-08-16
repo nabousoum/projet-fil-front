@@ -9,6 +9,9 @@ import { CommandeService } from '../../shared/services/commande.service';
 export class LivraisonComponent implements OnInit {
 
   commandesZones :any[] = []
+  commandesZones2 :any[] = []
+  commandesZones3 :any[] = []
+
   livreurs: any[] = []
 
   panleExpanded = true;
@@ -20,8 +23,14 @@ export class LivraisonComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.comServ.commandesByZone().subscribe(data=>{
+    this.comServ.commandesByZone(1).subscribe(data=>{
       this.commandesZones = data.filter((commande:any) => commande.etat=="termine")
+    })
+    this.comServ.commandesByZone(2).subscribe(data=>{
+      this.commandesZones2 = data.filter((commande:any) => commande.etat=="termine")
+    })
+    this.comServ.commandesByZone(3).subscribe(data=>{
+      this.commandesZones3 = data.filter((commande:any) => commande.etat=="termine")
     })
     this.comServ.allLivreurs().subscribe(data=>{
       this.livreurs = data

@@ -9,7 +9,7 @@ import { catchError, tap, map } from 'rxjs/operators';
 export class CommandeService {
 
   private urlAllCommande: string = 'http://127.0.0.1:8000/api/commandes'
-  private urlCommandeZone: string = 'http://127.0.0.1:8000/api/zones/1/commandes'
+  private urlCommandeZone: string = 'http://127.0.0.1:8000/api/zones'
   private urlLivreurs: string = 'http://127.0.0.1:8000/api/livreurs'
   
   constructor(
@@ -36,14 +36,14 @@ export class CommandeService {
   }
 
   /* commandes par zones */
-  commandesByZone(){
+  commandesByZone(idZone:number){
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         'Authorization': `Bearer ${this.token.getToken()}`
       })
     };
-    return this.http.get<any>(this.urlCommandeZone,httpOptions)
+    return this.http.get<any>((`${this.urlCommandeZone}/${idZone}/commandes`),httpOptions)
     .pipe(
       map(data=>{
         let test = data['hydra:member']
