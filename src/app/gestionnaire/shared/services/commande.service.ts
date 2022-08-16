@@ -9,12 +9,15 @@ import { catchError, tap, map } from 'rxjs/operators';
 export class CommandeService {
 
   private urlAllCommande: string = 'http://127.0.0.1:8000/api/commandes'
-
+  private urlCommandeZone: string = 'http://127.0.0.1:8000/api/zones/1/commandes'
+  private urlLivreurs: string = 'http://127.0.0.1:8000/api/livreurs'
+  
   constructor(
     private http:HttpClient,
     private token : TokenService
   ) { }
 
+  /* all commande */
   allCommande(){
     const httpOptions = {
       headers: new HttpHeaders({
@@ -31,4 +34,41 @@ export class CommandeService {
       }
       ))
   }
+
+  /* commandes par zones */
+  commandesByZone(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': `Bearer ${this.token.getToken()}`
+      })
+    };
+    return this.http.get<any>(this.urlCommandeZone,httpOptions)
+    .pipe(
+      map(data=>{
+        let test = data['hydra:member']
+        data = test
+        return data
+      }
+      ))
+  }
+
+  /* liste des livreurs */
+  allLivreurs(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': `Bearer ${this.token.getToken()}`
+      })
+    };
+    return this.http.get<any>(this.urlLivreurs,httpOptions)
+    .pipe(
+      map(data=>{
+        let test = data['hydra:member']
+        data = test
+        return data
+      }
+      ))
+  }
+
 }
