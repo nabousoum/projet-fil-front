@@ -12,11 +12,10 @@
             <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th scope="col">ID</th>
                     <th scope="col">Numero commande</th>
+                    <th scope="col">Client</th>
                     <th scope="col">Montant commande</th>
                     <th scope="col">Date commande</th>
-                    <th scope="col">Etat commande</th>
                     <th scope="col">ACTION</th>
                   </tr>
                 </thead>
@@ -26,12 +25,11 @@
                     | commandeFilter:searchTerm
                     | CommandeDateFilter:searchTermDate
                     | CommandeZoneFilter:searchTermZone
-                    |CommandeCLientFilter:searchTermClient">
-                    <td>{{commande.id}}</td>
+                    | CommandeCLientFilter:searchTermClient">
                     <td>{{commande.numeroCommande}}</td>
+                    <td>{{commande.client?.prenom}} {{commande.client?.nom}}</td>
                     <td>{{commande.montantCommande}}</td>
                     <td>{{commande.dateCommande |date}}</td>
-                    <td>{{commande.etat}}</td>
                     <td>
                         <button  class="btn-va"><i class="fa-solid fa-check"></i>valider</button>
                         <button  class="btn-ter"><i class="bi bi-bookmark-check-fill"></i>terminer</button>

@@ -4,7 +4,7 @@ import { CommandeServService } from '../shared/services/commande-serv.service';
 import { Observable } from 'rxjs';
 import { catchError, tap, filter,map } from 'rxjs/operators';
 import { TokenService } from 'src/app/securite/shared/services/token.service';
-
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'ss-suivi',
   templateUrl: './suivi.component.html',
@@ -23,7 +23,8 @@ export class SuiviComponent implements OnInit {
   
   constructor(
     private token: TokenService,
-    private comServ:CommandeServService
+    private comServ:CommandeServService,
+    private toast: NgToastService, 
   ) { }
 
   ngOnInit(): void {
@@ -33,5 +34,12 @@ export class SuiviComponent implements OnInit {
       return data
     })
   }
+
+  /* fonction annuler commande */
+  CommandetoEdit(id:any){
+    this.comServ.resetCommande(id) .subscribe();
+      this.toast.info({detail:"info",summary:"le commande a bien été annulé"})
+      location.reload()
+  } 
 
 }

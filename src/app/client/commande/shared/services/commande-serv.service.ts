@@ -14,7 +14,8 @@ export class CommandeServService {
   private urlCommandePost = 'http://127.0.0.1:8000/api/commandes'
   private urlCommandeGet = 'http://127.0.0.1:8000/api/clients'
   private urlZone = 'http://127.0.0.1:8000/api/zones'
-  
+  private urlPutCommande = 'http://127.0.0.1:8000/api/commandes'
+
   constructor(
     private http: HttpClient,
     private token : TokenService
@@ -62,4 +63,15 @@ export class CommandeServService {
       ))
   }
 
+  /* annuler commande */
+  resetCommande (id:any):Observable<number>{
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': `Bearer ${this.token.getToken()}`
+      })
+    }
+    const body = {"etat": "annule"}
+    return this.http.put<number>(this.urlPutCommande+"/"+id,body,httpOptions);
+  }
 }

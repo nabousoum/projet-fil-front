@@ -32,7 +32,7 @@
                     {{commande.etat}}
                   </td>
                   <td>
-                      <button type="button" class="btn btn-danger">Annuler</button>
+                      <button (click)='CommandetoEdit(commande.id)' type="button" class="btn btn-danger">Annuler</button>
                       <a routerLink="/client/commande/detail/1">
                           <button type="button" class="btn btn-warning">Detail</button>
                       </a>
