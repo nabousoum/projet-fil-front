@@ -1,0 +1,38 @@
+<ss-navbar></ss-navbar>
+<div class="content-wrapper">
+    <div class="content">
+        <h2>LISTE DES COMMANDES</h2>
+        <div class="filterSearchs">
+            <input type="text" name="" placeholder="filtrer par etat" id="filtreByEtat" [(ngModel)]="searchTerm"  />
+            <input type="text" name="" placeholder="filtrer par date" id="filtreByEtat" />
+          </div>
+        <div class="liste">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Numero commande</th>
+                    <th scope="col">Montant commande</th>
+                    <th scope="col">Date commande</th>
+                    <th scope="col">ACTION</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let commande of commandes | paginate:{itemsPerPage:5,currentPage:p,totalItems:totalLenght} | commandeFilter:searchTerm">
+                    <td>{{commande.id}}</td>
+                    <td>{{commande.numeroCommande}}</td>
+                    <td>{{commande.montantCommande}}</td>
+                    <td>{{commande.dateCommande}}</td>
+                    <td>
+                        <button  class="btn-va"><i class="fa-solid fa-check"></i>valider</button>
+                        <button  class="btn-ter"><i class="bi bi-bookmark-check-fill"></i>terminer</button>
+                        <button  class="btn-an"><i class="bi bi-slash-circle"></i>annuler</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+           
+    </div>
+</div>

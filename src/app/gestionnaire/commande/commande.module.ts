@@ -3,15 +3,32 @@ import { CommonModule } from '@angular/common';
 
 import { CommandeRoutingModule } from './commande-routing.module';
 import { CommandeComponent } from './commande.component';
+import { SuiviComponent } from './suivi/suivi.component';
+import { LayoutModule } from '../layout/layout.module';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommandeFilter } from '../shared/services/commande-filter.pipe';
+import { LivraisonComponent } from './livraison/livraison.component';
+
 
 
 @NgModule({
   declarations: [
-    CommandeComponent
+    CommandeComponent,
+    SuiviComponent,
+    CommandeFilter,
+    LivraisonComponent
   ],
   imports: [
     CommonModule,
-    CommandeRoutingModule
+    CommandeRoutingModule,
+    LayoutModule,
+    NgxPaginationModule,
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
+    
   ]
 })
 export class CommandeModule { }
