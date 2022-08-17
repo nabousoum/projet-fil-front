@@ -15,8 +15,12 @@ export class ListeComponent implements OnInit {
 
   ngOnInit(): void {
     this.comServ.allLivraisons().subscribe(data=>{
-      this.livraisons = data
+      this.livraisons = data.filter((livraison:any)=>livraison.etat=='en cours')
     })
+  }
+  /* fonction des commandes par livraison */
+  commandeByLivraison(id:any){
+    
   }
 
 }

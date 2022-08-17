@@ -26,14 +26,17 @@ h2{
 .liste{
     margin-top: 10%;
 }
-button{
+.btn-va{
+    background-color: rgb(102, 145, 102);
+  }
+  .btn-ter{
+    background-color: rgb(102, 164, 222);
+  }
+  .btn-an{
+    background-color: rgb(237, 127, 127);
+  }
+  button{
     color: white;
     border: none;
     margin-left: 10%;
-}
-.btn-inf{
-    background-color: rgb(39, 117, 177);
-}
-.btn-va{
-    background-color: rgb(52, 89, 52);
-}
+  }

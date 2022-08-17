@@ -15,6 +15,8 @@ export class CommandeService {
   private urlPutCommande = 'http://127.0.0.1:8000/api/commandes'
   private urlPostLivraison:string = 'http://127.0.0.1:8000/api/livraisons' 
   private urlLivraisonAll:string = 'http://127.0.0.1:8000/api/livraisons'
+  private urlCommandeLivraison:string = 'http://127.0.0.1:8000/api/livraisons'
+
   constructor(
     private http:HttpClient,
     private token : TokenService
@@ -106,6 +108,24 @@ export class CommandeService {
       })
     };
     return this.http.get<any>(this.urlLivraisonAll,httpOptions)
+    .pipe(
+      map(data=>{
+        let test = data['hydra:member']
+        data = test
+        return data
+      }
+      ))
+  }
+
+  /* commandes d une livraison */
+  commandeByLivraison(id:any){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': `Bearer ${this.token.getToken()}`
+      })
+    };
+    return this.http.get<any>(`${this.urlCommandeLivraison}/${id}/commandes`,httpOptions)
     .pipe(
       map(data=>{
         let test = data['hydra:member']
