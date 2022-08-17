@@ -10,6 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommandeCLientFilter, CommandeDateFilter, CommandeFilter, CommandeZoneFilter } from '../shared/services/commande-filter.pipe';
 import { LivraisonComponent } from './livraison/livraison.component';
+import { ListeComponent } from './livraison/liste/liste.component';
 
 
 
@@ -21,7 +22,8 @@ import { LivraisonComponent } from './livraison/livraison.component';
     LivraisonComponent,
     CommandeDateFilter,
     CommandeZoneFilter,
-    CommandeCLientFilter
+    CommandeCLientFilter,
+    ListeComponent
   ],
   imports: [
     CommonModule,

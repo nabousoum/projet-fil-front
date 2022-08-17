@@ -1,0 +1,30 @@
+<ss-navbar></ss-navbar>
+<div class="content-wrapper">
+    <div class="content">
+        <h2>LISTE DES LIVRAISONS</h2>
+        <div class="liste">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">ID </th>
+                    <th scope="col">Montant livraison</th>
+                    <th scope="col">Livreur</th>
+                    <th scope="col">ACTION</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let livraison of livraisons">
+                    <td>{{livraison.id}}</td>
+                    <td>{{livraison.montantTotal}}</td>
+                    <td>{{livraison.livreur.prenom}} {{livraison.livreur.nom}}</td>
+                    <td>
+                       
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+             
+        </div>
+           
+    </div>
+</div>

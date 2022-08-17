@@ -21,11 +21,11 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let commande of commandes
-                    | paginate:{itemsPerPage:5,currentPage:p,totalItems:totalLenght}
                     | commandeFilter:searchTerm
                     | CommandeDateFilter:searchTermDate
                     | CommandeZoneFilter:searchTermZone
-                    | CommandeCLientFilter:searchTermClient">
+                    | CommandeCLientFilter:searchTermClient
+                    | paginate:{itemsPerPage:5,currentPage:p,totalItems:totalLenght}">
                     <td>{{commande.numeroCommande}}</td>
                     <td>{{commande.client?.prenom}} {{commande.client?.nom}}</td>
                     <td>{{commande.montantCommande}}</td>

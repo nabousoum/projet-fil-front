@@ -8,15 +8,16 @@ import { NgToastService } from 'ng-angular-popup';
 })
 export class SuiviComponent implements OnInit {
 
-  totalLenght:number = 0
+  totalLenght:any
   p: number = 1
   
   commandes : any[] = []
 
   etat:string=""
 
-  searchTerm:any
-  searchTermDate:any
+  searchTerm = "en cours"
+  searchTermDate = ''
+  //new Date().toLocaleDateString()
   searchTermZone:any
   searchTermClient:any
 
@@ -27,10 +28,10 @@ export class SuiviComponent implements OnInit {
 
   ngOnInit(): void {
     this.comServ.allCommande().subscribe(data=>{
-      console.log(Date.now());
       this.commandes = data
       //.filter((commande:any) => commande.etat="en cours")
       this.totalLenght = this.commandes.length
+      //console.log(this.totalLenght);
     })
   }
 
