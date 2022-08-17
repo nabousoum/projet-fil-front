@@ -13,6 +13,7 @@ export class CommandeService {
   private urlCommandeZone: string = 'http://127.0.0.1:8000/api/zones'
   private urlLivreurs: string = 'http://127.0.0.1:8000/api/livreurs'
   private urlPutCommande = 'http://127.0.0.1:8000/api/commandes'
+  private urlPostLivraison:string = 'http://127.0.0.1:8000/api/livraisons' 
   
   constructor(
     private http:HttpClient,
@@ -83,5 +84,17 @@ export class CommandeService {
     }
     const body = {"etat": etat}
     return this.http.put<number>(this.urlPutCommande+"/"+id,body,httpOptions);
+  }
+
+  /* fonction ajout livraison */
+  addLivraison(object:any){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': `Bearer ${this.token.getToken()}`
+      })
+    };
+    //console.log(httpOptions)
+    return this.http.post(this.urlPostLivraison,object,httpOptions)
   }
 }

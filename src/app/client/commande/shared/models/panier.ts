@@ -46,13 +46,15 @@ export interface CommandeMenuBoissonTaille{
 /* BoissonCommande */
 
 export interface BoissonCommande{
-    quantite?: number
+    quantite: number
     boissonTailleBoisson?: BoissonTailleBoisson
+    prix?:number
 }
 
 /* FriteCommande */
 
 export interface FriteCommande{
-    quantite?: number
+    quantite: number
     portionFrite?: Produit
+    prix?:number
 }

@@ -133,12 +133,12 @@ export class CartServiceService {
       grandTotal += Number( burgerCommande?.burger?.prix * burgerCommande.quantite)
     })
     this.newCart.value.boissonCommandes?.map(boissonCommande=>{
-      if(boissonCommande.boissonTailleBoisson?.boisson?.prix && boissonCommande.quantite)
-      grandTotal += Number( boissonCommande.boissonTailleBoisson?.boisson?.prix * boissonCommande.quantite)
+      if(boissonCommande.prix)
+      grandTotal += Number(boissonCommande.prix* boissonCommande.quantite)
     })
     this.newCart.value.friteCommandes?.map(friteCommande=>{
-      if(friteCommande?.portionFrite?.prix && friteCommande.quantite)
-      grandTotal += Number( friteCommande?.portionFrite?.prix * friteCommande.quantite)
+      if(friteCommande?.prix)
+      grandTotal += Number( friteCommande?.prix * friteCommande.quantite)
     })
     return grandTotal
   }

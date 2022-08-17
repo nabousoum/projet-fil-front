@@ -77,8 +77,6 @@ export class FormMenuComponent implements OnInit {
   /*form*/
 
   submitData(){
-
-    
     this.registerForm.value.menuBurgers.map((data:any)=>{
         data.burger = {id:Number(data.burger)}
     })

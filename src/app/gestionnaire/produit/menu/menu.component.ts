@@ -31,10 +31,9 @@ export class MenuComponent implements OnInit {
 
   /* edit menu */
   MenutoEdit(id:string){
-      this.produitService.menuDelete(id) .subscribe(
-        
-      );
-        this.toast.info({detail:"info",summary:"le menu a bien été supprimé"})
+    this.produitService.menuDelete(id) .subscribe();
+    this.toast.info({detail:"info",summary:"le menu a bien été supprimé"})
+    location.reload()
   }
 
 

@@ -45,6 +45,7 @@ export class PanierComponent implements OnInit {
       "zone":new FormControl(null,[Validators.required]),
     })
   }
+  
   delete(object: any){  
     this.cartServ.removeCart(object)
   }

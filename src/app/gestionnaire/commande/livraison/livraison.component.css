@@ -62,3 +62,6 @@ select{
   background-color: #C2B364;
   color: white;
 }
+input{
+  margin-left: 10%;
+}

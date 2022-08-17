@@ -43,4 +43,5 @@ export interface BoissonTailleBoisson{
     id?:number
     stock?:number
     boisson?: Produit
+ 
 }
