@@ -1,0 +1,30 @@
+<ss-navbar></ss-navbar>
+<div class="content-wrapper">
+    <div class="content">
+        <h2>LISTE DES LIVREURS</h2>
+       <a routerLink="/gestionnaire/commande/formLivreur">
+            <button>AJOUTER</button>
+       </a> 
+        <div class="liste">
+            <table class="table table-striped">
+                <thead>
+                  <tr >
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prenom</th>
+                    <th scope="col">Matricule</th>
+                    <th scope="col">Etat</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let livreur of livreurs">
+                    <td>{{livreur.nom}}</td>
+                    <td>{{livreur.prenom}}</td>
+                    <td>{{livreur.matriculeMoto}}</td>
+                    <td>{{livreur.etat}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+           
+    </div>
+</div>

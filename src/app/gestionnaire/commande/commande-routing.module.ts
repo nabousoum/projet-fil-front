@@ -4,6 +4,8 @@ import { CommandeComponent } from './commande.component';
 import { ListeCommandesComponent } from './livraison/liste/liste-commandes/liste-commandes.component';
 import { ListeComponent } from './livraison/liste/liste.component';
 import { LivraisonComponent } from './livraison/livraison.component';
+import { FormLivreurComponent } from './livreur/form-livreur/form-livreur.component';
+import { LivreurComponent } from './livreur/livreur.component';
 import { SuiviComponent } from './suivi/suivi.component';
 
 const routes: Routes = [
@@ -22,7 +24,15 @@ const routes: Routes = [
   },
   {
     path:'listeCommande/:id',
-    component:ListeCommandesComponent
+    component: ListeCommandesComponent
+  },
+  {
+    path:'livreur',
+    component: LivreurComponent
+  },
+  {
+    path:'formLivreur',
+    component:FormLivreurComponent
   }
 ];
 

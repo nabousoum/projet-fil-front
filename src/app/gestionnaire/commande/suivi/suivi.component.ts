@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommandeService } from '../../shared/services/commande.service';
 import { NgToastService } from 'ng-angular-popup';
 @Component({
@@ -8,6 +8,7 @@ import { NgToastService } from 'ng-angular-popup';
 })
 export class SuiviComponent implements OnInit {
 
+  //@Input('com')com:any = []
   totalLenght:any
   p: number = 1
   

@@ -35,7 +35,7 @@
                     </tr>
                   </tbody>
                 </table>
-                  <select formControlName="livreur" name="livreur" id="livreur">
+                  <select  name="livreur" id="livreur" formControlName="livreur">
                       <option value="">--choisissez un livreur--</option>
                       <ng-container *ngFor="let livreur of  livreurs">
                           <option value={{livreur.id}}>{{livreur.prenom}} {{livreur.nom}} - {{livreur.matriculeMoto}}</option>

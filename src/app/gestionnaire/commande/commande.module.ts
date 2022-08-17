@@ -12,6 +12,8 @@ import { CommandeCLientFilter, CommandeDateFilter, CommandeFilter, CommandeZoneF
 import { LivraisonComponent } from './livraison/livraison.component';
 import { ListeComponent } from './livraison/liste/liste.component';
 import { ListeCommandesComponent } from './livraison/liste/liste-commandes/liste-commandes.component';
+import { LivreurComponent } from './livreur/livreur.component';
+import { FormLivreurComponent } from './livreur/form-livreur/form-livreur.component';
 
 
 
@@ -25,7 +27,9 @@ import { ListeCommandesComponent } from './livraison/liste/liste-commandes/liste
     CommandeZoneFilter,
     CommandeCLientFilter,
     ListeComponent,
-    ListeCommandesComponent
+    ListeCommandesComponent,
+    LivreurComponent,
+    FormLivreurComponent
   ],
   imports: [
     CommonModule,

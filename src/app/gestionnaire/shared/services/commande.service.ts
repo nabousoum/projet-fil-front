@@ -134,4 +134,15 @@ export class CommandeService {
       }
       ))
   }
+
+  /* add livreur */
+  addLivreur(object:any){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': `Bearer ${this.token.getToken()}`
+      })
+    };
+    return this.http.post(this.urlLivreurs,JSON.stringify(object),httpOptions)
+  }
 }
