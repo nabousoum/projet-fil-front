@@ -35,7 +35,6 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/securite/login'])
     
   }
-
   isLogged:boolean = this.tokenService.isLogged()
   
 }

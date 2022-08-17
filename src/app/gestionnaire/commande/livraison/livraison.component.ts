@@ -13,6 +13,7 @@ export class LivraisonComponent implements OnInit {
   commandesZones :any[] = []
   commandesZones2 :any[] = []
   commandesZones3 :any[] = []
+  commandesAll :any[] = []
 
   livreurs: any[] = []
 
@@ -29,6 +30,9 @@ export class LivraisonComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // this.comServ.allCommande().subscribe(data=>{
+    //     this.commandesAll = data
+    // })
     this.comServ.commandesByZone(1).subscribe(data=>{
       this.commandesZones = data.filter((commande:any) => commande.etat=="termine")
     })
