@@ -7,6 +7,8 @@ import { LivraisonComponent } from './livraison/livraison.component';
 import { FormLivreurComponent } from './livreur/form-livreur/form-livreur.component';
 import { LivreurComponent } from './livreur/livreur.component';
 import { SuiviComponent } from './suivi/suivi.component';
+import { FormZoneComponent } from './zone/form-zone/form-zone.component';
+import { ZoneComponent } from './zone/zone.component';
 
 const routes: Routes = [
   { path: '',
@@ -33,6 +35,14 @@ const routes: Routes = [
   {
     path:'formLivreur',
     component:FormLivreurComponent
+  },
+  {
+    path:'zone',
+    component:ZoneComponent
+  },
+  {
+    path:'formZone',
+    component:FormZoneComponent
   }
 ];
 

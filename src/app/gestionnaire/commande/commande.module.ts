@@ -14,6 +14,8 @@ import { ListeComponent } from './livraison/liste/liste.component';
 import { ListeCommandesComponent } from './livraison/liste/liste-commandes/liste-commandes.component';
 import { LivreurComponent } from './livreur/livreur.component';
 import { FormLivreurComponent } from './livreur/form-livreur/form-livreur.component';
+import { ZoneComponent } from './zone/zone.component';
+import { FormZoneComponent } from './zone/form-zone/form-zone.component';
 
 
 
@@ -29,7 +31,9 @@ import { FormLivreurComponent } from './livreur/form-livreur/form-livreur.compon
     ListeComponent,
     ListeCommandesComponent,
     LivreurComponent,
-    FormLivreurComponent
+    FormLivreurComponent,
+    ZoneComponent,
+    FormZoneComponent
   ],
   imports: [
     CommonModule,

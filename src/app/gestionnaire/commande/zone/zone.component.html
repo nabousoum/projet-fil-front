@@ -1,0 +1,32 @@
+<ss-navbar></ss-navbar>
+<div class="content-wrapper">
+    <div class="content">
+        <h2>LISTE DES ZONES</h2>
+       <a routerLink="/gestionnaire/commande/formZone">
+            <button>AJOUTER</button>
+       </a> 
+        <div class="liste">
+            <table class="table table-striped">
+                <thead>
+                  <tr >
+                    <th scope="col">ID</th>
+                    <th scope="col">Libelle</th>
+                    <th scope="col">Quartiers</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let zone of zones">
+                    <td>{{zone.id}}</td>
+                    <td>{{zone.libelle}}</td>
+                    <td>
+                        <ng-container *ngFor="let quartier of zone.quartiers">
+                            {{quartier.libelle}} -
+                        </ng-container>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+           
+    </div>
+</div>
