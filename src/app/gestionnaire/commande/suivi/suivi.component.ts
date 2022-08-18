@@ -8,7 +8,7 @@ import { NgToastService } from 'ng-angular-popup';
 })
 export class SuiviComponent implements OnInit {
 
-  //@Input('com')com:any = []
+  //@Input('com')com:any [] = []
   totalLenght:any
   p: number = 1
   

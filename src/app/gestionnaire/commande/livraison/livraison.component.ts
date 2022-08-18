@@ -14,6 +14,8 @@ export class LivraisonComponent implements OnInit {
   commandesZones2 :any[] = []
   commandesZones3 :any[] = []
   commandesAll :any[] = []
+  zonesAll:any[] = []
+  i:number = 0
 
   livreurs: any[] = []
 
@@ -30,18 +32,25 @@ export class LivraisonComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.comServ.allCommande().subscribe(data=>{
-    //     this.commandesAll = data
-    // })
+
+  //   this.comServ.allZone().subscribe((data:any)=>{
+  //     this.i = Number(data.length)
+  //     console.log(this.i)
+  //      for (let index = 1; index <= this.i; index++) {
+  //           this.comServ.commandesByZone(this.i).subscribe(data=>{
+  //           this.commandesZones = data.filter((commande:any) => commande.etat=="termine")
+  //         })
+  //      }
+  //  })
     this.comServ.commandesByZone(1).subscribe(data=>{
       this.commandesZones = data.filter((commande:any) => commande.etat=="termine")
     })
-    this.comServ.commandesByZone(2).subscribe(data=>{
-      this.commandesZones2 = data.filter((commande:any) => commande.etat=="termine")
-    })
-    this.comServ.commandesByZone(3).subscribe(data=>{
-      this.commandesZones3 = data.filter((commande:any) => commande.etat=="termine")
-    })
+    // this.comServ.commandesByZone(2).subscribe(data=>{
+    //   this.commandesZones2 = data.filter((commande:any) => commande.etat=="termine")
+    // })
+    // this.comServ.commandesByZone(3).subscribe(data=>{
+    //   this.commandesZones3 = data.filter((commande:any) => commande.etat=="termine")
+    // })
     this.comServ.allLivreurs().subscribe(data=>{
       this.livreurs = data.filter((livreur:any)=> livreur.etat=="disponible")
     })
@@ -60,11 +69,13 @@ export class LivraisonComponent implements OnInit {
 
     /* enregistrer livraison */
     this.comServ.addLivraison(this.registerForm.value).subscribe(
+      data=>{
+        this.toast.success({detail:"success",summary:"la livraison a bien été enregistré"})
+      },
       err=>{
         console.log(err)
       },
     )
-    this.toast.success({detail:"success",summary:"le menu a bien été enregistré"})
   }
 
   get commandes() {
@@ -90,5 +101,8 @@ export class LivraisonComponent implements OnInit {
       checkFormArray.removeAt(index);
     }
   }
-
+ /* array unique */
+  // onlyUnique(value:any, index:any, self:any) {
+  //     return self.indexOf(value) === index;
+  // }
 }

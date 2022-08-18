@@ -24,7 +24,7 @@
                       <a routerLink="/gestionnaire/commande/listeCommande/{{livraison.id}}">
                         <button  class="btn-inf"><i class="bi bi-info-circle"></i>Detail</button>
                       </a> 
-                       <button class ="btn-va"><i class="fa-solid fa-check"></i>Valider</button>
+                       <button  (click)='CommandetoEdit(livraison.id,"valide")' class ="btn-va"><i class="fa-solid fa-check"></i>Valider</button>
                     </td>
                   </tr>
                 </tbody>

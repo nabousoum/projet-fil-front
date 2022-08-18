@@ -35,18 +35,19 @@
                     </tr>
                   </tbody>
                 </table>
-                  <select  name="livreur" id="livreur" formControlName="livreur">
+                  <select name="livreur" id="livreur" formControlName="livreur">
                       <option value="">--choisissez un livreur--</option>
                       <ng-container *ngFor="let livreur of  livreurs">
                           <option value={{livreur.id}}>{{livreur.prenom}} {{livreur.nom}} - {{livreur.matriculeMoto}}</option>
                       </ng-container>
                   </select>
-                  <button type="submit" class="btn">Valider</button>
+
+                  <button type="submit" [disabled]="registerForm.invalid" class="btn">Valider</button>
             </div>
           </form>
             
         </div>
-        <div class="panel panel-primary"class="choice">
+        <!-- <div class="panel panel-primary"class="choice">
             <div class="panel-heading"  (click)="panleExpanded2 = !panleExpanded2"  class="header">
                 <p>ZONE 2</p>
             </div>
@@ -64,7 +65,7 @@
                       <tr *ngFor="let com of commandesZones2  ">
                         <td>{{com.numeroCommande}}</td>
                         <td>{{com.montantCommande}}</td>
-                        <td>{{com.dateCommande}}</td>
+                        <td>{{com.dateCommande | date}}</td>
                         <td><input type="checkbox"></td>
                       </tr>
                     </tbody>
@@ -96,7 +97,7 @@
                       <tr *ngFor="let com of commandesZones3  ">
                         <td>{{com.numeroCommande}}</td>
                         <td>{{com.montantCommande}}</td>
-                        <td>{{com.dateCommande}}</td>
+                        <td>{{com.dateCommande | date}}</td>
                         <td><input type="checkbox"></td>
                       </tr>
                     </tbody>
@@ -109,6 +110,6 @@
                 </select>
                 <button class="btn">Valider</button>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>

@@ -17,15 +17,14 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let commande of commandes">
+                  <tr *ngFor="let commande of com">
                     <td>{{commande.id}}</td>
                     <td>{{commande.numeroCommande}}</td>
                     <td>{{commande.dateCommande}}</td>
                     <td>{{commande.etat}}</td>
                     <td>
-                      <button class="btn-va"><i class="fa-solid fa-check"></i>valider</button>
-                      <button class="btn-ter"><i class="bi bi-bookmark-check-fill"></i>terminer</button>
-                      <button class="btn-an"><i class="bi bi-slash-circle"></i>annuler</button>
+                      <button (click)='CommandetoEdit(commande.id,"paye")' class="btn-va"><i class="fa-solid fa-check"></i>valider</button>
+                      <button (click)='CommandetoEdit(commande.id,"annule")' class="btn-an"><i class="bi bi-slash-circle"></i>annuler</button>
                     </td>
                   </tr>
                 </tbody>
