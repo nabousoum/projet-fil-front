@@ -15,8 +15,8 @@ export class ProduitService {
   private urlPostBurger:string = 'http://127.0.0.1:8000/api/burgers'
   private urlDeleteMenu:string = 'http://127.0.0.1:8000/api/menus'
   private urlDeleteBurger:string = 'http://127.0.0.1:8000/api/burgers'
-
-  
+  private urlAllProducts:string = 'http://127.0.0.1:8000/api/produits'
+  private urlAllUsers:string = 'http://127.0.0.1:8000/api/users'
   constructor(
     private http:HttpClient,
     private token : TokenService
@@ -88,4 +88,41 @@ export class ProduitService {
     };
     return this.http.delete<number>(this.urlDeleteBurger+"/"+id,httpOptions);
   }
+
+  /* all products  */
+  allProducts(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': `Bearer ${this.token.getToken()}`
+      })
+    };
+    return this.http.get<any>(this.urlAllProducts,httpOptions)
+    .pipe(
+      map(data=>{
+        let test = data['hydra:member']
+        data = test
+        return data
+      }
+      ))
+  }
+
+  /* all users  */
+  allUsers(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': `Bearer ${this.token.getToken()}`
+      })
+    };
+    return this.http.get<any>(this.urlAllUsers,httpOptions)
+    .pipe(
+      map(data=>{
+        let test = data['hydra:member']
+        data = test
+        return data
+      }
+      ))
+  }
+
 }

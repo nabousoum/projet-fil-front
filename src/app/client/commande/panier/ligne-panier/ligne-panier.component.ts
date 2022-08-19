@@ -42,7 +42,7 @@ export class LignePanierComponent implements OnInit {
   }
 
   delete(event:any){
-    //alert(event.nom)
+    //alert(event.id)
     this.index.emit(event)
   }
 

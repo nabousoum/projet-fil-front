@@ -15,14 +15,14 @@
     background: #fff;
     border-radius: 10px;
     padding: 30px;
-    border:1px solid #C2B364;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
 }
 .img{
   
   margin-top: -2%;
-  margin-left: 12%;
+  margin-left: 25%;
 }
 img{
-  height: 900px;
+  height: 500px;
 }

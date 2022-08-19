@@ -18,6 +18,7 @@
               <div class="card-header py-3">
                 <h5 class="mb-0">VOTRE PANIER</h5> 
               </div>
+              <!-- {{items|json}} -->
               <div class="card-body" *ngFor="let item of items ; let i=index">
                 <ss-ligne-panier (index)="onDelete($event)" [item]="item" ></ss-ligne-panier> 
               </div>

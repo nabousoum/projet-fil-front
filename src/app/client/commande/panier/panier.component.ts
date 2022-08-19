@@ -47,12 +47,13 @@ export class PanierComponent implements OnInit {
   }
   
   delete(object: any){  
+    alert(object.id)
     this.cartServ.removeCart(object)
   }
 
   newObject = {}
   onDelete(event : any){
-    //alert(event.nom)
+   console.log(event)
     this.newObject = event
     this.cartServ.removeCart(event)
     this.toast.info({detail:"info",summary:"l' element a bien été supprimé"})

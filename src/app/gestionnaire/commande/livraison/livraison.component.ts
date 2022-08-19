@@ -45,12 +45,12 @@ export class LivraisonComponent implements OnInit {
     this.comServ.commandesByZone(1).subscribe(data=>{
       this.commandesZones = data.filter((commande:any) => commande.etat=="termine")
     })
-    // this.comServ.commandesByZone(2).subscribe(data=>{
-    //   this.commandesZones2 = data.filter((commande:any) => commande.etat=="termine")
-    // })
-    // this.comServ.commandesByZone(3).subscribe(data=>{
-    //   this.commandesZones3 = data.filter((commande:any) => commande.etat=="termine")
-    // })
+    this.comServ.commandesByZone(2).subscribe(data=>{
+      this.commandesZones2 = data.filter((commande:any) => commande.etat=="termine")
+    })
+    this.comServ.commandesByZone(3).subscribe(data=>{
+      this.commandesZones3 = data.filter((commande:any) => commande.etat=="termine")
+    })
     this.comServ.allLivreurs().subscribe(data=>{
       this.livreurs = data.filter((livreur:any)=> livreur.etat=="disponible")
     })

@@ -15,7 +15,7 @@ export class TokenService {
     localStorage.setItem('token', token)
     localStorage.setItem('id',id)
     if(decoded.roles[0] == ["ROLE_GESTIONNAIRE"] ){
-      this.router.navigate(['/gestionnaire'])
+      this.router.navigate(['/gestionnaire/dash'])
     }
     else{
       this.router.navigate(['/client/commande/panier'])

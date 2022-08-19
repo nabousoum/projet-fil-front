@@ -145,6 +145,7 @@ export class CartServiceService {
 
   /* suppression d un element du panier */
   removeCart(object:any){
+    /* menu */
     if(object.type == 'menu'){
       this.newCart.value.menuCommandes?.map((menuCom,index)=>{
         if(menuCom.menu?.id == object.id){
@@ -159,6 +160,7 @@ export class CartServiceService {
       localStorage.setItem('cart', JSON.stringify(newData))
       return this.newCart.next(newData)
     }
+    /* burger */
     if(object.type == 'burger'){
       this.newCart.value.burgerCommandes?.map((burgerCom,index)=>{
         if(burgerCom.burger?.id == object.id){
@@ -173,7 +175,37 @@ export class CartServiceService {
       }
         localStorage.setItem('cart', JSON.stringify(newData))
          this.newCart.next(newData)
-      
+    }
+    /* boisson */
+    if(object.boissonTailleBoisson){
+      this.newCart.value.boissonCommandes?.map((boissonCom,index)=>{
+        if(boissonCom.boissonTailleBoisson?.id == object.boissonTailleBoisson.id){
+          this.newCart.value.boissonCommandes?.splice(index,1)
+      }
+      })
+      const ls = JSON.parse(localStorage.getItem('cart') || 'null')
+      let newData = {
+        ...this.newCart.value,
+        boissonCommandes: this.newCart.value.boissonCommandes
+      }
+      localStorage.setItem('cart', JSON.stringify(newData))
+      return this.newCart.next(newData)
+    }
+
+    /* frites */
+    if(object.portionFrite){
+      this.newCart.value.friteCommandes?.map((friteCom,index)=>{
+        if(friteCom.portionFrite?.id == object.portionFrite.id){
+          this.newCart.value.friteCommandes?.splice(index,1)
+      }
+      })
+      const ls = JSON.parse(localStorage.getItem('cart') || 'null')
+      let newData = {
+        ...this.newCart.value,
+        friteCommandes: this.newCart.value.friteCommandes
+      }
+      localStorage.setItem('cart', JSON.stringify(newData))
+      return this.newCart.next(newData)
     }
     return this.newCart.next
   }
