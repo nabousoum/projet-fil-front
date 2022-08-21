@@ -24,7 +24,10 @@ export class DetailComponent implements OnInit {
   private id :any = 0;
   private type:any =""
   quantiteClient = 0
+  qteT = 0
+
   produit$ : Observable<Detail> | null = null;
+  produit : any = null;
   commandeMenuBoissonTailles : CommandeMenuBoissonTaille[] = []
   tailleBoissons : BoissonTailleBoisson[] = []
 
@@ -74,6 +77,21 @@ export class DetailComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     this.type = this.route.snapshot.paramMap.get('type');
     this.produit$ = this.serv.produit$(this.id);
+     this.serv.produit$(this.id).subscribe(
+      data=>{
+        this.produit = data
+          this.produit.menu?.menuTailleBoissons?.map((menuTaille:any)=>{
+          this.qteT += menuTaille.quantite
+        })
+        console.log(this.qteT)
+      }
+    )
+    // this.produit(produit => 
+    //     produit.menu?.menuTailleBoissons?.map(menuTaille=>{
+    //       this.qteT += menuTaille.quantite
+    //     })
+    // )
+    
   }
   /* recuperation du size  */
   size:number = 1
@@ -194,11 +212,21 @@ export class DetailComponent implements OnInit {
   }
 
   textAlert(tab :any[]):string{
-    let qteTotal:number = 0
+    let totalSize = 0
     tab.forEach(element => {
-      qteTotal+=element.qte
+      let tabBoissons:any[] = element.boissons
+      tabBoissons.forEach(elem=>{
+        totalSize+=elem.size
+         if(totalSize == this.qteT ){
+          this.message = ""
+          this.disabled_attr = false
+        }
+        else{
+          this.disabled_attr = true
+        }
+      })
+      
     });
-    console.log("qteTotal"+qteTotal)
     return ""
   }
 
