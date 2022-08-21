@@ -6,7 +6,6 @@
     left: 300px;
     padding: 20px;
     border: 1px solid #C2B364;
-    overflow-y: scroll;
   }
   .content{
     margin-top: 2%;
@@ -31,34 +30,28 @@ h2{
     text-decoration: underline;
     color: #C2B364;
 }
-.test{
-    display: flex;
-}
-.inputGen{
-    border-radius: 5px;
-    height: 40px;
-    width: 80%;
-    margin: 1%;
-}
-.inp{
-    flex: 5;
-}
-.btnplus{
-    flex: 1;
-
-}
-
-.btn-plus{
+.btn-add{
     background-color: #C2B364;
-    color: #fff;
-    border: none;
-}
-.champ{
+    border-radius: 5px;
     border: none;
     color: white;
-    background-color: #C2B364;
+    height: 40px;
+    width: 100px;
+}
+.liste{
+    margin-top: 5%;
+
+    width: 100%;
+    height: 40em;
+}
+th{
+    color: #C2B364;
+}
+.btn-bi{
     margin-left: 5%;
 }
-.champ.delete{
-    background-color: red;
+button{
+    color: white;
+    background-color: #C2B364;
+    border: none;
 }

@@ -10,21 +10,28 @@
                         <form [formGroup]="registerForm" (ngSubmit)="submitData()">
                           <div class="row">
                                 <div class="form-outline">
-                                    <input formControlName="nom" type="text" id="firstName" class="form-control form-control-lg" />
+                                    <input formControlName="libelle" type="text" id="firstName" class="form-control form-control-lg" />
                                     <label class="form-label" for="firstName">Libelle</label>
                                 </div>
                           </div>
                           <div class="row">
                             <div class="form-outline">
-                                <input formControlName="prenom" type="number" id="firstName" class="form-control form-control-lg" />
+                                <input formControlName="prix" type="number" id="firstName" class="form-control form-control-lg" />
                                 <label class="form-label" for="firstName">Prix</label>
                             </div>
                       </div>
-                          <div class="row">
-                                <div class="form-outline datepicker w-100">
-                                    <input formControlName="login" type="text" class="form-control form-control-lg" id="birthdayDate" />
-                                    <label for="birthdayDate" class="form-label">Quartiers</label>
-                                </div>
+                          <div class="test" class="row">
+                              <div class="inp">
+                                <ng-container formArrayName="quartiers">
+                                  <ng-container *ngFor="let quartierForm of quartiers.controls; let i = index">
+                                    <input formControlName="quartier" type="text" class="inputGen">
+                                    <button  (click)="deleteQuartier(i)" class="champ delete"><i class="bi bi-trash"></i></button>
+                                  </ng-container>
+                                </ng-container>
+                              </div>
+                              <div class="btnplus">
+                                  <button (click)="addQuartier()" type="button" class="btn-plus"><i class="bi bi-plus-lg"></i></button>
+                              </div>
                             </div>
                         <div class="mt-4 pt-2">
                             <input class="btn btn-primary btn-lg" type="submit"  value="Submit" />

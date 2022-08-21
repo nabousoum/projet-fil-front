@@ -11,6 +11,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ChoixComponent } from './menu/form-menu/choix/choix.component';
 import { BurgerComponent } from './burger/burger.component';
 import { FormBurgerComponent } from './burger/form-burger/form-burger.component';
+import { FriteComponent } from './frite/frite.component';
+import { BoissonComponent } from './boisson/boisson.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { FormBurgerComponent } from './burger/form-burger/form-burger.component'
     FormMenuComponent,
     ChoixComponent,
     BurgerComponent,
-    FormBurgerComponent
+    FormBurgerComponent,
+    FriteComponent,
+    BoissonComponent
   ],
   imports: [
     CommonModule,

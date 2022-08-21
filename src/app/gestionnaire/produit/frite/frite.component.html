@@ -1,0 +1,34 @@
+
+<ss-navbar></ss-navbar>
+<div class="content-wrapper">
+    <div class="content">
+            <h2>GESTION DES FRITES</h2>
+            <a routerLink="/gestionnaire/produit/addBurger"><button class="btn-add">AJOUTER</button></a>
+            <div class="liste">
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">IMAGE</th>
+                        <th scope="col">NOM</th>
+                        <th scope="col">PRIX</th>
+                        <th scope="col">ACTION</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let frite of frites | paginate:{itemsPerPage:5,currentPage:p,totalItems:totalLenght} ">
+                        <td>{{frite.id}}</td>
+                        <td><img width="100px" src="assets/images/frites/{{frite.id}}.jpg" ></td>
+                        <td>{{frite.nom}}</td>
+                        <td>{{frite.prix}}</td>
+                        <td>
+                            
+                            <button class="btn-bi"><i class="bi bi-archive"></i>archiver</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+    </div>
+</div>

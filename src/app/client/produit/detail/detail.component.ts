@@ -18,7 +18,7 @@ export class DetailComponent implements OnInit {
   /* declarations de variables */
   qte = 0
   bool = 0
-  disabled_attr = false
+  disabled_attr = true
   tab :any[] = []
   tabFrites :any[] = []
   private id :any = 0;
@@ -194,33 +194,11 @@ export class DetailComponent implements OnInit {
   }
 
   textAlert(tab :any[]):string{
-    let totalSize = 0
-    let qte = 0
+    let qteTotal:number = 0
     tab.forEach(element => {
-         qte += element.qte
-      let tabBoissons:any[] = element.boissons
-      tabBoissons.forEach(elem=>{
-        totalSize+=elem.size
-        if(totalSize > element.qte){
-          this.toast.error({detail:"ERROR",summary:"vous avez depasser le nombre de boissons"})
-          //this.message = "vous avez depasser le nombre de boissons"
-          this.disabled_attr = true
-        }
-        else if(elem.size > elem.stock){
-          this.toast.error({detail:"ERROR",summary:"le stock est epuisé"})
-          this.disabled_attr = true
-        }
-         if(totalSize == this.qte){
-          this.message = ""
-          this.disabled_attr = false
-        }
-        else if (totalSize != this.qte){
-          this.message = ""
-          this.disabled_attr = true
-        }
-      })
-      console.log(this.qte)
+      qteTotal+=element.qte
     });
+    console.log("qteTotal"+qteTotal)
     return ""
   }
 

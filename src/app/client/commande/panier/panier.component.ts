@@ -20,6 +20,15 @@ export class PanierComponent implements OnInit {
   zones:any = []
   registerForm:any
 
+  /* nav tabs */
+  activeTab = 'search';
+  search(activeTab:any){
+    this.activeTab = activeTab;
+  }
+  result(activeTab:any){
+    this.activeTab = activeTab;
+  }
+
   constructor(
     private cartServ:CartServiceService,
     private toast: NgToastService,

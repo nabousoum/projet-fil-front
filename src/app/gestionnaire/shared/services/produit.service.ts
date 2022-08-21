@@ -17,6 +17,8 @@ export class ProduitService {
   private urlDeleteBurger:string = 'http://127.0.0.1:8000/api/burgers'
   private urlAllProducts:string = 'http://127.0.0.1:8000/api/produits'
   private urlAllUsers:string = 'http://127.0.0.1:8000/api/users'
+  private urlBoissons:string = 'http://127.0.0.1:8000/api/boissons'
+  
   constructor(
     private http:HttpClient,
     private token : TokenService
@@ -33,6 +35,19 @@ export class ProduitService {
       )
     )
   }
+
+  allBoissons(){
+    return this.http.get<any>(this.urlBoissons)
+    .pipe(
+      map(data=>{
+        let test = data['hydra:member']
+        data = test
+        return data
+      }
+      )
+    )
+  }
+
   allTaille(){
     return this.http.get<any>(this.urlTaille)
     .pipe(
