@@ -72,13 +72,15 @@ export class PanierComponent implements OnInit {
   /* fonction de validation de commande */
   validerCommande(){
     if (this.tokenService.isLogged()){
+      if(this.activeTab == 'result'){
         let zone={
           id:this.registerForm.get('zone').value
         }
         this.cartServ.newCart.value.zone = zone
-        console.log( this.cartServ.newCart.value)
-        this.commandeServ.saveCommande(this.cartServ.newCart.value).subscribe(
-          err=> console.log(err),
+      }
+      console.log( this.cartServ.newCart.value)
+      this.commandeServ.saveCommande(this.cartServ.newCart.value).subscribe(
+        err=> console.log(err),
         )
         this.cartServ.removeAllCart()
         this.toast.success({detail:"success",summary:"votre commande a bien été enregistré"})
