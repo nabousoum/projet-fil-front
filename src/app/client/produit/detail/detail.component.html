@@ -39,9 +39,16 @@
                     <div class="card-count">
                         <ss-card-count (count)="countEmit($event)" [produits]="(produit$|async)" (disabled) = "disabledButton($event)"></ss-card-count>
                     </div>
+                    <ng-container *ngIf="(produit$|async)?.menu?.type == 'menu'">
                         <a routerLink="/client/commande/panier">
                             <button *ngIf="produit$ | async as product" [disabled] = disabled_attr (click)="addToCart(product)" class="btn">AJOUTER AU PANIER</button>
                         </a>
+                    </ng-container>
+                    <ng-container *ngIf="(produit$|async)?.burger?.type == 'burger'">
+                        <a routerLink="/client/commande/panier">
+                            <button *ngIf="produit$ | async as product"  (click)="addToCart(product)" class="btn">AJOUTER AU PANIER</button>
+                        </a>
+                    </ng-container>
                 </div>
             </div>
             <ng-container *ngIf="(produit$|async)?.menu?.type == 'menu'">

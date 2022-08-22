@@ -86,11 +86,7 @@ export class DetailComponent implements OnInit {
         console.log(this.qteT)
       }
     )
-    // this.produit(produit => 
-    //     produit.menu?.menuTailleBoissons?.map(menuTaille=>{
-    //       this.qteT += menuTaille.quantite
-    //     })
-    // )
+
     
   }
   /* recuperation du size  */
@@ -212,14 +208,18 @@ export class DetailComponent implements OnInit {
   }
 
   textAlert(tab :any[]):string{
+    
     let totalSize = 0
     tab.forEach(element => {
       let tabBoissons:any[] = element.boissons
       tabBoissons.forEach(elem=>{
         totalSize+=elem.size
-         if(totalSize == this.qteT ){
+         if(totalSize == (this.qteT*this.qteMenu) ){
           this.message = ""
           this.disabled_attr = false
+        }
+        else if(elem.size > elem.stock){
+          this.disabled_attr = true
         }
         else{
           this.disabled_attr = true
@@ -321,7 +321,7 @@ export class DetailComponent implements OnInit {
   textAlert2(tab:any[]){
     tab.forEach(element=>{
       if(element.size > element.stock){
-        this.toast.error({detail:"ERROR",summary:"le stock est epuisé"})
+        //this.toast.error({detail:"ERROR",summary:"le stock est epuisé"})
           this.disabled_attr = true
       }
       else{

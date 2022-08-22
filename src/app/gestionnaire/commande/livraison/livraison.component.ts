@@ -32,25 +32,16 @@ export class LivraisonComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
-  //   this.comServ.allZone().subscribe((data:any)=>{
-  //     this.i = Number(data.length)
-  //     console.log(this.i)
-  //      for (let index = 1; index <= this.i; index++) {
-  //           this.comServ.commandesByZone(this.i).subscribe(data=>{
-  //           this.commandesZones = data.filter((commande:any) => commande.etat=="termine")
-  //         })
-  //      }
-  //  })
-    this.comServ.commandesByZone(1).subscribe(data=>{
-      this.commandesZones = data.filter((commande:any) => commande.etat=="termine")
-    })
-    this.comServ.commandesByZone(2).subscribe(data=>{
-      this.commandesZones2 = data.filter((commande:any) => commande.etat=="termine")
-    })
-    this.comServ.commandesByZone(3).subscribe(data=>{
-      this.commandesZones3 = data.filter((commande:any) => commande.etat=="termine")
-    })
+    this.comServ.allZone().subscribe((data:any)=>{
+    this.i = Number(data.length)
+    for (let index = 1; index <= this.i; index++) {
+      this.comServ.commandesByZone(index).subscribe(data=>{
+      this.commandesAll.push(data.filter((commande:any) => commande.etat=="termine"))
+      })
+    }
+    console.log(this.commandesAll)
+   })
+ 
     this.comServ.allLivreurs().subscribe(data=>{
       this.livreurs = data.filter((livreur:any)=> livreur.etat=="disponible")
     })
@@ -101,8 +92,5 @@ export class LivraisonComponent implements OnInit {
       checkFormArray.removeAt(index);
     }
   }
- /* array unique */
-  // onlyUnique(value:any, index:any, self:any) {
-  //     return self.indexOf(value) === index;
-  // }
+
 }
