@@ -18,8 +18,6 @@ export class HeaderComponent implements OnInit {
   
   countPanier:number = 0
   ngOnInit(): void {
-    //const ls = JSON.parse(localStorage.getItem('cart') || 'null')
-    // this.itemIncCart = ls.boissonCommandes.length + ls.burgerCommandes.length + ls.friteCommandes.length + ls.menuCommandes.length
     this.cartService.newCart.subscribe(d=>{
       if(d.menuCommandes && d.boissonCommandes && d.burgerCommandes && d.friteCommandes){
         this.countPanier = d.boissonCommandes.length + d.burgerCommandes.length + d.friteCommandes.length + d.menuCommandes.length

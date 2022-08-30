@@ -23,8 +23,7 @@ export class CardCountComponent implements OnInit {
 
   constructor() { }
 
-  /* fonction de controle de la taille choisie dans le menu*/
-
+  /* fonction de controle de la taille choisie dans le produit*/
   dec() { this.resize(-1); }
   inc() { this.resize(+1); }
 
@@ -56,6 +55,7 @@ export class CardCountComponent implements OnInit {
     }
     return ""
   }
+  
   ngOnInit(): void {
     
   }

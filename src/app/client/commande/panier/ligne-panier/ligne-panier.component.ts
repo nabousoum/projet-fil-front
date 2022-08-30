@@ -46,13 +46,14 @@ export class LignePanierComponent implements OnInit {
     this.index.emit(event)
   }
 
-   qte:number = 0
+  qte:number = 0
   value(event :any){
     //alert(event.target.value)
     this.qte = event.target.value
   }
 
   ngOnInit(): void {
+    
   }
 
 }
