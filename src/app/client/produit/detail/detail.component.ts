@@ -87,7 +87,6 @@ export class DetailComponent implements OnInit {
       }
     )
 
-    
   }
   /* recuperation du size  */
   size:number = 1
