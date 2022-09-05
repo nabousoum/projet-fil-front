@@ -213,7 +213,7 @@ export class CartServiceService {
   /* supprimer ts les elements du panier */
   removeAllCart(){
     localStorage.removeItem('cart');
-    //window.location.reload()
+    window.location.reload()
   }
 
   /* boisson commande */
